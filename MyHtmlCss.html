@@ -1,0 +1,604 @@
+<!-- BOILER PLATE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href=".css">
+    <link rel="icon" type="image/x-icon" href="">
+    <title>MY HTML CODES</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav> 
+            <a href="#ZBC">Ziyada Beauty Cout</a><br>
+            <a href="#About">About Us</a><br>
+            <a href="#Couture">Our Couture</a><br>
+        </nav>
+    </header>
+   
+    <!-- MAIN BODY -->
+    <main>
+        <h1></h1>
+        <h2></h2>
+        <h3></h3>
+        <h4></h4>
+        <h5></h5>
+        <h6></h6>
+        
+        <section></section>
+        <div></div>
+        <article></article>
+        <form action=""></form>
+        <label for=""></label>
+
+        <!-- SELECTION -->
+        <select name="cars" id="cars">
+            <option value="Acura">Acura</option>
+            <option value="Benz">Benz</option>
+            <option value="Murano">Murano</option>
+            <option value="G-Wagon">G-Wagon</option>
+        </select>
+        <p></p>
+        <a href="" target="" id="" class="" ></a>
+        <img src="" alt="">
+        <ul><li></li></ul>
+        <ol><li></li></ol>
+        <hr>
+        <br *8>
+        <span></span>
+        <sub></sub>
+        <sup></sup>
+        <del></del>
+        <iframe src="" frameborder="0"></iframe>
+        <code></code>
+        <article></article>
+        <b></b>
+        <i></i>
+        <figure><img src="" alt=""></figure>
+        <figcaption></figcaption>
+        <em></em>
+        <strong></strong>
+        <small></small>
+        <blockquote></blockquote>  <!-- The blockquote element represents a section that is quoted from another source -->
+        <!-- FIELDSET
+        The FIELDSET element is used to group related elements in a form. The fieldset tag draws a box around the related elements. 
+        You can now nest LABEL elements inside your fieldset element.
+        As label elements are inline by default, they are all displayed side by side on the same line, making their text hard to read. 
+        To make them appear on separate lines, add display: block to the label element.-->
+        <fieldset>
+            <legend></legend>
+        </fieldset>
+        <legend></legend>
+        <abbr title=""></abbr>
+        <address></address>
+        <aside>
+            <details>
+                <summary>???
+                    <p></p>
+                </summary>
+            </details>
+        </aside>
+        &nbsp;
+        &lt;
+        &gt;
+        &copy;
+        <button type="" value=""></button>
+
+        <!-- INPUT ELEMENTS -->
+        <input type="text"  placeholder="" required>
+        <input type="number" min="13" max="120" >
+
+        <input type="radio" value="" id="" placeholder="" >
+
+        <label for=""> <input id="male" type="radio" name="male-fem" value="male"> MALE </label>
+        <label for=""> <input id="fem" type="radio" name="male-fem" value="fem"> FEMALE </label>
+
+        <input type="checkbox" value="" id="" placeholder=""  checked>
+        <input type="checkbox" value="" id="" placeholder=""  >
+
+        <input type="file"  >
+        
+
+        <input type="date" value="" id="calendar" class="calendar" placeholder="" >
+        <input type="tel" value="" id="" placeholder="" >
+        <input type="submit" value="" id="" placeholder="" >
+        <input type="password" value="" id="" placeholder="" >
+        <input type="url" value="" id="" placeholder="" >
+        <input type="reset" value="" id="" placeholder="" >
+
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+
+
+        <!-- ANCHOR REF -->
+        <a href="http:imagelinkhere">View Image</a>
+        <p> <a href="" download=""></a></p>
+
+        <a href="tel:+2349063601587">Our Phone</a>
+        <a href="mailto:essietasha@gmail.com">Our E-mail</a>
+        <a href="https://www.google.com">Our Socials</a>
+        <a href="/">Return to Default Page</a>
+
+
+        <!-- TABLE line 265-->
+        <table border="4">
+            <!-- Can remove border to make the table without lines -->
+            <caption>My Table</caption>
+             <!-- HTML tables use the caption element to describe what the table is about. The caption element should always be the first child of a table, but can be positioned with the caption-side CSS property. -->
+            <thead>
+                <tr>
+                    <th>Table 1</th>
+                    <th>Table 2</th>
+                    <th>Table 3</th>
+                    <th>Table 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1</td>
+                    <td>R 2</td>
+                    <td>R 3</td>
+                    <td>R 4</td>
+                </tr>
+                <tr>
+                    <td>Column 1</td>
+                    <td>C 2</td>
+                    <td>C 3</td>
+                    <td>C 4</td>
+                </tr>
+            </tbody>
+        </table>
+        //OR
+        <table>
+             <caption>Table</caption>
+                <thead>
+                    <tr>
+                        <td>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                    </tr>
+                </tbody>
+        </table>
+
+        <img src="" alt="" loading="eager" >
+        <img src="" alt="" loading="lazy" >
+<!-- 
+        FORM: Insert a form with an action attribute targeting https://register-demo.freecodecamp.org.
+        The method attribute specifies how to send form-data to the URL specified in the action attribute. 
+        The form-data can be sent via a GET request as URL parameters (with method="get") 
+        OR via a POST request as data in the request body (with method="post"). -->
+
+<!-- 
+          INLINE/BLOCK ELEMENTS
+            A block-level element always starts on a new line and always takes up the full width available and the browsers automatically add some space (a margin) before and after the element. 
+            E.g Div, P, hr, ul, ol, section, article ...
+            Inline elements do not start on a new line. It only takes up as much width as necessary or needed. 
+            E.g Label, Span, a, input, button, img ... -->
+            <!-- If you want the input and label text to appear on the same line, start, by giving the input elements a class of inline. 
+            Now, select only the .inline elements, and give them width of unset. This will remove the earlier rule which set all the input elements to width: 100%.
+            Add some space between the .inline elements and the label text, by giving a right margin of 0.5em. Also, set all the other margin to 0.
+            If you look close enough, you will notice the .inline elements are too high on the line. To combat this, set the vertical-align property to middle.-->
+
+
+        <!-- You can select the last element of a specific type using the last-of-type CSS pseudo-class, like this: -->
+            <!-- E.g 1 p:last-of-type { } -->
+            <!-- E.g 2 fieldset:last-of-type{
+                border-bottom: none;
+              } 
+
+            *****MARGIN 1em auto
+            Auto means that the left/right margin are automatically set based on the container. If your element is a block type element, meaning it is a box and takes up the entire width of the view, then auto sets the left and right margin the same and hence the element is centered.
+        
+             *****em
+             The size of an EM or percent depends on its parent. If the text size of body is 16 pixels, 
+             Then 1em  em equals to the current font size
+               2em will be double (X2) of the default font-size 32px
+
+
+            *****rem
+            rem stands for root em, which is a measurement unit that refers to the font-size of the root element of a document. 
+            NOTE: It is a relative unit, which means all values that use it change when the root's font-size changes. The root element in this case refers to the html element. 
+            1rem means 1 times the root font-size.
+            *Basically both rem and em are scalable and relative units of size, but with em, the unit is relative to the font size of its parent element, while the rem unit is only relative to the root font size of the HTML document. The “r” in rem stands for “root”.
+           -->
+
+           
+    </main>
+
+    <!-- FOOTER -->
+    <footer></footer>
+    <!-- all: revert / unset;  -->
+
+
+    <!-- CSS STYLESHEET
+    padding:
+    margin:
+    box-sizing: border-box;
+
+    Class Selector(.btn{})
+    ID Selector(#btn{})
+    Element selector(h1{})
+
+    Class/ID Creator
+    element.class+enter i.e div.box+enter
+    element#ID+enter    i.e div#box+enter
+
+    text-align:centre:
+    background:
+    background-image: url("");
+    background-image: linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem);
+    background: linear-gradient();
+    background: radial-gradient(); This will add circular gradient to your background.
+                                    E.g   .sky{ background: radial-gradient(#ffcf33 0%, #ffcf33 20%, #ffff66 21%, #bbeeff 100%);}
+                                    At the top of the sky gradient color list, where you would put a direction for the gradient; add circle closest-corner at 15% 15%,. This will move the start of the gradient to 15% from the top and left. It will make it end at the closest-corner and it will maintain a circle shape. These are some keywords built into gradients to describe how it behaves.
+    background-position:            i.e .sky { background: radial-gradient( closest-corner circle at 15% 15%,
+                                                    #ffcf33,
+                                                    #ffcf33 20%,
+                                                    #ffff66 21%,
+                                                    #bbeeff 100%
+                                                    );   }
+    background-repeat:
+    color:
+    background-color:
+    height:
+    width:
+    font-size:
+    font-family:
+    font-style:
+    font-weight:
+    line-height:
+    letter-spacing: 1.5;
+    word-spacing: 1rem;
+    text-transform: uppercase/lowercase;
+    display: inline-block;
+    display: block;
+    list-style: square/none;
+    list-style-image: url("");
+    text-decoration:
+    filter:blur{3px};
+    transform: rotate(); The transform property allows you to modify the shape, position, and size of an element without changing the layout or affecting the surrounding elements. It has functions such as translate(), rotate(), scale(), skew(), and matrix().
+    object-fit: cover; This fits img into their contas ans set their aspect ratio autom.
+    border: 1px solid #333;
+    border: 3px dotted #fff;
+    border-color:
+    border-radius:
+    border-bottom: 4px double #0a0a23;
+    border-left: width, style, color; 
+                                        border-left: 10px, solid/double, black;
+                                        You can use an alpha channel to lower the opacity of the black border. 
+                                        border-left: 10px, solid, rgba(255, 0, 0, 0.75); 
+    border-top-style:dotted;
+    border-right: 5px solid red;
+
+        border-top-right-radius: ..px; To set the border of a positioned top/left/bottom/right element
+        border-top-left-radius: ..px;
+        border-bottom-right-radius: ..px;
+        border-bottom-left-radius: ..px; 
+        
+    vertical-align: top; To align texts vertically
+    z-index: 100;       Z-index is a property you can use to define the order of overlapping HTML elements. Any element with a higher z-index will always be positioned over/above/ontop an element with a lower z-index. When u use - for z-index on an element, it means that element will be placed below other elements.
+    TABLE BORDER
+    border-collapse: collapse;  The Collapse property to collapse, which will allow cell borders to collapse into a single border, instead of a border around each cell.
+    border: 0;
+
+      //CSS ATTRIBUTE SELECTOR  The [attribute="value"] selector targets any element that has an attribute with a specific value.E.g
+      input[type = "submit"]{
+         display: block;
+        width: 60%;
+        margin: 1em auto;
+        height: 2em;
+        min-width: 300px;
+     }
+     E.g 2
+     tr[class="total"] {
+    border-bottom: 4px double #0a0a23;
+        font-weight: bold;
+        }
+
+
+
+        BLUR ELEMENT
+        .youritemwithblurbackground {
+            background-color: rgba(255, 255, 255, 0.4);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            padding: 20px 30px;
+            }
+
+            .yourcontainer {
+                background: url() no-repeat center;
+                background-size: cover;
+                width: 400px;
+                }
+
+
+    BOX-SHADOW
+    The box-shadow property lets you apply one or more shadows around an element. Here is basic syntax:
+        box-shadow: offsetX offsetY blurRadius color;
+        Here's how the offsetX and offsetY values work:
+        A positive offsetX value moves the shadow right and a negative value moves it left
+        A positive offsetY value moves the shadow down and a negative value moves it up
+        If you want a value of zero (0) for any or both offsetX and offsetY, you don't need to add a unit.
+        Blurradius for a blurry edge to avoid sharp edges.
+        Spreadradius to expand the shadow out further.
+        box-shadow: 5px 5px red;
+        box-shadow: -5px -5px red;
+        box-shadow: 5px 5px 10px red; 
+        box-shadow: 0px 0px 0px 5px red;
+        box-shadow: 0px 0px 20px 0px red;
+    overflow:hidden/visible; Sometimes to hide any scroll bars that appear when something extends past the viewport.
+    opacity:
+    a:
+    a:hover;
+    a:active;
+    a:visited;
+    float:
+    clear-both;
+    cursor: pointer;
+    button:hover {transition: 1s ease-out;
+    transform: scale(0.8);}
+    .inline{
+        width:unset;
+    }
+
+    CSS POSITIONING: CSS positioning lets you set how you want an element to be positioned in the browser. Once you set the position property of the element, you can move the element around by setting a px or a percentage value for one or more of the top, right, left, or bottom properties.
+    Static: Static is the default positioning for all elements. If you assign it to an element, you won't be able to move it around with top, right, left, or bottom.
+    Relative: When you use the relative value, the element is still positioned according to the normal flow of the document, but the top, left, bottom, and right values become active.
+                 .chead: {position: relative;
+                            top: 100px;
+                            left: 100px;}
+    Absolute: When you use the absolute value for your position property, the element is taken out of the normal flow of the document, and then its position is determined by the top, right, bottom, and left properties.
+    Fixed: fixed is a position property value that lets you make an element fixed to the page no matter where the user scrolls to on the page.
+    initial
+    Inherit
+    Sticky: Sticky positioning is a hybrid of relative and fixed positioning. It allows an element to stick to a specific position within its containing element or viewport, based on the scroll position.
+
+
+
+    CSS Cascading Style Sheets GRID* 
+     dispaly:grid;
+     ON GRID CONTAINER
+        grid-template-columns: 1fr 3fr 1fr
+        grid-template-columns: 200px 300px 200px
+        grid-template-columns: 30% 40% 30%
+        grid-template-columns: repeat(3,1fr)
+        grid-template-rows:
+        grid-gap: /gap:
+        grid-auto-rows:
+        grid-auto-columns:
+        grid-template-areas:
+        justify-content:
+        align-items: end, start, centre, space-around/between, stretch;
+
+
+     ON GRID ITEM
+        grid-column: 1/3;
+        grid-row: 2/4;
+        grid-area:
+        align-self:
+        justify-self:
+
+        SUDO SELECTOR:
+        .item:nth-of-type(2) {
+            height:
+            width:
+            align-self:
+            justify-self:
+        }
+
+        SPANNING ITEMS ACROSS Columns and rows
+        Column
+        .item:nth-of-type(2) {
+            background-color:
+            color:
+            grid-column-start: 1;
+            grid-column-end: 3;
+
+            OR
+            grid-column: 1/3;
+        }
+
+        Row
+        .item:nth-of-type(1) {
+            grid-row: 2/4;
+        }
+
+
+    CSS Cascading Style Sheets FLEXBOX*
+     display:flex;
+     ON FLEX CONTAINER
+        flex-direction:
+        flex-flow:
+        justify-content:
+        align-content:
+        align-items:
+
+    ON FLEX ITEM
+        order:
+        flex-grow:
+        flex-shrink:
+        flex-basis:
+        align-self: -->
+
+        <!-- SPAN texts in a row/paragraph to the left and right side of the page.
+        First, span both texts.
+        Give it a Display property to Flex. Then, justify-content to space between, then Align items to Flex-end. -->
+
+
+        <!-- CSS COLORS -->
+        <!-- There are two main color models
+        The Addictive RGB(Red, Green, Blue)
+        The Subtractive CYMK(Cyan, Magneta, yellow, Black)
+        Color Numbers ranges from (0-255)
+
+        PRIMARY COLORS
+           Red, Green, Blue
+        SECONDARY COLORS
+            Red+Green = yellowGreen
+            Blue = Cyan
+            Blue+Red= Magneta
+        TERTIARY COLORS
+        rgb(255, 127, 0) Orange
+
+        WAYS TO APPLY COLORS IN CSS
+        1. Hexadecimal/Hex Values
+        Hex color values start with a # character and take six characters from 0-9 and A-F. The first pair of characters represent red, the second pair represent green, and the third pair represent blue.
+        With hex colors, 00 is 0% of that color, and FF is 100%. So #00FF00 translates to 0% red, 100% green, and 0% blue, and is the same as rgb(0, 255, 0).
+        #00FF00;
+        2. hsl (hue, saturation, lightness) hsl(243, 50%, 60%)
+        3. Gradient
+        A gradient is when one color transitions into another. The CSS linear-gradient function lets you control the direction of the transition along a line, and which colors are used.
+        :linear-gradient(gradientDirection, color1, color2,color3...)
+        background: linear-gradient(90deg, rgb(255,0,0), rgb(0,255,0), rgb(0,0,255));
+        To Add Color Stops:
+        background: linear-gradient(90deg, rgb(255,0,0) 75%, rgb(0,255,0)5%, rgb(0,0,255)20%);
+        OR
+        background: linear-gradient(180deg, #55680D, #71F53E), #116C31;
+        BEST
+        background: linear-gradient(#55680D, #71F53E), #116C31;
+        HSL (Hue, Saturation, Lightness)
+        background: linear-gradient(hsl(186, 76%, 16%), hsl(206, 66%, 20%), hsl(100, 70%, 24%));
+
+        REPEATING-LINEAR-GRADIENT
+        Repeating-linear-gradient will make the all colors of your gradient repeat until it gets to the bottom of the element; giving you some stripes, and saving you from having to add a bunch of elements to create them.
+        E.g   background: repeating-linear-gradient( 
+                            var(--building-color2),0%
+                            var(--building-color2) 6%,
+                            var(--window-color2) 6%,
+                            var(--window-color2) 9%
+                            ); Note: in this example, we used color variables.
+
+        The default display property for div elements is BLOCK. So when two block elements are next to each other, they stack like actual blocks. For example, your marker elements are all stacked on top of each other.
+        To position two div elements on the same line, set their display properties to inline-block. -->
+
+
+
+        <!-- CSS PSEUDO SELECTORS -->
+        <!-- span[class~="sr-only"]{
+            border: 0;
+            clip: rect(1px, 1px, 1px, 1px);
+            clip-path: inset(50%);
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            white-space: nowrap;
+            white-space: nowrap;
+            position: absolute;
+            padding: 0;
+            margin: -1px;   
+        } 
+        You can use CSS to make elements with this class completely hidden from the visual page, but still be announced by screen readers.
+        The CSS clip property is used to define the visible portions of an element. The clip-path property determines the shape the clip property should take. 
+        Now you need to size these elements down
+        To prevent the text content from overflowing, give your span[class~="sr-only"] selector an overflow property set to hidden and a white-space property set to nowrap.
+        Finally, you need to take these hidden elements out of the document flow. Give the span[class~="sr-only"] selector a position property set to absolute, a padding property set to 0, and a margin property set to -1px. This will ensure that not only are they no longer visible, but they are not even within the page view.
+    
+    
+        The :not() pseudo-selector is used to target all elements that do not match the selector - in this case, any of your span elements that do not have the sr-only class.
+        span:not(.sr-only){
+        font-weight: normal;
+        } i.e if your not in this class, let ur font weight be normal.
+
+        ::before selector  - creates a pseudo-element which is the first child of the selected element. This will target the elements with the specified class or classes, and select the pseudo-element after these elements in the HTML. Also set the content property to "". This will make the pseudo-elements empty.
+        ::after selector  - creates a pseudo-element which is the last child of the selected element. 
+
+
+         (!important) keyword
+        Rather than having to constantly double-check you are not overwriting your earlier properties, you can use the !important keyword to ensure these properties are always applied, regardless of order or specificity.
+        Give each property in your span[class~="sr-only"] selector an !important keyword. Do not change any of the values. Now that you have added the !important keyword, you can remove the :not(.sr-only) from your span selector.
+
+
+        The :nth-of-type() pseudo-selector is used to target specific elements based on their order among siblings of the same type.
+            E.g target the third td element within your total table rows.
+            tr.total td:nth-of-type(3){
+            padding: 0.5rem;
+            }
+
+        The  :last-of-type{} selector is used to select the last type of an element 
+        tr.data td:last-of-type{
+        padding-right: 0.5rem;
+        }
+         
+
+          Use a DESCENDANT SELECTOR to target two,three, more or all (div) elements inside an(div) element. To select all, two or more divs in a div element at Once. E.g cat-mouth is a div holding two other divs.
+         .cat-mouth div {
+            width: 30px; etc} 
+
+
+             CSS VARIABLES
+             Variable declarations begin with two dashes (-) and are given a name and a value like this: --variable-name: value; With CSS variables you can change values without searching everywhere in the stylesheet.
+             E.g .divcont{
+                --box1color:#fff;
+                    }            OR   --building-color1: #999;
+             To use a/the variable, put the variable name in parentheses with var in front of them like this: var(--variable-name). Whatever value you gave the variable will be applied to whatever property you use it on.
+             E.g .divcontainer{
+                      background-color: var(--building-color1);
+                     }
+            NOTE:    Change the value of your variable from #999 to #aa80ff and you can see how it gets applied everywhere you used the variable. This is the main advantage of using variables, being able to quickly change many values in your stylesheet by just changing the value of a variable.
+            NOTE: FALLBACK: ou should add a fallback value to a variable by putting it as the second value of where you use the variable like this: var(--variable-name, fallback-value). The property will use the fallback value when there's a problem with the variable. 
+                    However, to avoid problems with the variables, declare them in the :root selector. With this, you won't need a afallback value any longer.
+                                     E.g .divcontainer{
+                      background-color: var(--building-color1, green); Green is the fallback value.
+                     }
+            NOTE:    :root selector     The BEST way to declare variables is to declare them in the :root selector. This is the highest level selector in CSS; putting your variables there will make them usable everywhere. 
+                                        Add the :root selector to the top of your stylesheet, and put all your variable declarations there.
+                                        E.g :root{--building-color1: #aa80ff;
+                                                    --building-color2: #66cc99;
+                                                    --building-color3: #cc6699;
+                                                    }
+                                      Now that you've worked the bugs out and the buildings are the right colors, you can remove the fallback values in the all the places they were used. Go ahead and do that now.
+                                      Note that you can use color variables on linear gradient as well by using the background property and any where else in your code.
+                                      E.g       background: linear-gradient(orange, var(--building-color1), var(--window-color1));
+                                      
+            .box *{ Target ALL Descendants of an element.
+
+                  }
+        
+            MEDIA QUERY
+            The @media at-rule, also known as a media query, is used to conditionally apply CSS. Media queries are commonly used to apply CSS based on the viewport width using the max-width and min-width properties. E.g
+                    media (max-width: 768px) {
+                    #piano {
+                        width: 358px;
+                    }
+
+                    .keys {
+                        width: 318px;
+                    }
+
+                    .logo {
+                        width: 150px;
+                    }
+                } To avoid overflow of excess content, Set overflow to hidden. This property will hide any element that is pushed outside the set width value of the specified class or element or parent element.
+                        .keys{
+                            overflow: hidden;
+                        }
+                    }
+                    
+                
+                     LOGICAL OPERATORS: Logical operators can be used to construct more complex media queries. The and logical operator is used to query two media conditions.
+                     For example, a media query that targets a display width between 500px and 1000px would be:
+                            @media (min-width: 500px) and (max-width: 1000px){
+                                Add rule here...
+                                }
+                                E.g      @media (max-width: 1199px) and (min-width: 769px) {
+                                                #piano{
+                                                width: 675px;
+                                                }
+                                                .keys{
+                                                width:633px
+                                                }
+                                            }
+                            -->
+</body>
+</html>
