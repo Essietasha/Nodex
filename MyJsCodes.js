@@ -839,7 +839,7 @@ const obj5 = { nick: 'queen', year: 29 };
 // const obj6 = { obj1, obj2 }; To simply log the vars
 // const obj6 = { ...obj4, ...obj5 };
 const obj6 = { ...obj4, obj5 }; //Spread obj4 across and leave obj5 still nested
-console.log(obj6); //Now to concatenate the two onjects values together in one variable, simply add the spreadoperator ... at the begn of the variables.
+console.log(obj6); //Now to concatenate the two onjects values together in one variable, simply add the spreadoperator ... at the begn of the variables.i.e { ...obj4, ...obj5 }
 
 //Other Methods on the OBJECT
 //Object.assign - To spread objects. Does same thing as spread operator
