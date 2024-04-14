@@ -3146,7 +3146,7 @@ replaceSecondItem();
 //     const allLis = document.querySelectorAll('li');
 //     allLis.forEach((item, index) => {
 //         item.outerHTML = '<li>Replace All Items</li>';   // item.innerHTML = 'Replace All'; Changes Only text not the entire li content and styling
-        //To choose specific item and do soething else
+        //To choose specific item and do something else
         // if (index === 1) {
         //     item.innerHTML = 'Item 2';
         // }
