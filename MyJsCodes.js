@@ -1967,7 +1967,6 @@ console.log(evenDoubled);
 //Array.REDUCE - Used to reduce an array down to a single value. (E.g Reducing your shopping cart to a single total price) The reduce() method executes a reducer function for array element. The reduce() method returns a single value: the function's accumulated result.
 //The array reduce in JavaScript is a predefined method used to reduce an array to a single value by passing a callback function on each element of the array. It accepts a function executed on all the items of the specified array in the left-to-right sequence. The returned single value is stored in the accumulator.
 //Arr. reduce() performs a reducer function on each element of the array and returns a single output. The reducer runs through all array elements (from left to right) in order and returns the result from the calculation on the preceding element. Thus, the final result is a single value.
-//The reduce() method got its name from the functionality it provides, which is to iterate and “reduce” an array's values into one value.
 const myarray = [1, 2, 3, 4];
 // 0 + 1 + 2 + 3 + 4
 const initialValue = 0;
