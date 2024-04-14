@@ -2748,7 +2748,7 @@ swapArr([2, 4, 6, 8]);
 // }
 // replaceNextCharacter('However');
 
-//50. Write a JavaScript program to divide a given array of positive integers into two parts. First element belongs to the first part, second element belongs to the second part, and third element belongs to the first part and so on. Now compute the sum of two parts and store it in an array of size two. 
+//50. REVIEW... Write a JavaScript program to divide a given array of positive integers into two parts. First element belongs to the first part, second element belongs to the second part, and third element belongs to the first part and so on. Now compute the sum of two parts and store it in an array of size two. 
 function divideArray(arr) {
     let sumPart1 = 0;
     let sumPart2 = 0;
