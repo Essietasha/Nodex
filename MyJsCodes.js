@@ -482,7 +482,7 @@ console.log(dd);
 //Arrays are a special type of 'object'and data structure in Javascript that stores multiple values.
 //Arrays are Zero-based. The first element starts at zero index.
 //The values inside an array are surrounded in BRACKETS and these values are called Elements.
-//Elements can be any data types: num, string, arr etc.
+//Elements can be any data types: num, string, array etc.
 
 //Diff ways to create an array object
 //1. Array Literal
