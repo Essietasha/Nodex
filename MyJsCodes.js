@@ -413,7 +413,7 @@ console.log(myDate, typeof myDate);
 myDate = new Date(2020, 5, 10, 23, 40, 20);
 console.log(myDate);
 
-//To set a aspecific Date avoiding the Zero-index
+//To set a specific Date avoiding the Zero-index
 myDate = new Date('2021-08-15T12:30:00');
 //OR
 myDate = new Date('08/16/2021 12:30:00');
