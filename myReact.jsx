@@ -1,11 +1,202 @@
-// React is a User Interface(UI) library. It is used for building user interfaces for web applications based on components.
-// ReactJS is primarily a front-end JavaScript library used for building user interfaces (UI) in web applications. Build user interfaces out of individual pieces called components written in JavaScript.
+//React is a User Interface(UI) library. It is used for building user interfaces for web applications based on components.
+//ReactJS is primarily a front-end JavaScript library used for building user interfaces (UI) in web applications. Build user interfaces out of individual pieces called components written in JavaScript.
 
+//CREATE A REACT APP
+//Install node.js.......cmd(system) enter 'npm install -g create-react-app' ... Create a folder, drag and drop the folder 'myapp' folder into Vscode. Open a new terminal, run ' npx create-react-app my-app' Follow prompt....... enter. Now, run 'npm start'
+//React Manual https://www.codecademy.com/courses/react-101/articles/how-to-create-a-react-app
+//https://kinsta.com/knowledgebase/install-react
+
+//CREATE REACT using VITE
+//Create a project folder. Drag into VSCode. Open terminal. Run 'npm create vite@latest react-app' ...Follow prompt by selecting 'React' as framework and 'Javascript' as variant....Now, Run 'cd react-app', 'npm install'. 'npm run dev'.
+//Change port in vite.config file by adding  server: {port: 3000,}, You may proceed to delete App.css file and clear all css details in index.css as we'll be using tailwind. Now clear App.jsx and start coding right in there!
+//Extensions: Recommended- ES7+React/Redux/React-Native snippets.
+
+//Install Tailwind: https://tailwindcss.com/docs/guides/vite (Run on a different terminal-bash and NOTE change directory into the actual poject first ..cd project-name)
+//Tailwind Utility Classes: (https://tailwindcss.com/docs/theme) (https://tailwindcss.com/docs/adding-custom-styles) (https://tailwindcss.com/docs/utility-first)
+
+//Install React icons: on the bash terminal... Run 'npm i react-icons' (https://react-icons.github.io/react-icons/)
+
+//Install React Router : on the bash terminal... Run 'npm i react-router-dom'
+
+//Install React Spinners : (https://www.npmjs.com/package/react-spinners)  (https://www.davidhu.io/react-spinners/) (https://github.com/davidhu2000/react-spinners) React Spinner: a package thst allow display spinner. Run 'npm i react-spinners'
+//NPM: Node package manager (npm) is a package manager and a software register but it's also a place where developers can find, build and manage code packages. Right now, npm contains over 800,000 packages for various applications, from front-end and robotics to mobile apps
+//It's a library and registry for JavaScript software packages. npm also has command-line tools to help you install the different packages and manage their dependencies. 
+
+//REACT TOASTIFY for Notification:2:46:12 (cd) npm i react-toastify
+//Set Up: In the Layout Component, import ToastContainer from react-toastidy. Also import the css file: (import 'react-toastify/dist/ReactToastify.css') Then put the <ToastContainer anywhere within the container/>return./>
+//To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error JobPage line 20... e.g toast.success('Job Deleted Successfully');
+
+//Ctrl + c to stop running the React app in your command line.
+
+//RUN AN EXISTING REACT FOLDER
+//DANGER: DO NOT RUN 'npm create vite or npm install' except a new user who hasn't used react before or a third party openinig a zipped react file!
+//Thus, to run an existing react folder. Open folder in VSCode.  Same day && Go to terminal, Run npm run dev. New day && Run 'cd react-app' 'npm run dev'.
+
+
+//PROPS (https://www.freecodecamp.org/news/how-to-use-props-in-react/)
+//The word “props” implies “properties”, and its working functionality is quite similar to HTML attributes. Basically, these props components are read-only components. In ReactJS, the data can be passed from one component to another component using these props, similar to how the arguments are passed in a function.
+//We use props in React to pass data from one component to another (from a parent component to a child component(s)).
+//Props without destructuring
+//LoginPage Component 
+const LoginPage = (props) => {      // Or set it to a variable/Declare props variable(s)
+// const tit = props.title;
+//If you do not want to create variables for your props, you can go ahead and pass them directly into your template like this: 
+  return <h1>{props.title}</h1>
+   {/* <h1> Did you {tit} </h1> */}
+}
+//Pass data to props in the App component App.jsx
+//import LoginPage from './components/LoginPage';
+<Route index element={<LoginPage title='Welcome'/>} />
+
+//Props with destructuring
+const LoginPage = ({title}) => {
+  return <h1>{title}</h1>
+}
+// export default LoginPag;
+
+
+//How to set DEFAULT values for props
+function LoginPage({name, age}) {
+  return <h1>My name is {name}</h1> ;
+}
+LoginPage.defaultProps = {
+  name: "Designer",
+  age: "Sixteen"
+}
+//export default LgnPage; If you do not want your props data to be empty when you create them, you can pass in a default value. Just at the end of the code before the component was exported, we declare default values for our props. 
+
+//HOW TO PASS STATE DATA FROM ONE COMPONENT TO ANOTHER: (https://medium.com/@babux1/how-to-pass-state-data-from-one-component-to-another-in-react-js-9b4850887163#:~:text=One%20of%20the%20main%20methods,child%20component%20as%20an%20attribute.)
+//One of the main methods to pass state to another component in React is via props. Props are read-only data that are passed from a parent component to a child component. 
+//NOTE: To pass state data as props, we need to define the state in the parent component and pass it to the child component as an attribute.
+//OR To pass a state variable to another component that is not related, you will need to lift the state up to a common ancestor component and then pass it down as a prop to the desired component.
+//OR For passing the data from the child component to the parent component, we have to create a callback function in the parent component and then pass the callback function to the child component as a prop. This callback function will retrieve the data from the child component.
+
+
+//ADDING ADDITIONAL PAGES IN YOUR PROJECT: Note, that can't be achieved with just react. Being a library, react doesn't have a way to add seperate pages. Hence, we will use the React Router which is a seperarte package, so we need to install it.
+//React Router Setup... On Terminal, run 'npm i react-router-dom' Enter. So, we'l put all the Routing stuff in the main App file, which is App.jsx.
+//How to Create Routes so you can have multiple pages.
+//Above the App.jsx, import the ffg at the top:
+import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import HomePagee from './Pages/HomePagee';
+import MainLayoutt from './layouts/MainLayoutt';
+//Now, the way this will work is: above the return st in the main app comp the App.jsx, craete a variable called router, set that to createBrowserRouter; this will create our router. Inside the (), use createRoutesFromElements and inside thta, is where we'l use the route component.
+//For this to work, must implement the provider. So, return the RouterProvider within the App.jsx return st and make it take in the router varable.
+const router = createBrowserRouter(
+    createRoutesFromElements(
+    <Route index element={<Homepagee/>} />)
+  );
+  const App = () => {
+    return <RouterProvider router={router}/>;
+  }; //   export default App
+
+//PAGES: Create a seperate folder called 'Pages' for the pages.Within, create a HomePage.jsx file.  Although they are still componnets, but should not put them in the same folder as the regular UI component. Now, import Homepage within App.jsx and render it within the routeprovider.
+//Now, import all needed components, use within the return st into the Hompage and it'll be displayed on the screen.
+
+//LAYOUT: This is mostly used for Navbars and Footers i.e elements we always want to show on all pages. So, create a layout folder in the src folder. Note: you can have multiple layouts. To use layout, import it(MainLayout.jsx) into App.jsx (Line 84)
+//Now, create a Rarent Route to the rest of our routes i.e other routes where we want the navbar and footer to always display will be embedded in this parent route. Set the path as well. (Line 89 but extended below): So basically, any route put in there will use the layout.
+<Route path='/' element={<MainLayoutt />}>
+      <Route index element={<HomePagee />} />
+      <Route path='/jobs' element={<JobsPagee />} />
+      <Route path='*' element={<NotFoundPage />} />
+    </Route>
+//The Layout Outlet: In the mainlayout, whatever route we're on, that page will come through the outlet. i.e import outlet into the layout and return it. Then the Navbar as well.
+//CREATE MORE PAGES (Jobs Page): The workflow now is to create a new file in pages e.g JobsPage.jsx, then go to the App file (App.jsx) and add the route, rem to import it at the top of as well. But here, change the index and use path set to /jobs
+
+//LINKS: React works a little bit different. We don't use the anchor ref <a tags, we use the Link to tabs. Now, the href or to element here should go to the path defined in the router.. in this case... href="/jobs" as defined in the App.jsx router.
+//Another reason we don't use the a tag is because it does a complete page refresh which the link tag will avoid, making things very fast. So, in the Navbar, import Link: And change all a tags to Link tags and change the href to to=.
+import { Link } from 'react-router-dom';
+
+//Create a Custom 404 Error Page.. Import it into the App.jsx and add route. And for the path, use '*'
+
+//NAVLink: Works the same way with Link tag except that it adds a class to the active link. Now we can change all the link tags in the navbar to Navlink as well as the import name above. To manually add a classLink to an active link or button, create a function above the return st within desired component and set className of the Navlink within the return st to the function. Check Navbar.jsx for ref.
+
+
+
+//FETCHING DATA FROM BACKEND rather than just bringing in a json file.. Use json Server: A libray that lets you create a mock API and you can send get post put patch delete request so you can create CRUD 'Create, Read, Update, Delete' functionality. All you have to do is create a json file and you can put any type of resource you want in it.
+//JSON File://(https://www.npmjs.com/package/json-server) (https://blog.hubspot.com/website/json-files) A JSON file stores data in key-value pairs and arrays; the software it was made for then accesses the data. JSON allows developers to store various data types as human-readable code, with the keys serving as names and the values containing related data. JSON syntax is derived from JavaScript object notation syntax:
+//The most common use of JSON data and files is to read data from a server for a website or web application to display — and change data given the correct permissions.
+              // Data is in key/value pairs
+              // Data is separated by commas
+              // Curly braces hold objects
+              // Square brackets hold arrays
+//Keys must be strings, and values must be a valid JSON data type, i.e String, Number, Object, Array, Boolean, Null.            
+//What are IDEs? An integrated development environment (IDE) is a software application that helps programmers develop software code efficiently.
+
+//INSTALL JSON SERVER: (on bash terminal, rem to cd into the project directory) install json server: Run 'npm install json-server' (or as dev dependency 'npm i -D json-server'). And inside the package.json file, within script, beneath preview, add ... "server": "json-server --watch src/jobs.json --port 8000" .
+//And run it using 'npm run server' on same terminal.. Copy link on the Endpoint and paste in the broswer..data is being displayed in the browser. So, we essentially now have a backend. 
+//Set LIMIT of backend data being fetched : 'http://localhost:8000/jobs?_limit=3'
+//RUN backend(json) SERVER: On terminal, cd into project directory... 'npm run server'
+
+//TRY CATCH: The try statement allows you to define a block of code to be tested for errors while it is being executed. The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
+//res.json: The res. json() function sends the response as JSON format. It automatically converts the JavaScript object into a JSON-formatted string. The parameter body can be of any JSON type, which includes object, array, string, Boolean, number, or null.
+
+//The useEffect: It helps in performng side effects in components. For instance, in fetching data. It takes two arguments; a function and a dependency. Learnt that this hook runs on every render; whenever there's a change in the dependency which can actually cause an unending loop, in that case, it's preferable to inlude the second argument which in most cases is an empty array.This makes the useeffect run only on the first render.
+
+//CREATE PROXY: Mostly for project deployment..A proxy server is a server application that acts as an intermediary between a client requesting a resource and the server providing that . To create a proxy, do that within the vite.confif file ... In the server object beneath the port, add :
+// proxy: {
+//   '/api': {           i.e if it's prefix with slash api, we want to use this target object...
+//     target: 'http://localhost:8000',
+//     changeOrigin: true,
+//     rewrite: (path) => path.replace(/^\/api/, ''),
+//   }
+// }
+//useParams: To get the id of the each job page, use the use Params Hooks from react router dom. Import useParams...
+
+//DATA LOADER from React Router: With a data loader, we basically create a function within a file and then export and use it in other areas i.e as a gloabal state and use in other componenets.
+
+//WORKING WITH FORM
+//Adding a piece of state for every field in the form; when there's a change in the input/field, the state is being changed as well.
+//Adding a piece of state item for each field. Can be done two ways: 
+//A, have a single object in the state and have all the fields in that object or B, do a seperate piece of state for every field. Then, we can use the useState hook. 
+//Import the useState..Create diff states for diff fields. Add a value attribute to each fields in the return jsx ,set value to the piece of state i.e value={type}
+//NOTE: To make the form update with state, rm to add the onChange event handler.. Set this onChange event to a function that will take in an event param. this param has on it, a target.value which will be whatever is selected or typed in the field.
+//Then, setType(function to run the state) to e.target.value.
+// value={type} 
+//   onChange={(e) =>setType(e.target.value)}>
+
+//Form Submission: React19:'action attribute'
+//To submit a form, use the onSubmit Function..can set it to a created function that will take in an event parameter.. rm e.preventDefault to stop the behaviour.
+//Construct an object from the form field that we want to submit to the api.
+
+//Set a Form's DEFAULT field value: add the default field value within the html tag to the state default value.
+
+//MAKE POST REQUEST TO THE BACK-END; EDIT, DELETE, ADD, SUBMIT..
+//The POST method sends data to the server which may modify the server's state i.e that is designed to send loads of data to a server from a specified resource. POST is used to send data to a server to create/update a resource. It's best to have the post request in the main app file; the edit, delete and submit. 
+//ADD Req App.jsx line 15
+//Post Request/To CALL a Function in a Paret Component; pass it down into the route 
+//To do this, pass in a function as a prop into the AddJobPage const 'addJobSubmit' and call it beneath passing in 'newJob' object..
+//UseNavigate: |REDIRECT|
+//After submission, to redirect user to the job page, use useNavigate hook from raect-router-dom. To use this useNavigate, first initialize it as a var and set to useNavigate() below the state..Then, simply return navigate and whr to redirect to. e.g return navigate('/jobs');
+//Since the addJobSubmit is being passed in as a prop, in the main app.jsx route within the AppJobPage comp, insert the addJobSubmit with value set to a function (addjob) and then create the 'addjob' function above the routes and it will take in the newJob
+
+//DELETE REQUEST
+//(This 'deleteJob' request function will be passed into the single jobPage router below as a prop and to the JobPage component as a prop as well. And on the button, run a function onClick set to another function called onDeleteClick and pass in the job.id.. JoPage line 101). 
+//Write the onDeleteClick function above in the Jobpage, pass in the 'jobId', add a confirmation to the delete using window.confirm JobPage.jsx line 12...
+//Actual delete Request to the Api ...App.jsx line 29
+
+//EDIT REQUEST: PUT Method App.jsx line 35
+//REACT TOASTIFY for Notification:2:46:12 (cd) npm i react-toastify
+//Set Up: In the Layout Component, import ToastContainer from react-toastidy. Also import the css file: (import 'react-toastify/dist/ReactToastify.css') Then put the <ToastContainer anywhere within the container/>return./>
+//To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error JobPage line 20... e.g toast.success('Job Deleted Successfully');
+//POST REQUEST TO ADD JOB: App.jsx line 15...
+
+//GET REQUESTS: GET requests are intended to retrieve data from a server and do not modify the server's state.
+
+//PUT REQUEST: PUT method is used to create a new resource or replace a resource.
+
+//DEPLOYMENT: Production version of the site
+//Close the development/local server.. Then, run 'npm run build' ..This will create a new folder called dist. Dist is the production build.
+//Can run this with vite. Now run 'npm run preview'..Now, the dist folder is what will be deployed. However, the jobs will not be shown in deployement as we are using a local json server. To correct this, create an API with express or....
+
+//// STRUCTURE:
+// index Html: is the single page since our applicatio is a single page application
+// The src folder is our react application and the entry point is the main.jsx file.
+   
 //Writing JSX
-// JSX stands for JavaScript XML. It is a syntax extension for javascript. The part that looks like HTML, <h1>Hello world</h1>, is something called JSX.
-// A basic unit of JSX is called a JSX element. JSX elements looks exactly like HTML! The only noticeable difference is that you would find it in a JavaScript file, instead of in an HTML file.
-const p1 = <p id='large'>foo</p>;
-const p2 = <p id='small'>bar</p>;
+//JSX stands for JavaScript XML. It is a syntax extension for javascript. The part that looks like HTML, <h1>Hello world</h1>, is something called JSX.
+//A basic unit of JSX is called a JSX element. JSX elements looks exactly like HTML! The only noticeable difference is that you would find it in a JavaScript file, instead of in an HTML file.
+const p1 = <p id='large'>Large Font</p>;
+const p2 = <p id='small'>Small Font</p>;
 // JSX elements are treated as JavaScript expressions. They can go anywhere that JavaScript expressions can go. This means that a JSX element can be saved in a variable, passed to a function, stored in an object or array…
 // JSX elements can have attributes, just like how HTML elements can.  A JSX attribute is written using HTML-like syntax: a name, followed by an equals sign, followed by a value. The value should be wrapped in quotes.
 // You can nest JSX elements inside of other JSX elements, just like in HTML.
@@ -13,23 +204,23 @@ const p2 = <p id='small'>bar</p>;
 (
     <a href="https://www.example.com">
         <h1>
-            Click me!
+            Click Here!
         </h1>
     </a>
 );
 
-// Nested JSX expressions can be saved as variables, passed to functions, etc., just like non-nested JSX expressions can! Here’s an example of a nested JSX expression being saved as a variable:
+// Nested JSX expressions can be saved as variables, passed to functions and so on, just like non-nested JSX expressions can! Here’s an example of a nested JSX expression being saved as a variable:
 const theExample = (
     <a href="https://www.example.com">
       <h1>
-        Click me!
+        Click Here!!!
       </h1>
     </a>
   );
 
 const myDiv = (
     <div>
-        <h1>Hello world</h1>
+        <h1>Hello World</h1>
     </div>
 );
 
@@ -47,14 +238,14 @@ const myDiv = (
 // Lastly,uses the render() method of root to render the content passed in as an argument. Here we pass an <h1> element, which displays Hello world. This is the “what content to render” part of React rendering.
 const contaiiner = document.getElementById('app');
 const myroot = createRoot(contaiiner);
-myroot.render(<h1>Hello world</h1>);
+myroot.render(<h1>Hello World</h1>);
 
 // The render() method’s argument doesn’t need to be JSX, but it should evaluate to a JSX expression. The argument could also be a variable, so long as that variable evaluates to a JSX expression.
 //We save a JSX expression as a variable. We then pass the variable as the argument of render():
 const toDoList = (
     <ol>
       <li>Learn React</li>
-      <li>Become a Developer</li>
+      <li>Make me Become a Great Developer</li>
     </ol>
   );
   
@@ -63,14 +254,14 @@ const toDoList = (
   root.render(toDoList);
 
 
-// The Virtual DOM
+//The Virtual DOM
 //One special thing about a React root’s render() method is that it only updates DOM elements that have changed. That means that if you render the exact same thing twice in a row, the second render will do nothing:
 //https://www.codecademy.com/courses/react-101/articles/react-virtual-dom
 
 //class vs className
 //In HTML, it’s common to use class as an attribute name. In JSX, you can’t use the word class! You have to use className instead. This is because JSX gets translated into JavaScript, and class is a reserved word in JavaScript.
 
-//Self-Closing Tags: in JSX, you have to include the slash. If you write a self-closing tag in JSX and forget the slash, you will raise an error: <br /> <img src ="" />
+//Self-Closing Tags: in JSX, you have to include the slash(/). If you write a self-closing tag in JSX and forget the slash, you will raise an error: <br /> <img src ="" />
 
 //JavaScript In Your JSX In Your JavaScript: regular JavaScript, written inside of a JSX expression, written inside of a JavaScript file.
 //Curly Braces in JSX: Any code in between the tags of a JSX element will be read as JSX, not as regular JavaScript! JSX doesn’t add numbers—it reads them as text, just like HTML. You can do this by wrapping your code in curly braces.
@@ -95,7 +286,7 @@ const pandda = (
     src="images/panda.jpg" 
     alt="panda" 
     height={sideLength} 
-    width={sideLength} />
+    width={sideLength}/>
 );
 //Object properties are also often used to set attributes:
 const pics = {
@@ -146,7 +337,7 @@ root.render(img)
 //Here’s how you might use the ternary operator in a JSX expression:
 const headline = (
     <h1>
-      { age >= drinkingAge ? 'Buy Drink' : 'Do Teen Stuff' }
+      { age >= drinkingAge? 'Buy Drink' : 'Do Teen Stuff' }
     </h1>
 );
   
@@ -187,10 +378,10 @@ const favoriteFoods = (
   <div>
     <h1>My Favorite Foods</h1>
     <ul>
-      <li>Sushi Burrito</li>
-      <li>Rhubarb Pie</li>
+      <li>Nigerian Jollof</li>
+      <li>Fried Rice</li>
       { !judgmental && <li> Nacho Cheez Straight Out The Jar </li>}
-      <li>Broiled Grapefruit</li>
+      <li>Boiled Yam and Egg Sauce</li>
     </ul>
   </div>
 );
@@ -436,12 +627,7 @@ return <div onHover={handleHover}></div>
           }
           return <button onClick ={handleClick}>Submit</button>;
 }
-        
 
-
-//CREATE REACT APP
-//Install node.js.......cmd(system) enter "npm create-react-app myfirstreactapp"..........VSCode, drag and drop myfirstreactapp folder...VSCode new terminal, enter "npm start"
-//React Manual https://www.codecademy.com/courses/react-101/articles/how-to-create-a-react-app
 
 //COMPONENTS RENDER OTHER COMPONENTS
 //Components Interact: A React application can contain dozens, or even hundreds, of components. Each component might be small and relatively unremarkable on its own. When combined, however, they can form enormous, fantastically complex ecosystems of information.
@@ -689,7 +875,7 @@ import LilButton  from './LilButton';
 
 function BigButton(props) {
   console.log(props.children);
-  return <button>I am a Big Button.</button>;
+  return <button>I am a Big Button</button>;
 }  export default BigButton;
 
 // Example 1 In Example 1, <BigButton>‘s props.children would equal the text, “I am a child of BigButton.”
@@ -1596,7 +1782,7 @@ function TitleScreen() {
         </div>
         <div className={styles.menuBottom}>
           <p>
-            Think you've got a great eye? Challenge yourself to hunt down slices of bread hidden in a maze!
+            Think you've got a great eye? Run this task!
           </p>
           <button className={styles.btn}>Play</button>
         </div>
@@ -1606,7 +1792,6 @@ function TitleScreen() {
 }
 
 export default TitleScreen;
-
 
 //INLINE STYLES AND STYLE OBJECT VARIABLES:         There are many different ways to use styles in React. This exercise is focused on two of them: inline styles and style object variables.
 //An inline style is a style that’s written as an attribute, like this:
@@ -1679,7 +1864,6 @@ function AttentionGrabber() {
   )
 }
 export default AttentionGrabber
-
 
 //REACT FORMS
 //Input onChange: How forms are handled in React.
