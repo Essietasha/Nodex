@@ -32,7 +32,7 @@
 //DANGER: DO NOT RUN 'npm create vite or npm install' except a new user who hasn't used react before or a third party openinig a zipped react file!
 //Thus, to run an existing react folder. Open folder in VSCode.  Same day && Go to terminal, Run npm run dev. New day && Run 'cd react-app' 'npm run dev'.
 
-//IMAGES in React
+//Using IMAGES in React
 import React from 'react'
 import imgOne from '/images/logo.png';
 
