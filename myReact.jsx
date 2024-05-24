@@ -41,7 +41,7 @@ const Mages = () => {
     <>
     <h1>Mages</h1>
     <img src={imgOne} alt='Image One'/>
-    {/* ORRRRRRRRR <img src="/images/office-table.jpg" alt='Image One'/> */}
+    {/* ORRRRRRRRR Use the Public Folder <img src="/images/office-table.jpg" alt='Image One'/> */}
 
   
     </>
