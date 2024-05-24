@@ -32,6 +32,23 @@
 //DANGER: DO NOT RUN 'npm create vite or npm install' except a new user who hasn't used react before or a third party openinig a zipped react file!
 //Thus, to run an existing react folder. Open folder in VSCode.  Same day && Go to terminal, Run npm run dev. New day && Run 'cd react-app' 'npm run dev'.
 
+//IMAGES in React
+import React from 'react'
+import imgOne from '/images/logo.png';
+
+const Mages = () => {
+  return (
+    <>
+    <h1>Mages</h1>
+    <img src={imgOne} alt='Image One'/>
+    {/* ORRRRRRRRR <img src="/images/office-table.jpg" alt='Image One'/> */}
+
+  
+    </>
+  )
+}
+export default Mages;
+
 
 //PROPS (https://www.freecodecamp.org/news/how-to-use-props-in-react/)
 //The word “props” implies “properties”, and its working functionality is quite similar to HTML attributes. Basically, these props components are read-only components. In ReactJS, the data can be passed from one component to another component using these props, similar to how the arguments are passed in a function.
