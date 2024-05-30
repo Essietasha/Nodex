@@ -128,6 +128,14 @@ import { Link } from 'react-router-dom';
 //NAVLink: Works the same way with Link tag except that it adds a class to the active link. Now we can change all the link tags in the navbar to Navlink as well as the import name above. To manually add a classLink to an active link or button, create a function above the return st within desired component and set className of the Navlink within the return st to the function. Check Navbar.jsx for ref.
 
 
+//LOCAL STORAGE: Fetching / exchanging data between two html elements and functions
+//On first element:
+    localStorage.setItem('user-name', userName);
+    localStorage.setItem('pass-word', passwordLimit);
+//On second element:
+ const userName = localStorage.getItem('user-name');
+
+
 
 //FETCHING DATA FROM BACKEND rather than just bringing in a json file.. Use json Server: A libray that lets you create a mock API and you can send get post put patch delete request so you can create CRUD 'Create, Read, Update, Delete' functionality. All you have to do is create a json file and you can put any type of resource you want in it.
 //JSON File://(https://www.npmjs.com/package/json-server) (https://blog.hubspot.com/website/json-files) A JSON file stores data in key-value pairs and arrays; the software it was made for then accesses the data. JSON allows developers to store various data types as human-readable code, with the keys serving as names and the values containing related data. JSON syntax is derived from JavaScript object notation syntax:
