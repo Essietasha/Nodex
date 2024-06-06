@@ -1060,6 +1060,8 @@ const libPrs = JSON.parse(libStr);
 console.log(libPrs);
 
 //FUNCTIONS, SCOPE & EXECUTION CONTEXT
+//PARAMETER Vs ARGUMENT
+//A Parameter is a variable in the function definition, while an argument is the actual value that is passed to the function when it is called.
 //FUNCTIONS BASICS Function is a way to group codes together that you can run it anytime and as many times as you want.
 //WAYS to CREATE a FUNCTION. Using the function keyword. Function keyword + fname + parentheses for parameters + curly braces{where the function body goes. The code that will run when we run the function}.
 function hello() {
