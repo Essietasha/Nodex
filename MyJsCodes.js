@@ -1,4 +1,8 @@
 // alert ('Welcome to my Javascript journey');
+//Prompt
+// prompt ("What is your name");
+
+//var : Data container/box equals(holding) to a value... e.g var myname = 'Essie';
 
 //Logging arguments into the console//
 console.log('Hello Everyone');
@@ -10,6 +14,8 @@ const y = 3000;
 console.log (y);
 console.warn('Access denied');
 console.error ('Error!!!!!');
+console.time();
+console.timeEnd();
 console.table({ name: 'Essie', mail: 'essie@gmail.com'});
 const myName = "Tasha";
 var my1Name = "Essie";
@@ -173,6 +179,19 @@ console.log (x);
 
 //OPERATORS 
 //ASSIGNMENT OPERATORS
+
+//+= operator : It means you are adding the value of one variable to the current value of another variable and then storing the result back in former. E.g
+let currentValue = 5;
+let increment = 2;
+currentValue += increment; // currentValue is now 7 (5 + 2). //This line of code is shorthand for currentValue = currentValue + increment;. It means you are adding the value of increment to the current value of currentValue and then storing the result back in currentValue.
+//E.g 2
+let currentValu = 5;
+let incremet = 2;
+currentValu = incremet; // currentValu is now 2. //This line of code means you are assigning the value of increment directly to currentValue, overwriting any previous value stored in currentValue.
+
+
+//+ (Unary Plus Operator): The unary plus operator (+) is used to convert its operand to a number. When applied to a string, it attempts to convert the string to a numeric value. If the string represents a valid number, it will be converted to that number. If it cannot be converted to a number, the result will be NaN (Not-a-Number).
+let currentNum = +counterEl.innerText; //This property retrieves the text content of the counterEl element. The value returned is a string representing the text inside the element and then converts it into a number in the currentNum variable.
 
 
 //CONCATENATING STRINGS
@@ -482,7 +501,7 @@ console.log(dd);
 //Arrays are a special type of 'object'and data structure in Javascript that stores multiple values.
 //Arrays are Zero-based. The first element starts at zero index.
 //The values inside an array are surrounded in BRACKETS and these values are called Elements.
-//Elements can be any data types: num, string, array etc.
+//Elements can be any data types: num, string, arr etc.
 
 //Diff ways to create an array object
 //1. Array Literal
@@ -839,7 +858,7 @@ const obj5 = { nick: 'queen', year: 29 };
 // const obj6 = { obj1, obj2 }; To simply log the vars
 // const obj6 = { ...obj4, ...obj5 };
 const obj6 = { ...obj4, obj5 }; //Spread obj4 across and leave obj5 still nested
-console.log(obj6); //Now to concatenate the two onjects values together in one variable, simply add the spreadoperator ... at the begn of the variables.i.e { ...obj4, ...obj5 }
+console.log(obj6); //Now to concatenate the two onjects values together in one variable, simply add the spreadoperator ... at the begn of the variables. i.e  { ...obj4, ...obj5 }.
 
 //Other Methods on the OBJECT
 //Object.assign - To spread objects. Does same thing as spread operator
@@ -1416,6 +1435,23 @@ if (myyHour >= 20) {                 //Nested If
     console.log('zzzzzzzz');
     }
 
+    // LEAP YEAR
+    // if(year % 4 === 0){
+    //     if(year % 100 === 0){
+    //         if (year % 400 === 0){
+    //             return "Leap year.";
+    //             }else{
+    //             return "Not leap year.";
+    //             }
+    //         }else{
+    //             return "Leap year.";
+    //         }
+    //     }    else{
+    //         return "Not leap year.";
+    //     }
+    
+    
+
 //HAVING MULTIPLE CONDITIONS in a Single If STATEMENT
 const nn = new Date(12, 20, 2023, 10, 0, 0);
 const thisHour = nn.getHours();
@@ -1640,7 +1676,7 @@ const autthh = true;
 autthh ? console.log('Welcome') : null;
 autthh && console.log('Welcome'); //Using the AND Operator for the above
 
-
+//CONTROL STATEMENTS
 //LOOPS AND HIGH ORDER ARRAY METHODS - A loop is a control structure that provides a way to do iteration in programming (Iteration - is a process where you repeat something over and over again until a certain condition is met or not met).
 //Loops are used in JavaScript to perform repeated tasks based on a condition.Conditions typically return true or false.A loop will continue running until the defined condition returns false. In programming, loops are used to repeat a block of code. For example, if you want to show a message 100 times, then you can use a loop.
 //A "For" Loop is used to repeat a specific block of code a known number of times.For example, if we want to check the grade of every student in the class, we loop from 1 to that number.When the number of times is not known before hand, we use a "While" loop.
@@ -1649,10 +1685,74 @@ autthh && console.log('Welcome'); //Using the AND Operator for the above
 //CONDITION EXPRESSION - Condition that loop will continue to ru n as long as it is met or until the condition is false
 //INCREMENT EXPRESSION - Expression that will be executed after each iteration of the loop. Usually increments the variable.
 //STATEMENT - Code that will be executed each time the loop is run. To execute a block of code =, use the `{}` syntax.
+
+//What is a for loop? A for loop is a way to repeat a block of code a certain number of times. It has three main parts: initialization, condition, and iteration.
+
+//Initialization: let i = 0; This part is executed only once at the beginning of the loop.
+                                //It creates a variable i and sets it to 0.
+                                //let is used to declare the variable i so that it's only accessible within the loop.
+
+//Condition: i < passwordLength; Before each loop iteration, this condition is checked.
+                                // If the condition is true, the loop CONTINUES.
+                                // If the condition is false, the loop STOPS.
+                                // passwordLength is a variable that represents how many times you want the loop to run.
+
+//Iteration: i++ This part is executed at the end of each loop iteration.
+                            // i++ means increment i by 1 (same as i = i + 1).
+                            // This ensures that the loop progresses towards the condition becoming false.
+        //Putting It All Together: The loop will execute the code inside its block multiple times, starting with i at 0 and increasing i by 1 each time, until i is no longer less than passwordLength.
+
+
+        //Example :Creating a random password
+        $('#btn').on('click', function (){
+
+            const characters = '0123456789abcdefghijklmnopqrstuvwzyz@!#$*()%_-+:{}[]?ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        
+            const passswordLength = 12;
+            let password = "";
+        
+            for (let i = 0; i < passswordLength; i++){
+        
+                const randomNumb = Math.floor(Math.random() * characters.length);
+                password +=characters.substring(randomNumb, randomNumb + 1);
+                $('#passwordBox').val(password);
+                console.log(password);
+            }   
+        })
+
+//OR
+        let password = "";
+        let passwordLength = 5;
+
+        for (let i = 0; i < passwordLength; i++) {
+            password += getRandomCharacter();
+        }
+
+        function getRandomCharacter() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            return characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+
+        console.log(password);
+        // If passwordLength is 5, the loop will run like this:
+
+        // i = 0 (initialize)
+        // Check if i < 5 (condition): true, so run the loop body
+        // Do something inside the loop (e.g., add a character to a password)
+        // i++ (iteration): i is now 1
+        // Check if i < 5 (condition): true, so run the loop body
+        // Repeat steps 3-5 until i is 5
+        // When i becomes 5, i < 5 is false, so the loop stops
+                //In the example above: password starts as an empty string. The loop runs 5 times (since passwordLength is 5). Each time, it adds a random character to password. After the loop, password contains a random 5-character string.
+
+
 for (let myLoop = 0; myLoop <= 10; myLoop++) {
     console.log('Number ' + myLoop);
 }
 
+for (let i = 25; i >= 0; i--) {
+    console.log(i);
+}
 //Check a condition using an if statement
 for (let myL = 0; myL <= 10; myL++) {
     if (myL === 7) {
@@ -1706,6 +1806,13 @@ while (myWloop <= 12) {         //Condition Expression
     console.log('Number ' + myWloop);
     myWloop++;                  //Increment Expression. NOTE:Never forget to Increment
 }
+
+var myi = 1;
+while(myi < 5){
+    console.log(myi + 'Num');
+    myi++;
+}
+
 //Loop over arrays with while loop
 let thisArr = 0;
 const myArry = [10, 20, 30, 40, 50];
@@ -1767,6 +1874,34 @@ while (myChl <= 100) {
     
     myChl++;                //NOTE:Never forget to Increment
 }
+
+
+//OR with the while loop again
+
+var output = [];
+var count = 1;
+
+function fizzBuzz() {
+    while (count < 100){
+
+    if( count % 3 === 0 && count % 5 === 0){
+        output.push('FizzBuzz')
+    }
+    else if ( count % 3 === 0){
+        output.push('Fizz');
+    }else if (count % 5 === 0){
+        output.push('Buzz')
+    }
+    else{
+        output.push(count)
+    }
+    count ++;     
+    }
+    console.log(output);
+}
+    
+fizzBuzz();
+
 
 //For Of Loop - A better/newer/cleaner way to loop through an array than the standard for, while...loop. It's a way to loop through arrays, strings maps etc etc...
 //Loop through arrays with for of loop
@@ -2323,7 +2458,7 @@ function myStrn(letter) {
 myStrn('thagoras');
 //OR
 //STARTSWITH AND ENDSWITH
-//The startsWith method is used to check if the string starts with a specific substring and endsWith does otherwise.
+//The startsWith method is used to check if the string starts with a specific string and endsWith does otherwise.
 function miStr(letter) {
     if (letter.startsWith('Py')) {
         console.log(letter)
@@ -2766,7 +2901,7 @@ function divideArray(arr) {
 }
 divideArray([1, 2, 3, 4, 5, 6]);
 
-//51. QUESTION NOT CLEAR Write a JavaScript program to find the kth greatest element in a given array of integers. 
+//51. Write a JavaScript program to find the kth greatest element in a given array of integers. 
 function findKthElm(arr, k) {   //The sort() sorts the elements of an array. The sort() overwrites the original array. The sort() sorts the elements as strings in alphabetical and ascending order.
     arr.sort(function (a, b) {
         console.log(b - a);
@@ -2834,6 +2969,76 @@ function divideTwoPosInt(num1, num2) {
 }
 divideTwoPosInt(660, 3);
 
+//59. Write a function which will select a random name from a list of names. The person selected will have to pay for everybody's food bill.
+var names = ['Angela', 'Ben', 'Jenny', 'Michael', 'Chloe'];
+function whosPaying(names) {
+
+    var output;
+    var arrLength = names.length;
+    var indexOrRandomName = Math.floor(Math.random() * arrLength) ;
+    var randomperson = names[indexOrRandomName];
+    output = randomperson + " is going to buy lunch today!";
+    // console.log(output)
+    return output;
+}
+whosPaying(names);
+
+
+//60. //99 Bottles of Beer Challenge
+//SOLUTION 1
+let song = 1;
+function lyrics (){
+
+    while ( song <= 100){
+        var lyricI = `${song} bottles of beer on the wall, ${song} bottles of beer.`
+        var lyricII = `Take one down and pass it around, ${song -1} bottles of beer.`
+        console.log(lyricI, lyricII);
+        song++;
+    }
+}
+lyrics();
+
+//SOLUTION 2
+var numberOfBottles = 99
+function bottleSongs(){
+while (numberOfBottles >= 0) {
+    var bottleWord = "bottle";
+    if (numberOfBottles === 1) {
+        bottleWord = "bottles";
+    } 
+    console.log(numberOfBottles + " " + bottleWord + " of beer on the wall");
+    console.log(numberOfBottles + " " + bottleWord + " of beer,");
+    console.log("Take one down, pass it around,");
+	numberOfBottles--;
+    console.log(numberOfBottles + " " + bottleWord + " of beer on the wall.");
+}
+}
+bottleSongs();
+
+//61. THE FIBONNACI SEQUENCE
+//The Fibonnaci Challenge
+//Fibonacci was an Italian mathematician who came up with the Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 ... Where every number is the sum of the two previous ones
+//Create a function where you can call it by writing the code: fibonacciGenerator(n) and get [0,1,1] etc...
+//n as in number input to genearate a sequence 
+
+function fibonacciGenerator(n){
+    var output = [];
+    
+    if(n === 1){
+        output = [0];
+        }else if (n === 2){
+         output = [0, 1];
+        }else {
+         output = [0, 1];
+            for (var i = 2; i < n; i++){
+              output.push(output[output.length -2] + output[output.length -1]);
+                }
+        }
+        return output;
+    }
+    
+    output = fibonacciGenerator(2);
+    console.log(output);
 
 //DOM - The DOCUMENT OBJECT MODEL -It's essentially an interface that allows us to interact with page elements dynamically from a language like Javascript.
 //The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects; that way, programming languages can interact with the page.
@@ -2940,6 +3145,8 @@ console.log(document.querySelector('#newID'));          //Can select by ID with 
 console.log(document.querySelector('.myTitle'));        //Can select by Class with dot
 console.log(document.querySelector('input[type=text'));        //Can select by attribute
 console.log(document.querySelector('li'));                     //Can as well use pseudo selector
+console.log(document.querySelector('li a'));                     //Can as well use pseudo selector
+console.log(document.querySelector('li.itemone'));                     //Can as well use pseudo selector
 console.log(document.querySelector('li:nth-child(2)')); 
 console.log(document.querySelector('li:nth-child(2)').innerText); 
 //Can as well do a lot with query selector, change style..content etc
@@ -2970,6 +3177,10 @@ console.log(firstItem);
 
 
 //DOM Selectors - Multiple Element
+
+//document.getElementsByTagName("li")[2].style.color = 'red;
+//document.getElementsByClassName("li")[2].style.color = 'red;
+
 //queryAelectorAll()
 // const listItems = document.querySelectorAll('li');
 const listItems = document.querySelectorAll('.item'); //Select with class NOTE: You can use high order array method on a nodelist but cant on html collection cos for an html collection, you first have to convert it to an array.
@@ -3228,7 +3439,7 @@ function run() {
 document.querySelector('#run-btn').onclick = run;   //On Click of this button, we want to ru a function called run. And do not put parenthesis after it run() cos that will autom run it. Now, go above and create the run function.
 
 
-//EVENTS
+//EVENTS (https://developer.mozilla.org/en-US/docs/Web/Events) (https://developer.mozilla.org/en-US/docs/Web/API/Element#composition_events) (https://developer.mozilla.org/en-US/docs/Web/API/Event#introduction)
 //EVENT Listeners. What are Events? Basically, an event is when something happens on a web page. MDN- Events are actions or occurenecs that happens in the system you are programming, which the system tells you about so your code can react to them. Interactions with the web page.
 //Events include
 // Clicking on an Element
@@ -3271,6 +3482,28 @@ setTimeout(() => clearBtn.removeEventListener('click', clrBtnAlert), 5000);
 //OR
 setTimeout(() => clearBtn.click(), 5000);       //Fire off an event within the script
 
+setInterval( () => {
+    for (let i = 25; i >= 0; i--) {
+        console.log(i);
+    }
+}, 50000)
+
+//set fadeIn - fadeOut Timeout with jQuery:
+$('.fa-copy').on('click', function (){
+
+    $('.popUp').removeClass('hidden');
+    
+    $('.popUp').fadeIn('slow', function (){
+            setTimeout(() => {
+                $('.popUp').fadeOut('slow');
+            }, 5000);
+    });
+ 
+    setTimeout(() => {
+         $('.popUp').addClass('hidden');
+    }, 20000);
+     
+ })
 
 //CHALLENGEeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 //Write a function to hide the ul element on the page after clicking the select buton
@@ -3479,6 +3712,10 @@ function onBlur(e) {
 }
 itemsInput2.addEventListener('blur', onBlur);
 
+//oninput vs onchange: The oninput event is similar to the onchange event. The difference is that the oninput event occurs immediately after the content has been changed, while onchange occurs when the element loses focus.
+//In HTML: <input oninput="myScript" />
+//In JavaScript: inputField.oninput = function(){console.log('My Script')};
+//In JavaScript, using the addEventListener() method: inputEl.addEventListener("input", myScript);
 
 
 //FORMS SUBMISSION AND FORM DATA OBJECT
@@ -3599,6 +3836,13 @@ liParent.addEventListener('click', (e) => {
 // });
 
 // 6. Scroll Event
+// scrollX :Description: The scrollX property returns the number of pixels that the document has been scrolled horizontally from the left edge of the viewport.
+// scrollY :Description: The scrollY property returns the number of pixels that the document has been scrolled vertically from the top edge of the viewport.
+// Direction:
+// scrollX measures the horizontal scroll position (left-right).
+// scrollY measures the vertical scroll position (top-bottom).
+
+
 window.addEventListener('scroll', () => {
     document.querySelector('h1').textContent = `Scrolled to ${window.scrollX} and ${window.scrollY}`;
 
@@ -3644,5 +3888,226 @@ console.log(valuate);
 //Indirect Eval
 const vv = eval?.('10 + 5');
 console.log(vv);
+
+
+//LOCAL STORAGE: Fetching / exchanging data between two html elements and functions
+//On first element:
+localStorage.setItem('user-name', userName);
+localStorage.setItem('pass-word', passwordLimit);
+//On second element:
+const userName = localStorage.getItem('user-name');
+
+
+//Pad Start / Pad End
+//PadStart(); The padStart() method pads the current string with another string (repeated, if needed) so that the resulting string reaches the given length. The padding is applied from the start (left) of the current string.
+//1.e Keep prepending a string to another string until the target length is met.
+let numb = 5;
+let txt = numb.toString();
+let padded = txt.padEnd(4,"0");
+
+//The unary plus operator: A concise way to convert the value from a string to a number in JavaScript. 
+//const currentValue = +event.target.value;     // +event.target.value; a concise way to convert the value from a string to a number in JavaScript. 
+
+
+//AUDIO ELEMENTS
+const  buttonW = document.querySelector('.audioElement');
+buttonW.addEventListener('click', function () {
+    var sound = new Audio('sounds/crash.mp3');
+    sound.play();
+})
+
+
+//(THIS)Getting the identity of the element that triggered the event listener
+var buttonNumbers = document.querySelectorAll('.drum').length;
+    for (var iteratorOrIndex = 0; iteratorOrIndex < buttonNumbers; iteratorOrIndex++){
+        var buttons = document.querySelectorAll('.drum')[iteratorOrIndex];
+        buttons.addEventListener('click', function(){
+            this.style.color = 'white';             //Which button was clicked/triggered the event?
+        });
+    }
+
+//PassinG FUNCTIONS as Input to other functions.
+
+
+
+//CONSTRUCTOR FUNCTION: (the first letter of the function name must be capitalized, unlike the camel casing.)
+//A constructor function in programming, particularly in object-oriented languages like JavaScript, is a special function used to create and initialize objects. Constructor functions are essential for setting up new instances of an object with specific properties and methods.
+//Key Concepts:
+            //a. Creating Instances: The main purpose of a constructor function is to create new instances of an object.
+            //b. Initialization: Constructor functions typically initialize object properties with specific values.
+            //c. `this Keyword: Inside a constructor function, the this keyword refers to the new object being created.
+            //d. Capitalization Convention: By convention, constructor function names in JavaScript are capitalized to distinguish them from regular functions. 
+// Constructor function for a Person object
+//Modern - ES6 Way
+class PersonData {
+    constructor(name, age, languages, residencePermit) {
+        this.name = name;
+        this.age = age;
+        this.languages = ['English', 'French'];
+        this.residencePermit = true;
+        this.displayInfo = function (){     //has a METHOD i.e a function associated with an object
+            console.log('Yooo')
+            }
+        }
+        //OR    displayInfo(){
+        //       console.log('Hooo')
+        // }
+};
+//// Creating new instances of the Person object
+var personData1 = new PersonData("Raya", 19, true, ['French', 'English'])
+personData1.displayInfo();          //Calling the method
+console.log(personData1.name);
+console.log(personData1.languages[1]);
+console.log(personData1.residencePermit);
+
+
+
+//Example 2:
+class MyInfo {
+    constructor(name, job, hobby){
+        this.name = name;
+        this.job = job;
+        this.hobby = hobby;
+        this.display = function(){
+            console.log(`Hi, my name is ${name} and my job is ${job} and my hobby is ${hobby}`);
+        }
+    }
+}
+var person1 = new MyInfo('Essie', 'Tech', 'Coding');
+person1.display();
+
+//Example 3
+class AudioSound{
+    constructor (fileLocation){
+        this.fileLocation = fileLocation;
+        this.playSound = function (){
+            Audio1.play()
+        }
+    }
+}
+var Audio1 = new AudioSound('sounds/crash-mp3');
+Audio1.playSound();
+
+
+//HIGH ORDER FUNCTION vs CALL BACK Function:
+//HIGH ORDER FUNCTION: A function that is able to take functions as input.
+//CALL BACK Function:  A function that gets passed in as an input
+//Example 
+document.addEventListener('keypress', respondToKey(event)); 
+// addEventListener - is the higher order function that takes in the keypress function as an input.
+// respondToKey - is the callback function because it waits for sth to finish happening before it's being invoked or called back.
+//(event) - To get the event that triggered a function or event lisitener and then manipulate or carry out actions on it using the event properties.
+document.addEventListener('keypress', (event) => {
+    console.log(event);
+});  //In this case a keyBoardEvent, MouseClick event etc.
+
+
+//DISABLE AN ELEMENT
+$('#userInput').prop('disabled', true); //Disable the textarea using jQuery
+textArea.disabled = true; // Disable the textarea using js
+
+
+//API: Application Programming Interface
+//Basically, an API is a messenger that takes a request, tells the system what you want to do and send a response (deliver data)back to you; just like a waiter.
+//A technology that connects Apps together. API can be used to get access to data from third parties; can also be used to hide complexity, perform tasks and even as gatekeepers. 
+//Application refers to any software with a distinct function; interface throug which you can communicate with other softwares. APIs work by sharing data between applications, systems, and devices. This happens through a request and response cycle. The request is sent by the client to the API(server), which retrieves the data and returns it to the user. Aa software intermediary that allows two applications to talk to each other. 
+//Interface can be thought of as a contract of service between two applications. 
+//This contract defines how the two communicate with each other using requests and responses.
+
+//Components:
+
+//Endpoint: The specific URL where the API can be accessed. E.g https://mysite.com/api/users    https://api-ninjas.com/api/emoji (https://emoji-api.com/emojis?access_key=773b58f681fb786fafdb8392e8b8a75ddc177fd1)
+//Request: The input provided to the API to perform an action or retrieve data.
+//Response: The output or data returned by the API after processing the request.
+
+//ACCESS KEYS: Access Key is used to authenticate  API requests.
+                //HEADERS - Key-Authorization | Value-ACCESS KEY
+                //PARAMETERS - Key-(e.g. query)(page) | Value-(e.g.mountains)(1)
+//TYPES:
+//1. WEB APIs: These are the most common types of APIs and are used to allow different web applications to interact over the internet. Examples include REST API, SOAP API etc..
+        //Browser APIs: All browsers have a set of built-in Web APIs to support complex operations, and to help accessing data. E.g Geolocation API
+        //Third Party APIs: Third party APIs are not built into your browser. To use these APIs, you will have to download the code from the Web. E.g 
+            //Socila media API YouTube, Facebook etc
+            //Payment APIs: PayPal API
+            //Geolocation APIs: Such as Google Maps API
+//2. Library APIs: These are provided by software libraries and allow applications to use functions and methods defined within those libraries
+//3.  Operating System APIs: Operating system APIs provide allow applications to interact with the underlying operating system, functionalities to interact with the operating system, such as file management, memory management, and process control. E.g Windows API(WinAPI) for windows
+
+//FETCH API: It is part of the browser's web APIs(or method), designed to interact with web servers using HTTP methods like GET, POST, PUT, DELETE, etc. It is commonly used in modern web applications for API calls, data retrieval, and form submissions. It is a tool for making network requests.
+            //The Fetch API allows you to make requests to servers, handle responses, and work with promises for asynchronous operations. Used for fetching resources across the network, including JSON data, text, images, and more. It returns a Promise that resolves to the Response object representing the response to the request.
+            //Here's a basic example demonstrating how to use the Fetch API to make a GET request:
+        //PROMISE:
+            function fetchDat() {
+            fetch('https://jsonplaceholder.typicode.com/posts')
+                .then(response => {
+                    if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => console.log(data))
+                .catch(error => console.error('There has been a problem with your fetch operation:', error));
+            }
+            fetchDat();
+
+                //OR
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+
+//AUTHENTICATION: To get access to APIs(developer/github.com/v3)(access token) unlike public/open APIs
+                        //GitHub API -(https://docs.github.com/en/rest/about-the-rest-api/about-the-rest-api?apiVersion=2022-11-28) (https://octokit.github.io/routes/cache/api.github.com/v3/index.html)no authentication on 100 request per hour.
+
+                    //POSTMAN: Postman is a software application that enables you to test and interact with APIs through a user-friendly interface. You can use Postman to send requests to any API endpoint, and view the responses in various formats.
+        
+                    //QUOTABLE API (https://api.quotable.io) (https://api.quotable.io/random) 
+                
+
+//Synchronous Requests
+//Synchronous requests are those where operations are performed sequentially. Each operation waits for the previous one to complete before starting. This blocking nature means the program execution is halted until the request is completed.
+
+//Asynchronous Requests
+//Asynchronous requests allow other operations to continue while the request is being processed. The program does not wait for the request to complete and continues executing the next line of code. This non-blocking behavior is essential for maintaining a responsive user interface.
+            //The await keyword is used to pause the execution of an async function until a Promise is resolved or rejected. It can only be used inside async functions.
+async function fetchData() {
+    const apiUrl = 'https://api.quotable.io/random';
+    
+    try {
+      const response = await fetch(apiUrl); // Waits for the fetch to complete
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json(); // Waits for the JSON conversion
+      console.log(data.content); // Output the quote content
+      console.log(data.author);  // Output the quote author
+        } catch (error) {
+            console.error('Fetch error:', error); // Handles any errors
+            }
+  }
+  fetchData();
+  
+
+
+//REST APIs:  (Representational State Transfer Application Programming Interface) is a set of rules and conventions for building and interacting with web services. REST APIs allow different applications to communicate over the internet by defining a uniform interface using standard HTTP methods.
+                //Rest lets us use HTTP request to format messages. Restful API simply means conforming to the rest constraints.
+                    //HTTP REQUEST/METHOD: 
+                        //GET - Retrieve data from a specified resource
+                        //POST - Create / Send / Submit data to a specified resource. E.g form submission
+                        //PUT - Update a specified resource
+                        //DELETE - Delete a specified resource
+                        //G,P.P, D data from a database.
+
+    //REST API vs fETCH: REST API defines the structure and behavior of web services, while the Fetch API is a client-side method for making HTTP requests to these services. They work together to enable web applications to interact with server-side resources.
+        //The Fetch API is often used to interact with REST APIs. It sends HTTP requests to RESTful endpoints and handles the responses, enabling client-side applications to communicate with server-side services.
+        //REST API defines how the server should expose resources, and Fetch API allows the client to access these resources. Together, they enable the client-server interaction model in web applications.
+
+
+//COPY TEXT TO CLIPBOARD
+function copyPassword() {
+    inputEl.select();   //selects the text inside the input element
+    inputEl.setSelectionRange(0, 9999);  //sets the selection range of the text inside the input element
+    navigator.clipboard.writeText(inputEl.value); //writes the text value of the input element inputEl to the clipboard.
+  }
 
 
