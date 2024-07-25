@@ -4111,3 +4111,23 @@ function copyPassword() {
   }
 
 
+//Adding Active Classes
+let parentDiv;
+let childDivs;
+parentDiv = document.getElementById('parentDiv');
+childDivs = parentDiv.querySelectorAll('div');
+
+function handleButtonClick(event){
+    childDivs.forEach(childDiv => {
+        childDiv.classList.remove('active');
+    });
+
+    //The element/div that triggered the click event.
+    event.target.classList.add('active');
+}
+
+childDivs.forEach(childDiv => {
+    childDiv.addEventListener('click', handleButtonClick);
+});
+
+
