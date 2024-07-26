@@ -495,6 +495,9 @@ dd = myydate.toLocaleString('default', {
 
 console.log(dd);
 
+//Date String
+datestring.innerText = date.toDateString();
+
 
 // ARRAYS AND OBJECTS
 // Creating Arrays
