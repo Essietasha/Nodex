@@ -257,6 +257,17 @@
   <img onClick={clickAlert} /> 
   //Note that in HTML, event listener names are written in all lowercase, such as onclick or onmouseover. In JSX, event listener names are written in camelCase, such as onClick or onMouseOver.
   
+  //Event Listener and Event Handlers in a Component:    Function components can include event handlers. With event handlers, we can run some code in response to interactions with the interface, such as clicking.
+  function MyComponent(){
+    function handleHover() {
+      alert('Stop it.  Stop hovering.');
+    }
+    return <div onHover={handleHover}></div>;
+  }//In the above example, the event handler is handleHover(). It is passed as a prop to the JSX element <div>. Understand that props are information passed to a JSX tag.
+  //Event handler functions are defined inside the function component and, by convention, start with the word “handle” followed by the type of event it is handling.
+  //The handleHover() function is passed without the parentheses we would typically see when calling a function. This is because passing it as handleHover indicates it should only be called once the event has happened. Passing it as handleHover() would trigger the function immediately, so be careful!
+
+
   
   //JSX Conditionals: If Statements That Don't Work: Here’s a rule that you need to know: you can not inject an if statement into a JSX expression.
   //This code will not work
@@ -279,7 +290,9 @@
   //Here’s how you might use the ternary operator in a JSX expression:
   const headline = (
       <h1>
-        { age >= drinkingAge? 'Buy Drink' : 'Do Teen Stuff' }
+        { age >= drinkingAge? 'Buy Drink' : 'Do Teen Stuff' };
+        {loggedIn ? <h1>Hello Member</h1> : <h2>Hello Guest</h2>};
+        { loggedIn && <h1>Hello Member</h1>}
       </h1>
   );
   
@@ -293,6 +306,14 @@
         { age > 25 && <li>Grappa</li> }
       </ul>
   );
+
+//Mapping through an array and returning a JSX file; use () after the arrow function not {} / Creating a List Item
+    const names = ['Tom', 'Brad', 'Jesse'];
+    <ul>
+      {names.map((name, index) => (
+        <li key={index}>{name}</li>
+      ))}
+    </ul>
   
   
   //.map in JSX: The .map() array method comes up often in React. It’s good to get in the habit of using it alongside JSX. If you want to create a list of JSX elements, then using .map() is often the most efficient way. It can look odd at first:
@@ -316,41 +337,32 @@
     <li key="li-03">Example3</li>
   </ul >
   
-  //React Components: React applications are made of components.
+  
+//React Components: React applications are made of components.
   //What’s a component? A component is a small, reusable chunk of code that is responsible for one job. That job is often to render some HTML and re-render it whenever some data changes.
   //It’s useful to think of components as smaller pieces of our interface. Combined, they are the building blocks that make up a React application. In a website, we can create a component for the search bar, another component for the navigation bar, and another component for the dashboard content itself.
   //Components in React are great because they are reusable. We can keep our component pieces separated, organized, and reusable by putting them into separate files and exporting them to where we need them.
-  
-  import React from 'react';
-  function MyComponent() {
+    function MyComponent() {
       return <h1>Hello world</h1>;
     }
-    
     ReactDOM.createRoot(
     document.getElementById('app')
-    ).render(<MyComponent />);
-    
+    ).render(<MyComponent />); 
   //Function Component: Using JavaScript functions to define a new React component. In the past, React components were defined using Javascript classes. But since the introduction of Hooks, function components have become the standard in modern React applications.
   //After we define our functional component, we can use it to create as many instances of that component as we want.
-  import React from 'react';
-  
   function MyComponent() {
     return <h1>Hello, I'm a functional React Component!</h1>;
-  }
-  
-  export default MyComponent;
-  
-  //Name a Functional Component: When you declare a new functional component, you need to give that component a name; created with PascalCase! Due to how JSX tags are compiled, capitalization indicates that it is a React component rather than an HTML tag. If it begins with a lowercase letter, React will begin looking for a built-in component such as div and input instead and fail.
+  }  
   
   
   //Importing and Exporting React Components: A React application typically has two core files: App.js and index.js. App.js file is the top level of your application, and index.js is the entry point.
   //Using and Rendering a Component
-  //We can use it with an HTML-like syntax that resembles a self-closing tag:
-  <MyComponent />   //If you need to nest other components in between, you may also use an opening and corresponding closing tag structure:
-                    <MyComponent>
-                      <OtherComponent />
-                    </MyComponent>
-  
+  //We can use it with an HTML-like syntax that resembles a self-closing tag: //If you need to nest other components in between, you may also use an opening and corresponding closing tag structure:       
+  <><MyComponent />   
+        <MyComponent>
+          <OtherComponent />
+        </MyComponent>
+        </>
   //However, to render our component to the browser, we must rely on the .createRoot() and .render() methods from the react-dom library. This should be done in our entry point, index.js. First, we call the createRoot method to create a React root container for displaying content. React applications typically have a single root DOM node, and everything inside it is managed by React DOM.
   //Breaking it down a bit further: document.getElementById('app') returns a DOM element from index.html. .createRoot() receives the DOM element as the first argument and creates a root for it. .createRoot() returns a reference to the root container on which you can call methods like .render(). After the root is created, all that’s left to do is call the .render() method on the returned root and display the React component like so:
   ReactDOM.createRoot(document.getElementById('app')).render(<MyComponent />);
@@ -376,46 +388,6 @@
         </div>
       );
   }  
-  
-  //Putting Logic in a Function Component
-  //A function component must have a return statement. However, that isn’t all that it can have. You can also put simple calculations that need to happen before returning your JSX element within the function component.
-  function RandomNumber() {     //First, some logic that must happen before returning
-    const myNum = Math.floor(Math.random() * 10 + 1);
-
-    return <h1>{myNum}</h1>           //Next, a return statement using that logic: 
-  }
-  //IMPORTANT!!!!!!!!!!! In the above example, the line with the const myNum declaration will cause a syntax error, as it should come before the return.
-  //More on Putting Logic in a Function Component
-  import React from 'react';
-
-
-  //Use a Conditional in a Function Component
-  //Notice that the if statement is located inside of the function component, but before the return statement.
-  import React from 'react';
-  
-  function TodaysPlan() {
-      let task;
-      let apocalypse = false;
-      if (!apocalypse) {
-        task = 'learn React.js'
-      } else {
-        task = 'run around'
-      }
-      return <h1>Today I am going to {task}!</h1>;
-  }
-  
-  
-  //Event Listener and Event Handlers in a Component:    Function components can include event handlers. With event handlers, we can run some code in response to interactions with the interface, such as clicking.
-  function MyComponent(){
-    function handleHover() {
-      alert('Stop it.  Stop hovering.');
-    }
-    return <div onHover={handleHover}></div>;
-  }//In the above example, the event handler is handleHover(). It is passed as a prop to the JSX element <div>. Understand that props are information passed to a JSX tag.
-  //Event handler functions are defined inside the function component and, by convention, start with the word “handle” followed by the type of event it is handling.
-  //There’s a small quirk you should watch out for. Take a look at this line again:
-  return <div onHover={handleHover}></div>
-  //The handleHover() function is passed without the parentheses we would typically see when calling a function. This is because passing it as handleHover indicates it should only be called once the event has happened. Passing it as handleHover() would trigger the function immediately, so be careful!
 
   
   
@@ -446,10 +418,11 @@
     return <Button />;
   }
 
-  //PROPS (https://www.freecodecamp.org/news/how-to-use-props-in-react/)
-  //The word “props” implies “properties”, and its working functionality is quite similar to HTML attributes. Basically, these props components are read-only components. In ReactJS, the data can be passed from one component to another component using these props, similar to how the arguments are passed in a function.
+  //PROPS
   //We use props in React to pass data from one component to another (from a parent component to a child component(s)).
-    
+  //Informations that gets passed from one component to another is known as props. Props is a special keyword in React that stands for properties and is used for passing data from one component to another. Data with props are passed in a unidirectional flow from parent to child.
+  //Props in React travel in a one-way direction, from the top to bottom, parent to child. Props passed down are immutable, meaning they cannot be changed. If a component wants new values for its props, it needs to rely on the parent component to pass it new ones.
+
   //How to set DEFAULT values for props
   function LoginPage({name, age}) {
     return <h1>My name is {name}</h1> ;
@@ -458,43 +431,30 @@
     name: "Designer",
     age: "Sixteen"
   }
-  //Pass data to props in the App component App.jsx
-  <Route index element={<LoginPage title='Welcome'/>} />
-  
-  //PROPS: Information that gets passed from one component to another is known as props. Props is a special keyword in React that stands for properties and is used for passing data from one component to another. Data with props are passed in a unidirectional flow from parent to child.
-  
+      
   //Access a Component's props: Every component has something called props. A component’s props is an object. It holds information about that component. E.g type, value of a button element. To access a component’s props object, you can reference the props object and the dot notation for its properties. E.g props.name
-  //Pass `props` to a Component:    To take advantage of props, we need to pass information to a React component.
-  //How do we pass props/how to pass information to a component’s props object? By giving the component an attribute:
+  //Pass props to a Component:  Pass information to a component’s props object by giving the component an attribute:
+  // To pass information that isn’t a string, then wrap that information in curly braces. Even arrays as seen below. 
   <>
-  <Greeting name="Jamel" />
-  <SloganDisplay message="We're great!" />    //In the above example, we used the name message. You can use any name you want.
-  //If you want to pass information that isn’t a string, then wrap that information in curly braces. Here’s how you would pass an array:
-  <Greeting myInfo={["Astronaut", "Narek", "43"]} />
-  //In this next example, we pass several pieces of information to <Greeting />. The values that aren’t strings are wrapped in curly braces:
+  <Greeting name="Jamal" /> </>
+  <SloganDisplay message="We're great!" /> </>
+  <Greeting myInfo={["Astronaut", "Narek", "43"]} /> </>
   <Greeting name="The Queen Mary" city="Long Beach, California" age={56} haunted={true} />
-  </>  
-
-  function App() {
-    return <PropsDisplayer myProp="Hello" />;
-  }  
+ 
+   
   
-  //Render a Component's props:   Props allow us to customize the component by passing it information.
+  //RENDER A COMPONENT'S PROPS:
   //You will often want a component to display the information that you pass. The most common use of props is to pass information to a component from a different component. NOTE: To make sure that a function component can use the props object, define your function component with props as the parameter:
   function Button(props) {
     return <button>{props.displayText}</button>;
-  }         //n the example, props is accepted as a parameter, and the object values are accessed with the dot notation accessors pattern (object.propertyName).
-  //access
-  return <h1>{props.firstName}</h1>;
+  }         //in the example, props is accepted as a parameter, and the object values are accessed with the dot notation accessors pattern (object.propertyName).
+ 
   //Object Destructuring: Alternatively, since props is an object, you can also use destructuring syntax like so:
   function Button({displayText}) {
     return <button>{displayText}</button>;
   }
   
-  //PROPS: Smart Watch App  //Display like a flexbox or grid using css
-  //Product.js
-  import React from 'react';
-  
+  //Smart Watch App - Product.js
   //Object destructuring: function Product({price, rating, image}) {}
   function Product(props) {
     return (
@@ -512,7 +472,6 @@
   }
   
   //App.js
-  import React from 'react';
   import Product from './Product'
   
   function App() {
@@ -524,33 +483,30 @@
     </ul>
     </>)
   }
-  //Props in React travel in a one-way direction, from the top to bottom, parent to child. Props passed down are immutable, meaning they cannot be changed. If a component wants new values for its props, it needs to rely on the parent component to pass it new ones.
-  //Render Different UI Based on props:     You can do more with props than just display them. You can also use props to make decisions.
 
 
    //PROPS.children Children props contains whichever contents between a component opening and closing tags
-    //Every component’s props object has a property named children. So far, all of the components that you’ve seen have been self-closing tags, e.g <MyFunctionComponent />. They don’t have to be! You could write <MyFunctionComponent></MyFunctionComponent>, and it would still work props.children will return everything in between a component’s opening and closing JSX tags. E.g <MyFunctionComponent> <MyFunctionComponent/> By using props.children, we can separate the outer component, MyFunctionComponent in this case, from the content, which makes it flexible and reusable.    
+    //Every component’s props object has a property named children. So far, all of the components that you’ve seen have been self-closing tags, e.g <MyFunctionComponent />. They don’t have to be! You could write <MyFunctionComponent></MyFunctionComponent>, and it would still work props.children will return everything in between a component’s opening and closing JSX tags. E.g <MyFunctionComponent> <MyFunctionComponent/> By using props.children, we can separate the outer component, MyFunctionComponent in this case, from the content, which makes it flexible and reusable.  
+    //If a component has more than one child between its JSX tags, then props.children will return those children in an array. However, if a component has only one child, then props.children will return the single child, not wrapped in an array.
+  
     function BigButton(props) {
       return <button>{props.children}</button>;
-      // return <li> <button>{props.children}</button> </li>;
-    }  export default BigButton;
+    }
 
     import LilButton  from './LilButton';
+    <>
     <BigButton>
       <LilButton />
     </BigButton>
-    </> //Not needed line
 
     //OR 
     <BigButton>
     <div>Submit</div>
-    {/* <p>Good Day</p> */}
-  </BigButton>
-  </> //Not needed line
-    
-  //If a component has more than one child between its JSX tags, then props.children will return those children in an array. However, if a component has only one child, then props.children will return the single child, not wrapped in an array.
+    </BigButton>
+    </>
 
-  //Attribute props:
+  
+  //ATTRIBUTE PROPS:
   function BigButton({label}) {
     return <button>{label}</button>;
   }
@@ -559,38 +515,6 @@
   function Appp(){
     <BigButton label='Submit'></BigButton>
   }
-
-
-  //Put an Event Handler in a Function Component:     You can, and often will, pass functions as props. It is especially common to pass event handler functions.
-  function myFunc() {
-    function handleEvent() {
-      alert(`I am an event handler.
-        If you see this message,
-        then I have been called.`);
-    }
-    return (
-        <h1 onClick={handleEvent}>
-          Hello world
-        </h1>
-      );
-  }
-  //Talker.js
-  import React from 'react';
-  import Button from './Button';
-  
-  function Talker() {
-    function talk() {   
-      let speech = '';
-      for (let i = 0; i < 10000; i++) {
-        speech += 'blah ';
-      }
-      alert(speech);
-    }
-    return <Button />;
-  }
-  
-  export default Talker;
-
 
 
   //INTERACTING WITH THE DOM IN REACT
@@ -617,7 +541,7 @@
   //2. Initialize State: Next, you create a storage box with useState. You give it an initial value (the value it starts with). This is like saying, "I have a counter, and it starts at 0."
        //const [count, setCount] = useState(0);
             //count - is the current value in your storage box.
-            //setCount - is a function you can use to change the value in the storage box.
+            //setCount - is a function you can use to update the state i.e the initial value which is count.
             //useState(0) - tells React that count starts at 0.
   //3. Using State: You can now use count to show the current value and setCount to update it.
       const [count, setCount] = useState(0);
@@ -630,8 +554,7 @@
           </div>
       );
 
-      //Sample 2
-    
+      //Sample 2   
       function Toggle() {
         const [toggle, setToggle] = useState();
       
@@ -646,7 +569,6 @@
 
 
           //Sample 3
-    
      function ColorPicker() {
       const [color, setColor] = useState();   
       const divStyle = {backgroundColor: color};     //Background color changes as acc to clicked button color.
@@ -694,3 +616,28 @@
         </form>
       );
     }
+
+
+    //UPDATING useSTATE BASED ON PREVIOUS VALUE OF THE STATE - YOU should pass a FUNCTION to the state updating function instead of the new state value you want to have. Like below:
+    //This doesn't gets the immediate available state
+    setIsEditing(!isEditing);
+    setIsEditing(isEditing ? false : true);
+
+    //This gets the latest available state
+    setIsEditing((editing) => !editing);
+
+
+    //useState in Array and Object: (Reference values) - Create a copy of the old state i.e a new object or new array and then change or update that copy.
+    function handleGameClick(eachRowIndex, colIndex){
+      setGameBoard((prevGameBoard) => {
+          const updatedBoard = [...prevGameBoard.map((updatedPreArray => [...updatedPreArray]))];
+          updatedBoard[eachRowIndex][colIndex] = 'X';
+          return updatedBoard;
+      }); };
+
+    //LIFTING STATE UP: Manage the state in the closest Ancestor component that has access to both (child) components that needs that information.
+      //The Parent component will then pass the needed information to both child components via PROPS.
+
+
+
+    //DERIVING STATE
