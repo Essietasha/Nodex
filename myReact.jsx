@@ -26,7 +26,10 @@
 //Tailwind Utility Classes: (https://tailwindcss.com/docs/theme) (https://tailwindcss.com/docs/adding-custom-styles) (https://tailwindcss.com/docs/utility-first)
 
 //Install React icons: on the bash terminal... Run 'npm i react-icons' (https://react-icons.github.io/react-icons/)
+import { FaMapMarker } from 'react-icons/fa';
+<FaMapMarker className='inline-mb mr1'/>
 
+//ROUTER Package - to have multiple pages
 //Install React Router : on the bash terminal... Run 'npm i react-router-dom'
 
 //Install React Spinners : (https://www.npmjs.com/package/react-spinners)  (https://www.davidhu.io/react-spinners/) (https://github.com/davidhu2000/react-spinners) React Spinner: a package thst allow display spinner. Run 'npm i react-spinners'
@@ -51,10 +54,11 @@
   import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
   import HomePagee from './Pages/HomePagee';
   import MainLayoutt from './layouts/MainLayoutt';
-  const router = createBrowserRouter(
-      createRoutesFromElements(
+
+  const router = createBrowserRouter(createRoutesFromElements(
       <Route index element={<Homepagee/>} />)
     );
+
     const App = () => {
       return <RouterProvider router={router}/>;
     }; //   export default App
@@ -81,7 +85,8 @@
     //NAVLink: Works the same way with Link tag except that it adds a class to the active link. Now we can change all the link tags in the navbar to Navlink as well as the import name above. To manually add a classLink to an active link or button, create a function above the return st within desired component and set className of the Navlink within the return st to the function. Check Navbar.jsx for ref.
   
 
-  //FETCHING DATA FROM BACKEND rather than just bringing in a json file.. Use json Server: A libray that lets you create a mock API and you can send get post put patch delete request so you can create CRUD 'Create, Read, Update, Delete' functionality. All you have to do is create a json file and you can put any type of resource you want in it.
+  //FETCHING DATA FROM BACKEND rather than just bringing in a json file..
+  //JSON SERVER: Use json Server: A libray that lets you create a mock API and you can send get post put patch delete request so you can create CRUD 'Create, Read, Update, Delete' functionality. All you have to do is create a json file and you can put any type of resource you want in it.
   //JSON File://(https://www.npmjs.com/package/json-server) (https://blog.hubspot.com/website/json-files) A JSON file stores data in key-value pairs and arrays; the software it was made for then accesses the data. JSON allows developers to store various data types as human-readable code, with the keys serving as names and the values containing related data. JSON syntax is derived from JavaScript object notation syntax:
   //The most common use of JSON data and files is to read data from a server for a website or web application to display — and change data given the correct permissions.
                 // Data is in key/value pairs
@@ -129,29 +134,25 @@
   
   //Set a Form's DEFAULT field value: add the default field value within the html tag to the state default value.
   
-  //MAKE POST REQUEST TO THE BACK-END; EDIT, DELETE, ADD, SUBMIT..
-  //The POST method sends data to the server which may modify the server's state i.e that is designed to send loads of data to a server from a specified resource. POST is used to send data to a server to create/update a resource. It's best to have the post request in the main app file; the edit, delete and submit. 
-  //ADD Req App.jsx line 15
-  //Post Request/To CALL a Function in a Paret Component; pass it down into the route 
-  //To do this, pass in a function as a prop into the AddJobPage const 'addJobSubmit' and call it beneath passing in 'newJob' object..
+  //MAKE REQUEST TO THE BACK-END; EDIT, DELETE, ADD, SUBMIT..
+  //The POST (Add)method sends data to the server which may modify the server's state i.e that is designed to send loads of data to a server from a specified resource. POST is used to send data to a server to create/update a resource. It's best to have the post request in the main app file; the edit, delete and submit. 
   //UseNavigate: |REDIRECT|
   //After submission, to redirect user to the job page, use useNavigate hook from raect-router-dom. To use this useNavigate, first initialize it as a var and set to useNavigate() below the state..Then, simply return navigate and whr to redirect to. e.g return navigate('/jobs');
   //Since the addJobSubmit is being passed in as a prop, in the main app.jsx route within the AppJobPage comp, insert the addJobSubmit with value set to a function (addjob) and then create the 'addjob' function above the routes and it will take in the newJob
   
+  //GET REQUESTS: GET requests are intended to retrieve data from a server and do not modify the server's state.
+
+  //PUT REQUEST(EDIT): PUT method is used to create a new resource or replace a resource.
+
   //DELETE REQUEST
   //(This 'deleteJob' request function will be passed into the single jobPage router below as a prop and to the JobPage component as a prop as well. And on the button, run a function onClick set to another function called onDeleteClick and pass in the job.id.. JoPage line 101). 
   //Write the onDeleteClick function above in the Jobpage, pass in the 'jobId', add a confirmation to the delete using window.confirm JobPage.jsx line 12...
   //Actual delete Request to the Api ...App.jsx line 29
   
-  //EDIT REQUEST: PUT Method App.jsx line 35
   //REACT TOASTIFY for Notification:2:46:12 (cd) npm i react-toastify
   //Set Up: In the Layout Component, import ToastContainer from react-toastidy. Also import the css file: (import 'react-toastify/dist/ReactToastify.css') Then put the <ToastContainer anywhere within the container/>return./>
-  //To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error JobPage line 20... e.g toast.success('Job Deleted Successfully');
-  //POST REQUEST TO ADD JOB: App.jsx line 15...
+  //To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error JobPage line 20... e.g toast.success('Job Deleted Successfully');  
   
-  //GET REQUESTS: GET requests are intended to retrieve data from a server and do not modify the server's state.
-  
-  //PUT REQUEST: PUT method is used to create a new resource or replace a resource.
   
   //DEPLOYMENT: Production version of the site
   //Close the development/local server.. Then, run 'npm run build' ..This will create a new folder called dist. Dist is the production build.
@@ -247,8 +248,8 @@
       src={pics.panda} 
       alt="Lazy Panda" />
   );
-  
-  //Event Listeners in JSX
+  //INTERACTING WITH THE DOM IN REACT   //Event Listener and Event Handlers in a Component:
+  //In react, add event listeners to elements by adding special attribute to those elements; also called special props. E.g onClick={handleClick or clickHandler} The value provided within these curly braces should be a function; defined inside the component function.
   //JSX elements can have event listeners, just like HTML elements can. You create an event listener by giving a JSX element a special attribute. Here’s an example:
   //An event listener attribute’s value should be a function and it would only work if the function is a valid function that had been defined elsewhere.
   function clickAlert() {
@@ -257,7 +258,7 @@
   <img onClick={clickAlert} /> 
   //Note that in HTML, event listener names are written in all lowercase, such as onclick or onmouseover. In JSX, event listener names are written in camelCase, such as onClick or onMouseOver.
   
-  //Event Listener and Event Handlers in a Component:    Function components can include event handlers. With event handlers, we can run some code in response to interactions with the interface, such as clicking.
+  //Function components can include event handlers. With event handlers, we can run some code in response to interactions with the interface, such as clicking.
   function MyComponent(){
     function handleHover() {
       alert('Stop it.  Stop hovering.');
@@ -314,6 +315,19 @@
         <li key={index}>{name}</li>
       ))}
     </ul>
+
+//Mapping / Looping through an array with the map method - will take in a function and return a JSX file: 1:04
+  import jobs from '../jobs.json';
+  <div>
+    {jobs.map((job) => (
+      <div key={job.id}>
+        <h2>{ job.title }</h2>
+        <h4>{ job.company.name }</h4>
+        <h6>{ job.description }</h6>
+        <Link to={`/job/${job.id}`}>Read More</Link>
+      </div>
+    ))}
+  </div>
   
   
   //.map in JSX: The .map() array method comes up often in React. It’s good to get in the habit of using it alongside JSX. If you want to create a list of JSX elements, then using .map() is often the most efficient way. It can look odd at first:
@@ -420,7 +434,7 @@
 
   //PROPS
   //We use props in React to pass data from one component to another (from a parent component to a child component(s)).
-  //Informations that gets passed from one component to another is known as props. Props is a special keyword in React that stands for properties and is used for passing data from one component to another. Data with props are passed in a unidirectional flow from parent to child.
+  //Informations that gets passed from one component to another is known as props. Props is a special keyword in React that stands for properties and is used for passing data from one component to another. Data with props are passed in a unidirectional flow from parent to child.    //AND, PROPS can be used in the child component alone without having to use it in the parent component.
   //Props in React travel in a one-way direction, from the top to bottom, parent to child. Props passed down are immutable, meaning they cannot be changed. If a component wants new values for its props, it needs to rely on the parent component to pass it new ones.
 
   //How to set DEFAULT values for props
@@ -484,14 +498,25 @@
     </>)
   }
 
+  
+  //ATTRIBUTE PROPS:
+  function BigButton({label}) {
+    return <button>{label}</button>;
+  }
+
+  import BigButton  from './BigButton';
+  function Appp(){
+    <BigButton label='Submit'></BigButton>
+  }
+
 
    //PROPS.children Children props contains whichever contents between a component opening and closing tags
-    //Every component’s props object has a property named children. So far, all of the components that you’ve seen have been self-closing tags, e.g <MyFunctionComponent />. They don’t have to be! You could write <MyFunctionComponent></MyFunctionComponent>, and it would still work props.children will return everything in between a component’s opening and closing JSX tags. E.g <MyFunctionComponent> <MyFunctionComponent/> By using props.children, we can separate the outer component, MyFunctionComponent in this case, from the content, which makes it flexible and reusable.  
-    //If a component has more than one child between its JSX tags, then props.children will return those children in an array. However, if a component has only one child, then props.children will return the single child, not wrapped in an array.
+  //Every component’s props object has a property named children. So far, all of the components that you’ve seen have been self-closing tags, e.g <MyFunctionComponent />. They don’t have to be! You could write <MyFunctionComponent></MyFunctionComponent>, and it would still work props.children will return everything in between a component’s opening and closing JSX tags. E.g <MyFunctionComponent> <MyFunctionComponent/> By using props.children, we can separate the outer component, MyFunctionComponent in this case, from the content, which makes it flexible and reusable.  
+  //If a component has more than one child between its JSX tags, then props.children will return those children in an array. However, if a component has only one child, then props.children will return the single child, not wrapped in an array.
   
-    function BigButton(props) {
-      return <button>{props.children}</button>;
-    }
+  function BigButton(props) {
+    return <button>{props.children}</button>;
+  }
 
     import LilButton  from './LilButton';
     <>
@@ -505,26 +530,49 @@
     </BigButton>
     </>
 
-  
-  //ATTRIBUTE PROPS:
-  function BigButton({label}) {
-    return <button>{label}</button>;
+  //More on props.children and adding classes via props
+  const TabButton = ({children, onSelect, isSelected}) => {
+    return (
+      <li><button  className={isSelected ? 'active' : ''} onClick={onSelect}>{children}</button></li>
+    )
   }
+  //In the other component
+  <>
+  <LogPage />
+  <TabButton isSelected={selectedTopic === 'components'} onSelect={() => handleSelect('components')} >Components</TabButton>
+  <TabButton isSelected={selectedTopic === 'jsx'} onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+  <MarketPage />
+  </>
 
-  import BigButton  from './BigButton';
-  function Appp(){
-    <BigButton label='Submit'></BigButton>
-  }
+
+  //More on Using PROPS TO PASS CLASS NAMES and can change it as desired
+  const Tab = ({children, bigFont = 'big-font-red'}) => {
+    return (
+      <li><button className={`${bigFont} p-6 gridCont`}>{children}</button></li>
+    )
+  };
+  //Can change, edit or update the clas name in the other component as desired
+  <LogPage />
+  <Tab>Components</Tab>
+  <Tab bigFont='big-font-blue'>JSX</Tab>
+  <MarketPage />
+  </>
 
 
-  //INTERACTING WITH THE DOM IN REACT
-  //In react, add event listeners to elements by adding special attribute to those elements; also called special props. E.g onClick={handleClick or clickHandler} The value provided within these curly braces should be a function; defined inside the component function.
+  //Moree on Using PROPS TO PASS CLASS NAMES and can change it as desired
+  //Using NavLink -  Works the same way with Link tag but that it adds a class to the active link.
+  <NavLink className={({ isActive }) => isActive ? 'bg-red' : 'bg-white' }/>
+
+  //OR use a variable
+  const linkClass = ({ isActive }) => isActive ? 'bg-red' : 'bg-white';
+  <NavLink className={ linkClass }/>;
 
 
 
   //React Hooks
   //STATE:  State generally refers to data or properties that need to be tracking in an application. The state is a built-in React object that is used to contain data or information about the component.   //State is like a little storage box. It holds information that can change over time.
               //The state object holds data in a component that is expected to change over time. It is created and maintained by the component itself, and when it changes, the component re-renders; rememeber componenets only render once intially.
+              //Two Types: Component State. App Level or Global State.
   //HOOKS: are functions that let us manage the internal state of components and handle post-rendering side effects directly from our function components. Using Hooks, we can determine what we want to show the users by declaring how our user interface should look based on the state.
   //Hooks allow function components to have access to state and other React features.
   //Hooks are functions that let developers "hook into" the React state and lifecycle methods from a functional component.
@@ -554,77 +602,15 @@
           </div>
       );
 
-      //Sample 2   
-      function Toggle() {
-        const [toggle, setToggle] = useState();
-      
-        return (
-          <div>
-            <p>The toggle is {toggle}</p>
-            <button onClick={() => setToggle("On")}>On</button>
-            <button onClick={() => setToggle("Off")}>Off</button>
-          </div>
-        );
-      }     //Notice how the state setter function, setToggle(), is called by our onClick event listeners. To update the value of toggle and re-render this component with the new value, all we need to do is call the setToggle() function with the next state value as an argument. i.e.       <button onClick={() => setToggle("Off")}>Off</button>
-
-
-          //Sample 3
-     function ColorPicker() {
-      const [color, setColor] = useState();   
-      const divStyle = {backgroundColor: color};     //Background color changes as acc to clicked button color.
-    
-      return (
-        <div style={divStyle}>
-          <p>The color is {color}</p>
-          <button onClick={() => setColor('Aquamarine')}>
-            Aquamarine
-          </button>
-          <button onClick={() => setColor('BlueViolet')}>
-            BlueViolet
-          </button>
-          <button onClick={() => setColor('Chartreuse')}>
-            Chartreuse
-          </button>
-          <button onClick={() => setColor('CornflowerBlue')}>
-            CornflowerBlue
-          </button>
-        </div>
-      );
-    }
-
-
-  //Multiple State Variables
-  //You can use useState multiple times in the same component to manage different pieces of state independently.
-    function Form() {
-      const [name, setName] = useState('');
-      const [email, setEmail] = useState('');
-    
-      return (
-        <form>
-          <input 
-            type="text" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
-            placeholder="Name" 
-          />
-          <input 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            placeholder="Email" 
-          />
-        </form>
-      );
-    }
-
 
     //UPDATING useSTATE BASED ON PREVIOUS VALUE OF THE STATE - YOU should pass a FUNCTION to the state updating function instead of the new state value you want to have. Like below:
-    //This doesn't gets the immediate available state
+    //1. This doesn't gets the immediate available state
     setIsEditing(!isEditing);
+    //2. This also doesn't gets the immediate available state
     setIsEditing(isEditing ? false : true);
-
-    //This gets the latest available state
+    //3. This gets the latest available state: i.e runs a function and set the state to opposite of what it was using the Previous state value
     setIsEditing((editing) => !editing);
+    setIsEditing((prevState) => !prevState);
 
 
     //useState in Array and Object: (Reference values) - Create a copy of the old state i.e a new object or new array and then change or update that copy.
@@ -634,6 +620,18 @@
           updatedBoard[eachRowIndex][colIndex] = 'X';
           return updatedBoard;
       }); };
+
+
+
+    //Display dynamic button content based on state
+      const Job = () => {
+        const [showDescription, setShowDescription] = useState(false);
+        return (
+          <li><button>{ showDescription ? 'Less' : 'More' }</button></li>
+        )
+      }
+
+    //States can be passed in as props.
 
     //LIFTING STATE UP: Manage the state in the closest Ancestor component that has access to both (child) components that needs that information.
       //The Parent component will then pass the needed information to both child components via PROPS.
