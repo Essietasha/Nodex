@@ -19,11 +19,9 @@
 
 //CREATE REACT using VITE
 //Create a project folder. Drag into VSCode. Open terminal. Run 'npm create vite@latest react-app' ...Follow prompt by selecting 'React' as framework and 'Javascript' as variant....Now, Run 'cd react-app', 'npm install'. 'npm run dev'.
-//Change port in vite.config file by adding  server: {port: 3000,}, You may proceed to delete App.css file and clear all css details in index.css as we'll be using tailwind. Now clear App.jsx and start coding right in there!
-//Extensions: Recommended- ES7+React/Redux/React-Native snippets.
+//Change port in vite.config file by adding  server: {port: 3000,}
 
-//Install Tailwind: https://tailwindcss.com/docs/guides/vite (Run on a different terminal-bash and NOTE change directory into the actual poject first ..cd project-name)
-//Tailwind Utility Classes: (https://tailwindcss.com/docs/theme) (https://tailwindcss.com/docs/adding-custom-styles) (https://tailwindcss.com/docs/utility-first)
+//Install Tailwind: (https://tailwindcss.com/docs/installation) Run on a different terminal-bash and NOTE change directory into the actual poject first ..cd project-name
 
 //Install React icons: on the bash terminal... Run 'npm i react-icons' (https://react-icons.github.io/react-icons/)
 import { FaMapMarker } from 'react-icons/fa';
@@ -33,17 +31,18 @@ import { FaMapMarker } from 'react-icons/fa';
 //Install React Router : on the bash terminal... Run 'npm i react-router-dom'
 
 //Install React Spinners : (https://www.npmjs.com/package/react-spinners)  (https://www.davidhu.io/react-spinners/) (https://github.com/davidhu2000/react-spinners) React Spinner: a package thst allow display spinner. Run 'npm i react-spinners'
-//NPM: Node package manager (npm) is a package manager and a software register but it's also a place where developers can find, build and manage code packages. Right now, npm contains over 800,000 packages for various applications, from front-end and robotics to mobile apps
+
+//NPM: Node package manager (npm) is a package manager and a software register but it's also a place where developers can find, build and manage code packages.
 //It's a library and registry for JavaScript software packages. npm also has command-line tools to help you install the different packages and manage their dependencies. 
 
 //REACT TOASTIFY for Notification:2:46:12 (cd) npm i react-toastify
 //Set Up: In the Layout Component, import ToastContainer from react-toastidy. Also import the css file: (import 'react-toastify/dist/ReactToastify.css') Then put the <ToastContainer anywhere within the container/>return./>
-//To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error JobPage line 20... e.g toast.success('Job Deleted Successfully');
+//To use this in any componnet, simply import { toast } from 'react-toastify'; and call it using toast.success e.g toast.success('Job Deleted Successfully');
 
 //Ctrl + c to stop running the React app in your command line.
 
 //RUN AN EXISTING REACT FOLDER
-//DANGER: DO NOT RUN 'npm create vite or npm install' except a new user who hasn't used react before or a third party openinig a zipped react file!
+//Note: DO NOT RUN 'npm create vite or npm install' except a new user who hasn't used react before or a third party openinig a zipped react file!
 //Thus, to run an existing react folder. Open folder in VSCode.  Same day && Go to terminal, Run npm run dev. New day && Run 'cd react-app' 'npm run dev'.
 
   
@@ -100,7 +99,6 @@ import { FaMapMarker } from 'react-icons/fa';
   //And run it using 'npm run server' on same terminal.. Copy link on the Endpoint and paste in the broswer..data is being displayed in the browser. So, we essentially now have a backend. 
   //Set LIMIT of backend data being fetched : 'http://localhost:8000/jobs?_limit=3'
   //RUN backend(json) SERVER: On terminal, cd into project directory... 'npm run server'
-  
   //TRY CATCH: The try statement allows you to define a block of code to be tested for errors while it is being executed. The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
   //res.json: The res. json() function sends the response as JSON format. It automatically converts the JavaScript object into a JSON-formatted string. The parameter body can be of any JSON type, which includes object, array, string, Boolean, number, or null.
   
@@ -158,9 +156,10 @@ import { FaMapMarker } from 'react-icons/fa';
   //Close the development/local server.. Then, run 'npm run build' ..This will create a new folder called dist. Dist is the production build.
   //Can run this with vite. Now run 'npm run preview'..Now, the dist folder is what will be deployed. However, the jobs will not be shown in deployement as we are using a local json server. To correct this, create an API with express or....
   
-  //// STRUCTURE:
-  // index Html: is the single page since our applicatio is a single page application
-  // The src folder is our react application and the entry point is the main.jsx file.
+  //STRUCTURE:
+    // index Html: is the single page since our applicatio is a single page application
+    // The src folder is our react application
+    // main.jsx file is the entry point
      
 
   
@@ -248,6 +247,120 @@ import { FaMapMarker } from 'react-icons/fa';
       src={pics.panda} 
       alt="Lazy Panda" />
   );
+
+
+  
+  // STYLING REACT APPS {CSS}:     // - Static and Dynamic(Conditional) Styling
+
+    //1. Styling with Vanilla - Css files; CONS: Styles are not scoped to specific component. Solution: Inline Styling
+    //2. Inline styling CSS - uses curly braces
+        <> <p style={{
+            color: 'red'}}>
+          </p>
+        
+          <h2 style={{backgroundColor: isSelected ? 'green' : 'gray' }}>Hello React Developer</h2>
+        </>
+    
+    //3. Adding a className Conditionally, ternary approach and always define an else st using undefined if you don't have one:
+      </> 
+      <>
+      <p className={ isActive && 'bg-red'  }/>
+      <p className={ isActive => isActive ? 'bg-red' : undefined }/>
+      <p className={`p-6 ${isActive ? 'bg-red' : ''}`}/>
+      </>
+
+    //4. Scoping styles with CSS Modules: Allows one to write vanilla css styles which are scoped to component files, making classNames unique per file for component files and component. i.e classes will be transformed by build process and unique classes will be provided. CSS module is not a default feature, rather it has to be implemented.
+        //Name Files: [Header.module.css] as components
+        //Importing: [import classes from './Header.module.css]
+         </> <p className={classes.bigParagrapgh}></p>
+         </> <p className={`p-6 ${classes.bigParagrapgh}`}></p>
+         </> <p className={isActive ? classes.bigParagrapgh : 'bg'}></p>
+       
+    //5. CSS-in-JS styling with 'styled components' package
+          //Install: In terminal: 'npm install styled-components'
+          //Import: iomport { styled } from 'styled-components';
+          styled.input`
+          display: flex;
+          gap: 1.5rem;
+          `;
+          //Now you can assign this to a variable and create as a component to use it.
+          //Accepts props in a unique way Plus Conditionals; set props in the created styled component, now accept prop in the style definition tag and set it conditionally and dynamically using a function.
+          //Using/prefixing the Dollar sign to props - so they don't clash with built-in props.
+          //Handling Children tags styles: Ampersand & and white space. To include other classes to a parent tag e.g div, header, p or any other tag
+          //Handling media queries with styled components: Ampersand &
+          //Psuedo-selectors with styled components
+          const ControlDiv =  styled.div`
+          display: flex;
+          gap: 1.5rem;
+          margin: 2rem;
+          color: ${({$invalid}) => $invalid ? '#fffeee' : 'ffffff' };
+
+          &:hover{
+            color: grey;
+          };
+
+          & img {
+            object-fit: contain;
+            width: 8rem;
+          }
+
+          & h1 {
+            font-size: 1.5rem;
+            font-family: 'Pacifico', cursive;
+          }
+
+          @media (min-width: 768px) {
+            & {
+              margin-bottom: 1rem;
+            }
+
+            & h1 {
+              font-size: 2.25rem;
+            }
+          }
+          `;
+          <ControlDiv $invalid={emailValid}>
+            <p>My Text</p>
+          </ControlDiv>
+
+
+
+    //Tailwind CSS - Framework - Applying predefined CSS rules - Utility classes - Follow directives(https://tailwindcss.com/docs/guides/vite)
+    //On terminal development - Ctrl C - Quit running project
+    //On bash - cd into project directory - Follow all directives from tailwind.css website(https://tailwindcss.com/docs/guides/vite)
+    //npm run dev
+      //Customizing Tailwind
+        //1.Add custom classes  beneath the definded tailwind classes-index.css. Foe example body{margin:0} etc
+        //2.Extend in tailwind.config.js file - To add more custom classes and then use these classes as named/defined in our project. Foe example create utility classes to use custom fonts.
+        //3.Media queries  <h1 className='md:text-4xl' >ReactArt</h1>
+        //4.Pseudo selectors <h1 className='hover:text-4xl focus:bg-amber-500' >ReactArt</h1>
+      
+      //DYNAMIC/CONDITIONAL STYLES WITH Tailwind - Above the component return statement.
+        let labelClasses = 'block mb-2 text-xs font-bold tracking-wide uppercase text-stone-300';
+        if(invalid){
+          labelClasses = ' text-red-300 block mb-2 text-xs font-bold tracking-wide uppercase'
+        }
+        <label className={labelClasses}>React is Beautiful</label>
+
+        //Or set a base styling; mindful of white space insertions
+        let labelClass = 'block mb-2 text-xs font-bold tracking-wide uppercase';
+        let inputClass = "w-full px-3 py-2 leading-tight border rounded shadow";
+        
+        if(invalid){
+          labelClass += ' text-stone-400';
+          inputClass += ' text-red-500 bg-stone-100';
+        } else {
+          labelClass += ' text-stone-300';
+          inputClass += ' text-gray-700 bg-stone-300';
+        }
+        <>
+        <label className={labelClass}>React is Beautiful</label>
+        <input className={inputClass} placeholder='Enter full name'></input>
+        </>
+
+      //RE-USABLE TAG COMPONENTS -  You can create reusable components(tag components - label, input, div etc.) with defined classes and then export/import them to where desired and even receive/send props in them.
+  
+  
   //INTERACTING WITH THE DOM IN REACT   //Event Listener and Event Handlers in a Component:
   //In react, add event listeners to elements by adding special attribute to those elements; also called special props. E.g onClick={handleClick or clickHandler} The value provided within these curly braces should be a function; defined inside the component function.
   //JSX elements can have event listeners, just like HTML elements can. You create an event listener by giving a JSX element a special attribute. Here’s an example:
@@ -307,6 +420,11 @@ import { FaMapMarker } from 'react-icons/fa';
         { age > 25 && <li>Grappa</li> }
       </ul>
   );
+
+  //Return Statement with conditionals - with this line of code, the code beneath(comp and jsx) will not be executed if this condition isn't met.
+  if(results.length === 0){
+    return <p>Please eneter a valid number</p>
+  }
 
 //Mapping through an array and returning a JSX file; use () after the arrow function not {} / Creating a List Item
     const names = ['Tom', 'Brad', 'Jesse'];
@@ -571,7 +689,7 @@ import { FaMapMarker } from 'react-icons/fa';
 
   //React Hooks
   //STATE:  State generally refers to data or properties that need to be tracking in an application. The state is a built-in React object that is used to contain data or information about the component.   //State is like a little storage box. It holds information that can change over time.
-              //The state object holds data in a component that is expected to change over time. It is created and maintained by the component itself, and when it changes, the component re-renders; rememeber componenets only render once intially.
+              //The state object holds data in a component that is expected to change over time. It is created and maintained by the component itself, and when it changes, the component re-renders; rememeber componenets only render once intially. Update UI;
               //Two Types: Component State. App Level or Global State.
   //HOOKS: are functions that let us manage the internal state of components and handle post-rendering side effects directly from our function components. Using Hooks, we can determine what we want to show the users by declaring how our user interface should look based on the state.
   //Hooks allow function components to have access to state and other React features.
@@ -630,6 +748,55 @@ import { FaMapMarker } from 'react-icons/fa';
           <li><button>{ showDescription ? 'Less' : 'More' }</button></li>
         )
       }
+    //Setting/Getting NAME Values -        (UseRef can also be used for the below)
+    const Player = () => {
+      const [userName, setUserName] = useState('');
+      const [submitted, setSubmitted] = useState(false);
+  
+      function handleChange(event) {
+          setUserName(event.target.value);     }
+  
+      function handleClick() {
+          setSubmitted(true);}
+      
+    return (
+      <section id="player">
+          <h2>Welcome { submitted ? userName : 'User'}</h2>
+          <p>
+              <input type="text" value={userName} onChange={handleChange}/>
+              <button onClick={handleClick}>Set Name</button>
+          </p>
+      </section>)}
+     
+    //SETTING AND UPDATING STATES USING FALSE/TRUTHY VALUES AND UPDATING UI BASED ON THESE VALUES AND USEREF
+      const TimerChallenge = ( {title, targetTime} ) => {
+        const [timerExpired, setTimerExpired] = useState(false);
+        const [timerStarted, setTimerStarted] = useState(false);
+        const timer = useRef();
+    
+        function handleStart(){
+            timer.current = setTimeout(() => {
+                setTimerExpired(true);
+            }, targetTime * 1000);
+               setTimerStarted(true);
+        };
+    
+        function handleStop (){
+            clearTimeout(timer.current);
+        };
+    
+      return (
+        <section className='challenge'>
+            <h2>{title}</h2>
+            {timerExpired && <p>You Lost</p>}
+            <p className='challenge-time'>
+                {targetTime} second {targetTime > 1 ? 's' : ''}
+            </p>
+            <p> <button onClick={timerStarted ? handleStop : handleStart}> {timerStarted ? 'Stop' : 'Start'} Challenge</button></p>
+            <p className={timerStarted ? 'active' : undefined}> {timerStarted ? 'Timer running' : 'Timer Inactive!'}</p>
+        </section>
+      )
+    }
 
     //States can be passed in as props.
 
@@ -639,3 +806,76 @@ import { FaMapMarker } from 'react-icons/fa';
 
 
     //DERIVING STATE
+
+  //FETCHING DATA with useEffect
+  //The useEffect: Is used in performng side effects in components; fetching data from an API. It takes two arguments; a function and a dependency array. Learnt that this hook runs on every render; whenever there's a change in the dependency which can actually cause an unending loop, in that case, it's preferable to inlude the second argument which in most cases is an empty array.This makes the useeffect run only on the first render.
+  import { useEffect } from 'react';
+  useEffect(() => {
+    // function line of code here ... rmb to call the function there after below.
+  }, []);
+
+  //useParams: To get the id of a data - use Params Hooks from react router dom. Import useParams... Then destructure from useParams.
+  import { useParams } from 'react';
+  const { id } = useParams();
+
+
+  //Fetching Data using React DATA LOADER from React Router: With a data loader, we basically create a function within a file and then export and use it in other areas i.e as a gloabal state and use in other componenets.
+
+  //DEBUGGING REACT APPs
+  //Debugging Broswer
+  //Breakpoints
+  //Error messages
+  //Stack trace 
+      //Return Statement with conditionals - with this line of code, the code beneath(comp and jsx) will not be executed if this condition isn't met.
+      if(results.length === 0){
+        return <p>Please eneter a valid number</p>
+      }
+  //Handling Logical errors
+  //React Strict mode- initially executes every component twice. Reveals immediate underlying errors.
+  //React Developer Tools
+
+
+  //REFS and PORTALS
+  //Advances DOM Access & Value Management
+      //Accessing DOM Elements with Refs
+      //Managing Values with Refs / Getting values - that isn't really a state-to be re-executed
+      //Exposing API Functions from Components
+      //Detaching DOM Rendering from JSX Structure with Portals.
+      //Getting access to nested functions
+
+  //HOW useRef Works    
+  //REFS: Can be connected to the a jsx element using the ref prop
+  //NOTE: Whenever a Ref value changes, the component's function does not re-execute like State but also value from the ref is not lost.
+      //1. import
+      //2. initialize to a variable
+      //3. connect to an element
+      //4. use to set state - (refname.current.property)
+      //5. use conditionally if need be.
+        import { useState, useRef } from 'react';
+
+        const Playr = () => {
+            const [userName, setUserName] = useState('');
+            const playerName = useRef();
+
+            function handleClick() {
+                setUserName( playerName.current.value);
+                // playerName.current.value = ''; 
+            }           
+         return (
+            <section id="player">
+                <h2>Welcome { userName ? userName : 'User'}</h2>
+                <p>
+                    <input ref={playerName} type="text"/>
+                    <button onClick={handleClick}>Set Name</button>
+                </p>
+            </section>)};
+
+    //FORWARDING REFS: forwardRef - a special function provided by React
+    //Refs not accepted and destructured exact way as prop, rather as the next property received after props - not within the props curly braces, but after.
+          //1-3
+          //4. import { forwardRef } from 'react';
+          //5. Nest the entire component receiving this ref in the forwardRef function
+          //6. Destructure ref after props not within it with a comma
+          //7. Use ref now within the receiving component having set it on the parent component
+
+
