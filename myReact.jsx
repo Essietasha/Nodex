@@ -877,5 +877,53 @@ import { FaMapMarker } from 'react-icons/fa';
           //5. Nest the entire component receiving this ref in the forwardRef function
           //6. Destructure ref after props not within it with a comma
           //7. Use ref now within the receiving component having set it on the parent component
+                        
+    //USEIMPERATIVEHANDLE HOOK: useImperativeHandle(); - Useful for bigger react projects- To expose callable functions within a componenet - Meant to work together with forwardRef;
+          //To build a component in a way that it exposes/shows its own functions that can be called with help of a ref outside of that(its) component. This will make the component work irrespective of how the jsx code that change in the future. For example, switchin from a dialog tag to a div tag.
+          //Call this hook to define properties and methods that should be accessible on a component from outside the component. 
+          //Needs two argument: 1. ref 2. A function that returns an object which groups all the properties and methods that should be exposed bby the component to other component
+          //CLOSE MODAL: Use the inbuild form tag within the firm with a button and set method on form to 'dialog'
+          import { forwardRef, useImperativeHandle, useRef } from 'react';
+          const ResultModal = forwardRef(( {result, targetTime}, ref ) => {
+            const dialog = useRef();
+            useImperativeHandle (ref, () => {
+              return{
+                open() {
+                  dialog.current.showModal();
+                } };});
+            return (
+              <dialog className='result-modal' ref={dialog}>
+                  <h2>You {result}</h2>
+                  <p>The target time was <strong>{targetTime} seconds.</strong></p>
+                  <p>You stopped at <strong>X seconds left</strong></p>
+                  <form method='dialog'> <button>Close</button> </form>
+              </dialog>
+            );
+          });
+              //The open() method is what to be called on the other(maybe parent) component where this created child omponent is used..              
+                  function handleStart(){
+                     setTimeout(() => {
+                          dialog.current.open();
+                      }, targetTime * 1000); };
+          
+          //MORE EXAMPLE: seRef, forwardRef, useImperativeHandle, showModal, dialog...
+          import {createPortal} from 'react-dom';
+          import { forwardRef, useImperativeHandle, useRef } from 'react';
 
+            const Modal = forwardRef(({children}, ref) => {
+                const dialog = useRef();
+                useImperativeHandle(ref, () => {
+                    return{
+                        open() {
+                            dialog.current.showModal();
+                        }
+                    }
+                });
+              return createPortal(
+                <dialog ref={dialog}>
+                    {children}
+                </dialog>,document.getElementById('modal-root')
+              );
+            })
+            export default Modal;
 
