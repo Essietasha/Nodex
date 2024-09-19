@@ -6,11 +6,34 @@
 //props
 //Routes
 //Hooks
-//Effects
+//Effect
 //States
 //Animations
 //Refs
 //Classes etc.
+
+//HOOKS:
+//useState
+//useRef
+//useEffect
+//useContext
+//useCallback
+//useMemo
+//useReducer
+//useNavigate
+//useNaviagtion
+//useImperative
+//useDispatch
+//useRouteError
+//useParams
+//useSelector
+//useLoader
+//useLoaderData
+//useRouteLoaderData
+//useActionData
+//useSubmit
+//useSelector
+//useFetcher.
 
 //CREATE A REACT APP
   //Install node.js.......cmd(system) enter 'npm install -g create-react-app' ... Create a folder, drag and drop the folder 'myapp' folder into Vscode. Open a new terminal, run ' npx create-react-app my-app' Follow prompt....... enter. Now, run 'npm start'
@@ -63,6 +86,7 @@
     const App = () => {
       return <RouterProvider router={router}/>;
     }; //   export default App
+  //Nested Routes: Layouts || Shared loader.
   
   //PAGES: Create a seperate folder called 'Pages' for the pages.Within, create a HomePage.jsx file.  Although they are still componnets, but should not put them in the same folder as the regular UI component. Now, import Homepage within App.jsx and render it within the routeprovider. Now, import all needed components, use within the return st into the Hompage and it'll be displayed on the screen.
   //index: Default route that should be loaded for a component |Homepage| if the parent route is active.
@@ -73,6 +97,7 @@
         <Route path='/' element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path='/jobs' element={<JobsPage />} />
+          <Route path='/events/:eventId' element={<EventDetailPage />} />
           <Route path='*' element={<NotFoundPage />} />
         </Route>
     )
@@ -106,7 +131,7 @@
     return <RouterProvider router={router}/>;
   }
   export default miAp;
-    //MainLayout Component:
+  //MainLayout Component:
       import { Outlet } from 'react-router-dom'
       import Navbar from '../components/Navbar';
       import{ ToastContainer } from 'react-toastify';
@@ -139,33 +164,42 @@
         const linkClas = ({ isActive }) => isActive ? 'bg-red' : 'bg-white';
         <NavLink className={ linkClas }/>;
 
-    //ADDING LINKS FOR DYNAMIC ROUTES
+    //Link: To navigate between route pages. We do not directly render pages component within other jsx file, rather use links to navigate to them.
+    //ADDING LINKS FOR DYNAMIC ROUTES - Individual Item
+    //Note: This link to must be in relation to some path defined in the app.jsx dynamic routes. W will go to the EventDetailPage if the link is set like this.
+    <Route path='/events/:eventId' element={<EventDetailPage />} />
     const PRODUCT = [
-      {id: 1, title: 'Product1'},
-      {id: 2, title: 'Product2'},
-      {id: 3, title: 'Product3'}
-    ];    
-    const myProd = () => {
-      return (
-        <>
-        <h2>Products Page</h2>
-        <ul>
-          {PRODUCT.map(product => (<li key={product.id}> 
-             <Link to={`/product/${product.id}`}> {product.title} </Link>
-             </li>))}
-        </ul>
-        </>
-      )
-    }
+        {id: 1, title: 'Product1'},
+        {id: 2, title: 'Product2'},
+        {id: 3, title: 'Product3'}
+      ];    
+      const myProd = ({events}) => {
+        return (
+          <>
+          <h2>Products Page</h2>
+          <ul>
+            {events.map(event => (<li key={event.id}> 
+              <Link to={`/event/${event.id}`}> {event.title} </Link>
+              </li>))}
+          </ul>
+          </>
+        )
+      }
     
     export default myProd;
 
     //UseNavigate: |REDIRECT|
       //Used after submission, to redirect user to the job page, use useNavigate hook from raect-router-dom. To use this useNavigate, first initialize.. const navigate = useNavigate();
       //Then, simply return navigate and whr to redirect to. e.g navigate('/jobs'); Or return navigate('/jobs');
+      import { useNavigate } from 'react-router-dom';
+      function submitForm(){
+        const navigate = useNavigate()
+        //......
+        navigate('/jobs');
+      }
     
-    //useParams Hook: is a tool in React that lets you get information or dynamic values from the URL. The URL here is the dynamic part of a route you define in your React app.
-      //Display different DATA FOR DIFFERENT ITEMS/PRODUCTS in SAME component; make the router path dynamic by adding a parameter(placeholder). To do this, in the path, a column and an identifier.
+  //useParams Hook: is a tool in React that lets you get information or dynamic values from the URL. The URL here is the dynamic part of a route you define in your React app.
+  //Display different DATA FOR DIFFERENT ITEMS/PRODUCTS in SAME component; make the router path dynamic by adding a parameter(placeholder). To do this, in the path, a column and an identifier.
         <Route path="/user/:id" element={<UserProfile />} />
       //In the above example, the :id part is a dynamic parameter, meaning it can change. So, if the URL is: /user/5, the id will be 5 .../user/123, the id will be 123
       //To get the id of a data - use Params Hooks from react router dom. Import useParams... Then destructure (based on the set in your route path) from useParams.  useParams returnsa an object which contains the dynamic path segment defined in the route definition.
@@ -181,109 +215,342 @@
       </>
 
   //PATH: Absolute vs Relative
-    //Absolute: Always start with a slash(/); always added after the domain name;  path loaded independently
-    <Route path="/" element={<Users/>} />;
-    <Link to="/products"></Link>;
-    <Route path="/user/:id" element={<Users/>} />;
-    //Relative: path appended to the initial url in the browser i.e added after the currently active path. Relative to a parent route/path. Relative prop-controls the beahaviour of routes.
-    <Link to="products">P1</Link>;
-    <Link to={product.id}>P2</Link>;
-    <Link to=".." relative="path">Back</Link>; //Go up one/previouspath level depending on: relative-path or route?
+  //Absolute: Always start with a slash(/); always added after the domain name;  path loaded independently
+      <Route path="/" element={<Users/>} />;
+      <Link to="/products"></Link>;
+      <Route path="/user/:id" element={<Users/>} />;
+      //Relative: path appended to the initial url in the browser i.e added after the currently active path. Relative to a parent route/path. Relative prop-controls the beahaviour of routes.
+      //the colon (:) is used to define a route parameter in React Router. In loaders, this can be accessed using params.
+      <Route path="/" element={<RootLayout />}>
+      <Route path="events" element={<EventsLayout />}>
+        <Route index element={<EventsPage />} />
+        <Route path=":eventId" element={<EventDetailPage />} >
+          <Route path="edit" element={<EditEventPage />} /> 
+        </Route>
+        <Route path="new" element={<NewEventPage />} />
+      </Route>
+      </Route>
+      </>
+      <Link to="products">P1</Link>;
+      <Link to={product.id}>P2</Link>;
+      <Link to=".." relative="path">Back</Link>; //Go up one/previouspath level depending on: relative-path or route?
 
-  //Data Loader and useDataLoader | Fetching with React router: Provides an extra property that can be added to route definitions - loader property - which wants a function as a value. This function will be triggered and executed by react router whenever one is about to visit its/the route, just before the route gets rendered. Can fetch and load data within this loader function.
-    //Data Loader: Enables rendering a component with fetched data, not fetching data after it has been rendered. Create a function within a file and then export and use it in other areas i.e as a global state and use in other componenets.
+  //DATA LOADER and useDataLoader | Fetching with React router: Provides an extra property that can be added to route definitions - loader property - which wants a function as a value. This function will be triggered and executed by react router whenever one is about to visit its/the route, just before the route gets rendered. Can fetch and load data within this loader function.
+  //Data Loader: Enables rendering a component with fetched data, not fetching data after it has been rendered. Create a function within a file and then export and use it in other areas i.e as a global state and use in other componenets.
     //useDataLoader: To get access to the data returned by the loader function, i,port useLoaderData Hook to get access to the closest loader data. Call useLoaderData, save to a const variable. Thus const variable now provides the returned data value from the loader function. Can then use this const var as needed.
-    //Can also use useLoaderData within other components within or on the same level (or below but higher level)as the page component directly without having to destructure. Simply call useLoader data, assign to var and use.
+    //Can also use useLoaderData within other components within or on the same level (or below but higher level)as the page component directly without having to destructure. Simply call useLoader data, assign to var and use. Any browser feature can be ued in the loader function except hooks because the loader function is not a component.
       //NOTE: Where should loaderData be stored? Within the main page component where it's needed for itself and other components. There, below the main page component function, define/create the loaderDat function. Then, export it. Import it in the App.jsx next to the actual/main page in the import statemnets above, and set it as a value to the page route loader property.
-    <Route index element={<EventsPage />} loader={loaderData}/>;
-    //use
-    import { useLoaderData } from 'react-router-dom';
-    const EventsPage = () => {
+     //Define loader function beneath component... |  Use loader
+      import { useLoaderData, json } from 'react-router-dom';
+      const EventsPage = () => {
+        const events = useLoaderData();
+        return (
+          <EventsList events={events} />
+        )}
+      export default EventsPage;
+        export async function loaderData(){
+          const response = await fetch('http://localhost:8000/events');
+          if (!response.ok) {
+            //import json from react router dom
+            return json({message: 'Could not fetch events'}, {status: 500});
+            // throw new Response(JSON.stringify({message: 'Could not fetch events'}), {status: 500});
+          } else {
+            const resData = await response.json();
+            return resData;
+          }
+        };
+    //in Appjsx routes
+    import EventsPage, {loaderData} from './pages/Events';
+    <Route index element={<EventsPage />} loader={loaderData} errorElement={<ErrorPage />}/>;
 
-      const events = useLoaderData();
+  //Handling errors with loader: | errorElement | Create an error component and nest it in the most top level route in the app.jsx. Every other child components can use this and you can as well build seperate error elements for seperate pages routes. 2.In the loader function, if (!response.ok), Throw a new reponse object for message and status code, stringify message. Then...
+  //useRouteError hook: Fetch thrown loader error inside the error component using useRouteError hook. Declare default error title and message const and override them based on the error.status using if check. In the jsx, render these consts.
+    //Sample Error Page
+    import { useRouteError } from 'react-router-dom';
+    const ErrorPage = () => {
+      const error = useRouteError();
+      let title = 'An error occured';
+      let message = 'Something went wrong';
+      if(error.status === 500){
+          message = error.data.message;
+          // message = JSON.parse(error.data).message;
+      }
+      if(error.status === 404){
+          title = 'Not Found';
+          message = 'Could not find page';
+      }
+    return (
+      <>
+        <MainNavigation />
+        <h1>{title}</h1>
+        <p>{message}</p>
+      </>)
+    }
+    export default ErrorPage;
+  
+  //Loader to import individual data items from the backend: Add a loader function beneath the component whr the data is needed;export it. 
+  //In the fetch function, append the id of the item to the URL. To get this item ID, react loader accepts two objects: request property and params. Can use the request object to access urls. e.g request.url ...Here, params object gives us access to all route parameters values. In this case,the extra parameter defined in the route path; eventId.
+  // Import loader in Appjsx import st within the needed page. Set loader as value to loader within page route. Can now use the data or pass as prop to other components.
+    import { useLoaderData, json } from 'react-router-dom'; 
+    const EventDetailPage = () => {
+      const eventItem = useLoaderData();
       return (
-         <EventsList events={events} />
+        <EventItem event={eventItem}/>
+      )
+    }
+    export default EventDetailPage;
+    
+    export async function itemLoader({params}){  
+      const id = params.eventId;   
+      const response = await fetch(`http://localhost:8000/events/${id}`);
+      if(!response.ok){
+        return json({messaage: 'Could not find item data'}, {status: 500})
+      }else{
+        const resData = await response.json();
+        return resData;
+      }
+    }
+        
+  //useRouteLoaderData| USE SHARED LOADER | Or Getting access to a higher level data from a route that doesnt have a loader. Nested routes feature || Pre-Populating backend Data with a form |Avoiding two seperate loaders:  Fetch single data within diff components fr diff usage.
+  //To do this create a parent route whr components that needs the same loader function can be nested child routes. Set the loader in the parent route.
+  //Slight note with useLoaderData: it looks for the closest available loader data and the highest level at which it looks for this is the route definition for which the component is loaded. To access parent loader data in nested routes, we use the useRouteLoaderData.
+  //useRouteLoaderData:  To access parent loader data in nested routes. First, add an id to the parent route after the path. This useRouteLoaderData now takes the route id created as an agrument.
+    <Route path=':eventId' loader={itemLoader} id='event-detail'>
+      <Route index element={<EventDetailPage />} />
+      <Route path='edit' element={<EditEventPage />} />
+    </Route>
+
+    const EventDetailPag = () => {
+      const eventItem = useRouteLoaderData('event-detail');
+            return (    
+        <EventItem event={eventItem}/>
       )
     };
+    export default EventDetailPage;
 
-  //useNavigation - To get some feedback on data loading. Import useNavigation. Call and assign to a const. Dynamically update jsx with it. e.g {navigationConst.state === 'loading' && <p>Loading...</p>}
-    
-//HOW TO PASS STATE DATA FROM ONE COMPONENT TO ANOTHER: (https://medium.com/@babux1/how-to-pass-state-data-from-one-component-to-another-in-react-js-9b4850887163#:~:text=One%20of%20the%20main%20methods,child%20component%20as%20an%20attribute.)
-  //One of the main methods to pass state to another component in React is via props. Props are read-only data that are passed from a parent component to a child component. 
-  //NOTE: To pass state data as props, we need to define the state in the parent component and pass it to the child component as an attribute.
-  //OR To pass a state variable to another component that is not related, you will need to lift the state up to a common ancestor component and then pass it down as a prop to the desired component.
-  //OR For passing the data from the child component to the parent component, we have to create a callback function in the parent component and then pass the callback function to the child component as a prop. This callback function will retrieve the data from the child component.
+    //Default Value | Pre-Populating backend Data with a form 
+    <input id='title' type='text' name='title' required defaultValue={data ? data.name : ''}/>
+      </>
+
+  //SUBMITTING DATA to Backend|Extracting: Default/Standard
+  //ACTIONS Functions to SEND DATA to Backend : Can add actions to send data to the backend just like we use loader to fetch.
+  //React Router <Form></Form> Component and triggering actions that belongs to the currently active route    
+  //Define and export async action function; receives an object of properties like request and params. The request object contains the form data.
+  //Use the special Form component/tag (import) from react-r-d; whc captures the form data and sends it to actions. Set method to POST. NOTE: Name attributes must be on the form element(all inputs/textareas) to be able to extract values and send to the backend. Form prevents default submission.
+  //To get the form data, call the formData method on the request object and await it; set to a const data|const data = await request.formData()|. On this data object, call the get method (set to a var) to get access to diff input field values submitted. To get, pass a string with diff identifiers as set in the form name attribute.|const title = data.get('title');| For multiple fields, use an object- const eventsData ={ title: data.get('title), place: data.get('place)...}
+  //It's this eventsData that should be sent to the backend; stringifyung it with JSON.Stringify.
+  //With action defined, back to app.jsx; import it ..Use as value to action prop within route page.
+  //Redirect : Navigating the user away after successfuly submitting a form. Import redirect. Return redirect with path specified. return redirect('/events');
+    import { json, redirect } from 'react-router-dom';
+      const NewEventPage = () => {
+        return (
+          <EventForm />
+        )}
+    export default NewEventPage;
+
+    export async function action({ request }) {
+        const data = await request.formData();
+        const eventData = {
+          title: data.get('title'),
+          image: data.get('image'),
+          description: data.get('description')
+        }
+        const response = await fetch('http://localhost:8000/events', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(eventData)    
+        });
+        if (!response.ok){
+          throw json({
+            message: 'Could not save events...',
+            status: 500
+          });
+        }
+        return redirect('/events');
+      } 
+    //The Event form component
+      import { Form } from 'react-router-dom'
+      const EventForm = ({ event}) => {
+        return (
+          <Form method='post'>
+              <p>
+                  <label htmlFor='title'>Title</label>
+                  <input id='title' type='text' name='title' required defaultValue={event ? event.title : ''}/>
+              </p>
+          </Form>
+        )};
+
+    //Trigger the action of a different/another path/route: Add action prop and set the path.
+    <Form method='post' action="/target-path"></Form> 
+
+  //useActionData Hook:Gives us access to the data returned by the action. Just like loaders, ine can return responses in action and use them in component pages with useActionData. 358  
+    if(response.status === 422 ){ //From action function
+      return response;
+    }
+    import { useActionData } from 'react-router-dom'
+    const actionData = useActionData();
+    {actionData && actionData.error && <p>Please fill out all required inputs.</p>}
+
+  //RE-USING ACTIONS VIA REQUEST METHOD: POST/PATCH | Using the same form with diff methods.
+  //Define and export action function in a file component. Make the code in this action dynamic. 
+  //Set the method property within the components using/rendering this Form element or component
+  //In the Form component itself, accept and destructure a method prop; set this to the method property on the Form tag el.
+  //Can now get access to this method within the action function with the help of the request object; use request object next to params in action. const method: request.method;
+  //Now set this const method as a value for the method of sending the request to the backend in the action body rather than hardcoding it.
+  //Set dynamic url //Now use this defined action in all needed routes. To do this, in app.jsx import action as desiredName on a new line. Then set this as the action value for needed routes/pages.
+  import { Form, json, redirect } from 'react-router-dom'
+    const EventFrm = ({method, event}) => {    
+      return (
+        <Form method={method}>
+            <p>
+                <label htmlFor='title'>Title</label>
+                <input id='title' type='text' name='title' required defaultValue={event ? event.title : ''}/>
+            </p>
+        </Form>
+      ) }  
+    export default EventFrm;
+
+    export async function action({ request, params }) {
+      const method = request.method;
+      const data = await request.formData();
+      const eventData = {
+        title: data.get('title'),
+        description: data.get('description')
+      }
+      let url = 'http://localhost:8000/events'; 
+      if(method === 'PATCH') {
+          const eventId = params.eventId;
+          url = `http://localhost:8000/events/${eventId}`;
+      }
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData)
+      }); 
+      if (!response.ok){
+        throw json({
+          message: 'Could not save events...',
+          status: 500
+        }); }
+      return redirect('/events');
+    }
+    //
+    const EditEventPage = () => {
+      return (
+              <EventForm method="patch"/>
+      )}
+    export default EditEventPage;
+
+//useSubmit Hook: Submitting Data Programmatically(using actions without the react inbuilt Form component): useSubmit Hook
+  //Define and export action function. Import in app.jsx. Use as action value for needed route.
+  //Import useSubmit hook, store in a constant. Call this submit function whr needed. It receives two arguments: First, data to be submitted (an object; as defined int the action function). Second, allows one to set the same values that can be set on a form, e.g method:'delete', action-to a diff path if needed...
+  import { useSubmit } from 'react-router-dom';
+  const EventItem = ({ event }) => {
+    const submit = useSubmit();
+      function startDeleteHandler(){
+        const proceed = window.confirm('Are you sure?');
+        if(proceed) {
+          submit(null, {method: 'delete'});
+        }
+      };
+    return (
+      <>
+          <h1>{event.title}</h1>
+              <button onClick={startDeleteHandler}>Delete</button>
+      </> )
+  }
+  export async function deleteLoader ({params, request}){
+    const id = params.eventId;
+    const response = await fetch('http://localhost:8000/events/' + id, {
+      method: 'DELETE'
+      // method: request.method
+    });
+    if (!response.ok){
+      throw json({
+        message: 'Could not save events...',
+        status: 500
+      });
+    }
+    return redirect('/events');
+  }
+
+  //Confirm
+  const proceed = window.confirm('Are you sure?');
+  if(proceed){
+      //
+  }
   
+  //useNavigation - To get some feedback on data loading. Import useNavigation. Call and assign to a const. Dynamically update jsx with it. e.g {navigationConst.state === 'loading' && <p>Loading...</p>}
+  //Getting Feedback upon form submission 
+  //Disabling button
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+  <>
+    <button disabled={isSubmitting}>Cancel</button>
+    <button disabled={isSubmitting}>{ isSubmitting ? 'Submitting' : 'Save'}</button>
+  </>
 
-//FETCHING DATA FROM BACKEND rather than just bringing in a json file..
-  //JSON SERVER: Use json Server: A libray that lets you create a mock API and you can send get post put patch delete request so you can create CRUD 'Create, Read, Update, Delete' functionality. All you have to do is create a json file and you can put any type of resource you want in it.
-  //JSON File://(https://www.npmjs.com/package/json-server) (https://blog.hubspot.com/website/json-files) A JSON file stores data in key-value pairs and arrays; the software it was made for then accesses the data. JSON allows developers to store various data types as human-readable code, with the keys serving as names and the values containing related data. JSON syntax is derived from JavaScript object notation syntax:
-  //The most common use of JSON data and files is to read data from a server for a website or web application to display — and change data given the correct permissions.
-                // Data is in key/value pairs
-                // Data is separated by commas
-                // Curly braces hold objects
-                // Square brackets hold arrays
-  //Keys must be strings, and values must be a valid JSON data type, i.e String, Number, Object, Array, Boolean, Null.            
-  //What are IDEs? An integrated development environment (IDE) is a software application that helps programmers develop software code efficiently.
+  //useFetcher Hook: Sending requests behind the scene. Data fetching/submission or triggering an action without navigating to a page(where the loader or action belongs). This hook when executed gives an object with useful properties and method like Form, submit, data, state(can be idle, loading, submitting) etc
+  //Using the <fetcher.Form></fetcher.Form>, an action will be triggered but a route transition will not be initialized. import useFetcher from react-r-d. Rm to add the action attribute with the path/route for whc action to be triggered if it's not the same component.
+  //Updating the UI after submission, destructure the state and data object for conditional feedback-  with useEffect. Use the data and state as dependency arrays to update the UI if the useEffect code changes. Rm, action must always be defined-exported, imported and value set in app.jsx.  
+    const NewsletterPage = () => {
+      return (
+          <NewsletterSignup />
+      );
+    }
+    export default NewsletterPage;
+    export async function action({ request }) {
+      const data = await request.formData();
+      const email = data.get('email');  
+      //Update code & send to backend newsletter server ...
+      console.log(email);
+      return { message: 'Signup successful!' };
+    };
+
+  const NewsletterSignup = () => {
+    const fetcher = useFetcher();
+    const { data, state } = fetcher;
+
+    useEffect(() => {
+      if(state === 'idle' && data && data.message) {
+        window.alert(data.message + 'Sign Up Succesful!')
+      }
+    }, [data, state]);
+      return (
+          <fetcher.Form method="post" action='/newsletter' className={classes.newsletter}>
+            <input type="email" placeholder="Sign up for newsletter..." aria-label="Sign up for newsletter" />
+            <button>Sign up</button>
+          </fetcher.Form>
+        );
+  }
+
+  export default NewsletterSignup;
+
+
+  //DEFER Function: Display some parts of the UI/render a component already while data is loading or being fetched. (defer function, Await, Suspense...) - 360.
+
+//HOW TO PASS STATE DATA FROM ONE COMPONENT TO ANOTHER: Props
+//What are IDEs? An integrated development environment (IDE) is a software application that helps programmers develop software code efficiently.
   
 //INSTALL JSON SERVER: (on bash terminal, rem to cd into the project directory) install json server: Run 'npm install json-server' (or as dev dependency 'npm i -D json-server'). And inside the package.json file, within script, beneath preview, add ... "server": "json-server --watch src/jobs.json --port 8000" .
-  //And run it using 'npm run server' on same terminal.. Copy link on the Endpoint and paste in the broswer..data is being displayed in the browser. So, we essentially now have a backend. 
-  //Set LIMIT of backend data being fetched : 'http://localhost:8000/jobs?_limit=3'
-  //RUN backend(json) SERVER: On terminal, cd into project directory... 'npm run server'
-  //TRY CATCH: The try statement allows you to define a block of code to be tested for errors while it is being executed. The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
-  //res.json: The res. json() function sends the response as JSON format. It automatically converts the JavaScript object into a JSON-formatted string. The parameter body can be of any JSON type, which includes object, array, string, Boolean, number, or null.
-  
-//The useEffect: It helps in performng side effects in components. For instance, in fetching data. It takes two arguments; a function and a dependency. Learnt that this hook runs on every render; whenever there's a change in the dependency which can actually cause an unending loop, in that case, it's preferable to inlude the second argument which in most cases is an empty array.This makes the useeffect run only on the first render.
+  //A libray that lets you create a mock API and you can send get post put patch delete request so you can create CRUD 'Create, Read, Update, Delete' functionality. All you have to do is create a json file and you can put any type of resource you want in it.
+  //Set LIMIT of backend data being fetched : 'http://localhost:8000/jobs?_limit=3' ... //RUN backend(json) SERVER: On terminal, cd into project directory... 'npm run server'
   
 //CREATE PROXY: Mostly for project deployment..A proxy server is a server application that acts as an intermediary between a client requesting a resource and the server providing that . To create a proxy, do that within the vite.confif file ... In the server object beneath the port, add :
-  // proxy: {
-  //   '/api': {           i.e if it's prefix with slash api, we want to use this target object...
-  //     target: 'http://localhost:8000',
-  //     changeOrigin: true,
-  //     rewrite: (path) => path.replace(/^\/api/, ''),
-  //   }
-  // }
+  // proxy: { '/api': { target: 'http://localhost:8000', changeOrigin: true, rewrite: (path) => path.replace(/^\/api/, ''),}}
+  
+//Set a Form's DEFAULT field value: add the default field value within the html tag to the state default value.
+  
+//MAKING REQUEST TO THE BACK-END; EDIT, DELETE, ADD, SUBMIT.. //The POST (Add/Send)//GET REQUESTS(retrieve data). //PUT REQUEST(EDIT) //DELETE REQUEST
+  //To get, post, put, delete data, Configure the request(fetch function) and set  the method.
 
-//useParams: To get the id of the each job page, use the use Params Hooks from react router dom. Import useParams...
-  
-//DATA LOADER from React Router: With a data loader, we basically create a function within a file and then export and use it in other areas i.e as a global state and use in other componenets.
-  
-//WORKING WITH FORM
-  //Adding a piece of state for every field in the form; when there's a change in the input/field, the state is being changed as well.
-  //Adding a piece of state item for each field. Can be done two ways: 
-  //A, have a single object in the state and have all the fields in that object or B, do a seperate piece of state for every field. Then, we can use the useState hook. 
-  //Import the useState..Create diff states for diff fields. Add a value attribute to each fields in the return jsx ,set value to the piece of state i.e value={type}
-  //NOTE: To make the form update with state, rm to add the onChange event handler.. Set this onChange event to a function that will take in an event param. this param has on it, a target.value which will be whatever is selected or typed in the field.
-  //Then, setType(function to run the state) to e.target.value.
-  // value={type} 
-  //   onChange={(e) =>setType(e.target.value)}>
-  
-  //Form Submission: React19:'action attribute'
-  //To submit a form, use the onSubmit Function..can set it to a created function that will take in an event parameter.. rm e.preventDefault to stop the behaviour.
-  //Construct an object from the form field that we want to submit to the api.
-  
-  //Set a Form's DEFAULT field value: add the default field value within the html tag to the state default value.
-  
-//MAKE REQUEST TO THE BACK-END; EDIT, DELETE, ADD, SUBMIT..
-  //The POST (Add)method sends data to the server which may modify the server's state i.e that is designed to send loads of data to a server from a specified resource. POST is used to send data to a server to create/update a resource. It's best to have the post request in the main app file; the edit, delete and submit. 
-  
-  //UseNavigate: |REDIRECT|
-  //After submission, to redirect user to the job page, use useNavigate hook from raect-router-dom. To use this useNavigate, first initialize it as a var and set to useNavigate() below the state..Then, simply return navigate and whr to redirect to. e.g return navigate('/jobs');
-  //Since the addJobSubmit is being passed in as a prop, in the main app.jsx route within the AppJobPage comp, insert the addJobSubmit with value set to a function (addjob) and then create the 'addjob' function above the routes and it will take in the newJob
-  
-  //GET REQUESTS: GET requests are intended to retrieve data from a server and do not modify the server's state.
-
-  //PUT REQUEST(EDIT): PUT method is used to create a new resource or replace a resource.
-
-  //DELETE REQUEST
-  //(This 'deleteJob' request function will be passed into the single jobPage router below as a prop and to the JobPage component as a prop as well. And on the button, run a function onClick set to another function called onDeleteClick and pass in the job.id.. JoPage line 101). 
-  //Write the onDeleteClick function above in the Jobpage, pass in the 'jobId', add a confirmation to the delete using window.confirm JobPage.jsx line 12...
-  //Actual delete Request to the Api ...App.jsx line 29
-  
 //REACT TOASTIFY for Notification:2:46:12 (cd) npm i react-toastify
-  //Set Up: In the Layout Component, import ToastContainer from react-toastidy. Also import the css file: (import 'react-toastify/dist/ReactToastify.css') Then put the <ToastContainer anywhere within the container/>return./>
-  //To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error JobPage line 20... e.g toast.success('Job Deleted Successfully');  
-  
+  //Set Up: In the Layout Component, import ToastContainer from react-toastidy. Also import the css file: (import 'react-toastify/dist/ReactToastify.css') Then use <ToastContainer anywhere within the container.
+  //To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error
   
 //DEPLOYMENT: Production version of the site
   //Close the development/local server.. Then, run 'npm run build' ..This will create a new folder called dist. Dist is the production build.
@@ -294,16 +561,10 @@
     // The src folder is our react application
     // main.jsx file is the entry point
      
-  
 //Writing JSX
-  //JSX stands for JavaScript XML. It is a syntax extension for javascript. The part that looks like HTML, <h1>Hello world</h1>, is something called JSX.
-  //A basic unit of JSX is called a JSX element. JSX elements looks exactly like HTML! The only noticeable difference is that you would find it in a JavaScript file, instead of in an HTML file.
-  const p1 = <p id='large'>Large Font</p>;
-  const p2 = <p id='small'>Small Font</p>;
-  // JSX elements are treated as JavaScript expressions. They can go anywhere that JavaScript expressions can go. This means that a JSX element can be saved in a variable, passed to a function, stored in an object or array…
-  // JSX elements can have attributes, just like how HTML elements can.  A JSX attribute is written using HTML-like syntax: a name, followed by an equals sign, followed by a value. The value should be wrapped in quotes.
-  // You can nest JSX elements inside of other JSX elements, just like in HTML.
-  // NOTE: If a JSX expression takes up more than one line, then you must wrap the multi-line JSX expression in parentheses. This looks strange at first, but you get used to it: 
+  //JSX stands for JavaScript XML. It is a syntax extension for javascript. 
+  const p1 = <p>Large Font</p>;
+  //If a JSX expression takes up more than one line, must wrap the multi-line JSX expression in parentheses. 
   (
       <a href="https://www.example.com">
           <h1>
@@ -320,29 +581,12 @@
         </h1>
       </a>
     );
-  
-  const myDiv = (
-      <div>
-          <h1>Hello World</h1>
-      </div>
-  );
-  
-  // JSX Outer Elements: There’s a rule that we haven’t mentioned: a JSX expression must have exactly one outermost element. The first opening tag and the final closing tag of a JSX expression must belong to the same JSX element!.
-  // If you notice that a JSX expression has multiple outer elements, the solution is usually simple: wrap the JSX expression in a <div> element.
-
   //Rendering JSX
   //To render a JSX expression means to make it appear on screen.
 
-  // It is essential to understand that React relies on two things to render: what content to render and where to place the content.
-  // Use the document object which represents our web page.
-  // Uses the getElementById() method of document to get the Element object representing the HTML element with the passed in id(app).
-  // Stores the element in container.
+  //React relies on two things to render: what content to render and where to place the content. It uses the document object which represents our web page. Stores the element in container.
   // We use createRoot() from the react-dom/client library, which creates a React root from container and stores it in root. root can be used to render a JSX expression. This is the “where to place the content” part of React rendering.
   // Lastly,uses the render() method of root to render the content passed in as an argument. Here we pass an <h1> element, which displays Hello world. This is the “what content to render” part of React rendering.
-
-//Self-Closing Tags: in JSX, you have to include the slash(/). If you write a self-closing tag in JSX and forget the slash, you will raise an error: <br /> <img src ="" />
-
-
   
 //class vs className
   //In HTML, it’s common to use class as an attribute name. In JSX, you can’t use the word class! You have to use className instead. This is because JSX gets translated into JavaScript, and class is a reserved word in JavaScript.
@@ -1865,6 +2109,3 @@ import { element } from 'prop-types';
 
 
     //SPLITTING Individual SLICES into different files - Vid 305
-
-
-//REACT ROUTING
