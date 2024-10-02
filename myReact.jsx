@@ -77,7 +77,6 @@
   //Above the App.jsx, import the ffg at the top:
   import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
   import HomePagee from './Pages/HomePagee';
-  import MainLayoutt from './layouts/MainLayoutt';
 
   const router = createBrowserRouter(createRoutesFromElements(
       <Route index element={<Homepagee/>} />)
@@ -188,9 +187,9 @@
     
     export default myProd;
 
-    //UseNavigate: |REDIRECT|
-      //Used after submission, to redirect user to the job page, use useNavigate hook from raect-router-dom. To use this useNavigate, first initialize.. const navigate = useNavigate();
-      //Then, simply return navigate and whr to redirect to. e.g navigate('/jobs'); Or return navigate('/jobs');
+    //UseNavigate: 
+      //Used after submission, to re-direct user to the job page, use useNavigate hook from raect-router-dom. To use this useNavigate, first initialize.. const navigate = useNavigate();
+      //Then, simply return navigate and whr to re-direct to. e.g navigate('/jobs'); Or return navigate('/jobs');
       import { useNavigate } from 'react-router-dom';
       function submitForm(){
         const navigate = useNavigate()
@@ -340,7 +339,7 @@
   //To get the form data, call the formData method on the request object and await it; set to a const data|const data = await request.formData()|. On this data object, call the get method (set to a var) to get access to diff input field values submitted. To get, pass a string with diff identifiers as set in the form name attribute.|const title = data.get('title');| For multiple fields, use an object- const eventsData ={ title: data.get('title), place: data.get('place)...}
   //It's this eventsData that should be sent to the backend; stringifyung it with JSON.Stringify.
   //With action defined, back to app.jsx; import it ..Use as value to action prop within route page.
-  //Redirect : Navigating the user away after successfuly submitting a form. Import redirect. Return redirect with path specified. return redirect('/events');
+  //REDIRECT : Navigating the user away after successfuly submitting a form. Import redirect. Return redirect with path specified. return redirect('/events');
     import { json, redirect } from 'react-router-dom';
       const NewEventPage = () => {
         return (
@@ -455,6 +454,7 @@
         const proceed = window.confirm('Are you sure?');
         if(proceed) {
           submit(null, {method: 'delete'});
+          // submit(null, {action='/logout', method: 'post'}); //Trigger an action of another route
         }
       };
     return (
@@ -530,8 +530,51 @@
 
   export default NewsletterSignup;
 
+  //App JSX Events App
+    import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
+    import './App.css';
+    import React from 'react';
+    import HomePage from './pages/Home';
+    import NewsletterPage, {action as newsletterAction} from './pages/Newsletter';
+    import EventsPage, {loaderData} from './pages/Events';
+    import EditEventPage from './pages/EditEvent';
+    import EventDetailPage, { eventDetailLoader, deleteLoader } from './pages/EventDetail';
+    import NewEventPage from './pages/NewEvent';
+    import ErrorPage from './pages/Error';
+    import RootLayout from './layout/RootLayout';
+    import EventsLayout from './layout/EventsLayout';
+    import { action as dynamicEventAction } from './components/EventForm';
+
+    const App = () => {
+      const router = createBrowserRouter(
+        createRoutesFromElements(
+          <Route path='/' element={<RootLayout />} errorElement={<ErrorPage />}>
+            <Route index element={<HomePage />} />
+            <Route path='/newsletter' element={<NewsletterPage />} action={newsletterAction} />
+            <Route path='events' element={<EventsLayout />}>
+              <Route index element={<EventsPage />} loader={loaderData} />
+              <Route path=':eventId' loader={eventDetailLoader} id='event-detail'>
+                  <Route index element={<EventDetailPage />} action={deleteLoader}/>
+                  <Route path='edit' element={<EditEventPage />} action={dynamicEventAction} />
+              </Route>
+              <Route path='new' element={<NewEventPage />} action={dynamicEventAction} />
+            </Route>
+          </Route>)
+      )
+      return (
+        <RouterProvider router={router} />
+      )
+    }
+    export default App;
 
   //DEFER Function: Display some parts of the UI/render a component already while data is loading or being fetched. (defer function, Await, Suspense...) - 360.
+
+//DEPLOYEMENT:
+  //Test Code: Manual and automated test.
+  //Optimize Code: Lazy Loading - Only load a component when it's needed. 387
+  //Build App: Run 'npm run build'. Creates a build folder in our react app file. Gives a pdctn ready bundle of code(minified code). The content of this build folder is what will be deployed to a server.
+  //Deploy/Upload App to a server: a static site host(not a/its server side host) is needed for this; Firebase hosting for instance. (https://firebase.google.com/docs/hosting)
+
 
 //HOW TO PASS STATE DATA FROM ONE COMPONENT TO ANOTHER: Props
 //What are IDEs? An integrated development environment (IDE) is a software application that helps programmers develop software code efficiently.
@@ -2109,3 +2152,26 @@ import { element } from 'prop-types';
 
 
     //SPLITTING Individual SLICES into different files - Vid 305
+
+    //Black: background-color: #242424;
+
+  //Conditionally dispaly an info from the backend: Info|Background image|Image in a Div
+  const MovieCard = ({ movies }) => {
+      const isRecentlyAdded = (recentlyAdded) => {
+          return recentlyAdded === true;
+      }
+    return (
+      <div>
+          <ul>
+              {movies.map((movie) => (
+                  <li key={movie.id}>
+                      <Link to='/'>
+                          <div className={classes.cards} style={{backgroundImage: `url(${movie.image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                              {isRecentlyAdded(movie.recentlyAdded) && <h5>Recently added</h5>}
+                              {movie.netflixProduced === true && <div> <img src={netflixlogo}/> </div>}
+                          </div>
+                      </Link>
+                  </li> ))}
+          </ul>
+      </div>)}
+  export default MovieCard;
