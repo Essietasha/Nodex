@@ -1,5 +1,5 @@
-//React is a User Interface(UI) library. It is used for building user interfaces for web applications based on components.
-//ReactJS is primarily a front-end JavaScript library used for building user interfaces (UI) in web applications. Build user interfaces out of individual pieces called components written in JavaScript.
+//React - a User Interface(UI) library. It is used for building user interfaces for web applications based on components.
+//ReactJS - a front-end JavaScript library used for building user interfaces (UI) in web applications. Build user interfaces out of individual pieces called components written in JavaScript.
 //Features:
 //JSX
 //Components
