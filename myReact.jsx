@@ -418,11 +418,14 @@
         title: data.get('title'),
         description: data.get('description')
       }
+
       let url = 'http://localhost:8000/events'; 
+
       if(method === 'PATCH') {
           const eventId = params.eventId;
           url = `http://localhost:8000/events/${eventId}`;
       }
+
       const response = await fetch(url, {
         method: method,
         headers: {
@@ -430,11 +433,13 @@
         },
         body: JSON.stringify(eventData)
       }); 
+
       if (!response.ok){
         throw json({
           message: 'Could not save events...',
           status: 500
-        }); }
+        }); 
+      }
       return redirect('/events');
     }
     //
@@ -1554,16 +1559,72 @@
   //IDEA: Create a context value and then provide that value, wrap this context around multiple components of your app. Also, this context value can easily be connected to State.
   //Steps:
   //Create a (store) folder in src; data and state store for the entire application or for multiple components. Within it, create a (shopping-cart-context.jsx) file.
-  //import { createContext } from 'react.
-  //Store this createContext function in a value: const CartContext = createContext();
-  //Give an initial/default value to the CarContext constance: num, string, object or array...
-  //EXport: Providing/wrapping this context to the application so that the wrapped componennts can access the value defined in the context. To do this, export the context component.
-  //Import: From a main components where other components can access it. E.g App.jsx import { CartContext } from './store/shopping-cart-context.jsx';
-  //Use the Imported Context as a Component or wrapper around the other components that will need ts value. <CartContext.Provider></CartContext.Provider>
-  //Set a value prop on the context provider; preferably same value as set in the CartContext component. Or otherwise defined in the App component as an object equivalnet to the value in the CartContext component.  
-      //However, in order to update state via Context, can manually create a CartContext.Provider value and then pass this to the CCP instead of passing the state directly.
-      //This can then be set as the value of the CartContextProvider and used within other components(or even destructure) to make state updating easy and re-render on every change.      
-  //STEP1      
+  //import { createContext } and useState-if nid from 'react.
+  //Create a CounterContext constant and set it to createContext: const CartContext = createContext();
+  //Pass in the default/initial values to createContext: num, string, object or array...
+  //Create the CounterProvider component that'll take in children.
+  //Define your state and setState
+  //Return a CounterContext.Provider that'll take in the count and setCount as the values of the value prop
+  //Pass in children – it represents everything to be nested when the Context is consumed
+  //Export CounterContext and CounterProvider
+
+  //CONSUMING Context
+  //Import: In the App.jsx or RootLayout, import CartContextProvider(import { CartContextProvider } from '../store/CounterContext); and wrap all other components it.
+  //Now, inside the GrandChild component where the count state and setCount function are being used, import useContext and CounterContext from the counterContext file.
+  //Also, pull out the count state and setCount from the CounterContext: const { count, setCount } = useContext(CounterContext); and use as needed.
+  
+  //1. BUTTON COUNTER:
+  import { createContext, useState } from "react";
+  const CountContext = createContext({
+        count: 0,
+        setCount: () => {}
+    });
+    
+    const CountProvider = ({ children }) => {
+      const [count, setCount] = useState(0);
+
+      const increment = () => {
+          setCount(prevState => prevState + 1)
+      }
+        return (
+            <CountProvider.Provider value={{ count, setCount, increment }}> 
+            {children} 
+            </CountProvider.Provider>
+        )
+    }
+  export { CountContext, CountProvider};
+
+  //2. In the ROOTLAYOUT, wrap all elements with CountProvider
+  import { CounterProvider } from '../store/CounterContext';
+  const RootLayout = () => {
+    return (
+      <>
+      <MovieProvider>
+          <MainNavigation />
+          <Outlet />
+      </MovieProvider>
+      </>
+    )
+  }
+  export default RootLayout;
+
+  //3.Within needed nested child componenr, useContext.
+  import { useContext } from 'react';
+  import { MovieContext } from '../store/MovieContext';
+  const MyCounter = () => {
+    const { count, increment } = useContext( MovieContext ); 
+    return (
+      <div>
+        <h3>My List {count}</h3>
+        <button onClick={increment}>Increase Count</button>
+        {/* <button onClick={() => {setCount(count + 1)}}>Increase Count</button> */}
+      </div>
+    )
+  }
+  export default MyCounter;
+  
+  
+  //EXAMPLE 2: STEP1      
     import { createContext } from 'react';
       const CartContext = createContext({
           items: [],
