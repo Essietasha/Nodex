@@ -581,6 +581,7 @@
   //Deploy/Upload App to a server: a static site host(not a/its server side host) is needed for this; Firebase hosting for instance. (https://firebase.google.com/docs/hosting)
   //Github Deployment: 
   // Close dev server: 'ctrl+C'
+  //Bash - cd path-to-react-project
   // Vscode terminal: 'npm install gh-pages --save-dev'
   // Create a Repo in GitHub
   // Vscode terminal: Follow all command prop from git init, add ., status, commit -m "Mssg", bramch, remote add, push...
