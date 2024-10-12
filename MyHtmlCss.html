@@ -61,7 +61,15 @@
         <em></em>
         <strong></strong>
         <small></small>
-        <blockquote></blockquote>  <!-- The blockquote element represents a section that is quoted from another source -->
+        <dialog>Pop Up/Modals</dialog>
+            <form method="dialog"> <button>Close</button></form>
+        <!-- The <dialog> element in HTML represents a dialog box or other interactive component, such as a pop-up or modal window. This element is useful for creating custom modals, alerts, or other types of interactive elements that require user interaction.
+            FEATURES:
+            ATTRIBUTE: open: <dialog open>This is a dialog.</dialog> When present, this attribute indicates that the dialog is open and visible to the user
+            METHODS: dialogBox.show(): Displays the dialog as a non-modal, meaning the user can still interact with the rest of the page.
+                    .showModal(): Displays the dialog as a modal, meaning the user must interact with the dialog before they can return to the main page content.
+                    .close(): Closes the dialog. -->
+        <blockquote> <cite></cite> </blockquote>  <!-- The blockquote element represents a section that is quoted from another source -->
         <!-- FIELDSET
         The FIELDSET element is used to group related elements in a form. The fieldset tag draws a box around the related elements. 
         You can now nest LABEL elements inside your fieldset element.
@@ -222,9 +230,14 @@
 
 
     <!-- CSS STYLESHEET
+    .sample{user-select: none;}
     padding:
     margin:
+    text-shadow: 5px 0 #232931;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.7);
+
     box-sizing: border-box;
+                                    BORDER-BOX/BOX-SIZING: Note :- when using box-sizing : content-box; the content size remain same while border-box size grows as padding and border grow. but when using box-sizing: border-box; , the size of border-box remains same while size of content decreases as padding and border grow.
 
     Class Selector(.btn{})
     ID Selector(#btn{})
@@ -233,6 +246,15 @@
     Class/ID Creator
     element.class+enter i.e div.box+enter
     element#ID+enter    i.e div#box+enter
+
+    BACKGROUND IMAGE OPACITY
+    body{
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+        background: linear-gradient(to bottom, lightgreen, lightblue);
+
+    url(images/mountain.jpg);;
+    background-size: cover;
+    }
 
     text-align:centre:
     background:
@@ -267,12 +289,22 @@
     list-style-image: url("");
     text-decoration:
     filter:blur{3px};
-    transform: rotate(); The transform property allows you to modify the shape, position, and size of an element without changing the layout or affecting the surrounding elements. It has functions such as translate(), rotate(), scale(), skew(), and matrix().
+    transform:               - The transform property allows you to modify the shape, position, and size of an element without changing the layout or affecting the surrounding elements. It has functions such as translate(), rotate(), scale(), skew(), and matrix().
+    transform: scale(0.8);   - This is a specific type of transformation that changes the size of the element. The value 0.8 means that the element will be scaled to 80% of its original size.
+                                A value less than 1 (e.g., 0.8) makes the element smaller. A value greater than 1 (e.g., 1.2) makes the element larger. A value of 1 means no scaling, so the element retains its original size.
+    transition: transform 0.2s ease-in-out 0.1s;   - This specifies that the transition should be applied to changes in the transform property.
+                            The transition property(transition: transform 0.2s ease-in-out 0.1s;) is a shorthand for:
+                            i.  transition-property
+                            ii. transition-duration
+                            iii.transition-timing-function
+                            iv. transition-delay
+    transform: translateX(-50%): moves the element to the left by 50% of its own width.
     object-fit: cover; This fits img into their contas ans set their aspect ratio autom.
-    border: 1px solid #333;
+    border: 1px solid #333;  Three values (Weight, style, color) 
     border: 3px dotted #fff;
     border-color:
     border-radius:
+                Four values - border-radius: 15px 50px 30px 5px; (first value applies to top-left corner, second value applies to top-right corner, third value applies to bottom-right corner, and fourth value applies to bottom-left corner):
     border-bottom: 4px double #0a0a23;
     border-left: width, style, color; 
                                         border-left: 10px, solid/double, black;
@@ -285,6 +317,7 @@
         border-top-left-radius: ..px;
         border-bottom-right-radius: ..px;
         border-bottom-left-radius: ..px; 
+    Border-width - 4 values (T, R, B, L): border-width: 0px 10px 12px 18px..Clockwise direction. TB & R&L - border-width: 10px 12px
         
     vertical-align: top; To align texts vertically
     z-index: 100;       Z-index is a property you can use to define the order of overlapping HTML elements. Any element with a higher z-index will always be positioned over/above/ontop an element with a lower z-index. When u use - for z-index on an element, it means that element will be placed below other elements.
@@ -325,7 +358,7 @@
 
     BOX-SHADOW
     The box-shadow property lets you apply one or more shadows around an element. Here is basic syntax:
-        box-shadow: offsetX offsetY blurRadius color;
+        box-shadow: offsetX offsetY blurRadius spreadRadius color;
         Here's how the offsetX and offsetY values work:
         A positive offsetX value moves the shadow right and a negative value moves it left
         A positive offsetY value moves the shadow down and a negative value moves it up
@@ -337,10 +370,15 @@
         box-shadow: 5px 5px 10px red; 
         box-shadow: 0px 0px 0px 5px red;
         box-shadow: 0px 0px 20px 0px red;
+            box-shadow: 0 0 20px rgb(0, 0, 0, 0.5);
+
     overflow:hidden/visible; Sometimes to hide any scroll bars that appear when something extends past the viewport.
     opacity:
     a:
-    a:hover;
+    a:hover;            .btn:hover:not(.showContent) {
+                                            background: #e93b81;
+                                            color: white;
+                                        }
     a:active;
     a:visited;
     float:
@@ -353,41 +391,54 @@
     }
 
     CSS POSITIONING: CSS positioning lets you set how you want an element to be positioned in the browser. Once you set the position property of the element, you can move the element around by setting a px or a percentage value for one or more of the top, right, left, or bottom properties.
-    Static: Static is the default positioning for all elements. If you assign it to an element, you won't be able to move it around with top, right, left, or bottom.
-    Relative: When you use the relative value, the element is still positioned according to the normal flow of the document, but the top, left, bottom, and right values become active.
+    Static: Static is the default positioning for all elements. If you assign it to an element, you won't be able to move it around with top, right, left, or bottom. It's the default positioning of elements. Each element goes next/beyond the other.
+    Relative: NOTE: Relative doesn't mean it's relative to anything else on screen. Item gets positioned relative to it's default position and makes it possible to apply some changes to its def p. When you use the relative value, the element is still positioned according to the normal flow of the document, but the top, left, bottom, and right values become active.
                  .chead: {position: relative;
                             top: 100px;
                             left: 100px;}
-    Absolute: When you use the absolute value for your position property, the element is taken out of the normal flow of the document, and then its position is determined by the top, right, bottom, and left properties.
-    Fixed: fixed is a position property value that lets you make an element fixed to the page no matter where the user scrolls to on the page.
+    Absolute:This makes the position relative to the NEAREST positioned ancestor(Move the div 10px left and 12px from the top from its ancestor begnn point). e.g a div inside another div. If it doesn't have an ancestor or no ancestor with a position property set, then the second rule becomes active where it gets pos rel to the top left corner of the webpage. When you use the 
+    absolute value for your position property, the element is taken out of the normal flow of the document, and then its position is determined by the top, right, bottom, and left properties. Best to use a z-index to put an element backward when absolute positioning puts an object on top of another. (z-index:-1)
+    Fixed: Positions an element relative to the top left corner of the browser window. Fixed is a position property value that lets you make an element fixed to the page no matter where the user scrolls to on the page.
     initial
     Inherit
     Sticky: Sticky positioning is a hybrid of relative and fixed positioning. It allows an element to stick to a specific position within its containing element or viewport, based on the scroll position.
-
-
+    Z-Index: Which item determines which item comes comes on top of the other.
+    NOTE: z-index only applies to positioned elements
 
     CSS Cascading Style Sheets GRID* 
      dispaly:grid;
      ON GRID CONTAINER
-        grid-template-columns: 1fr 3fr 1fr
-        grid-template-columns: 200px 300px 200px
-        grid-template-columns: 30% 40% 30%
-        grid-template-columns: repeat(3,1fr)
-        grid-template-rows:
+        grid-template-columns: 1fr 3fr 1fr 1fr 3fr 1fr (Here, we have 6 columns)
+        grid-template-rows: 100px, 200px, 100px
+        grid-template-columns: 200px 400px 200px 300px
+        grid-template-columns: 30% 40% 30% 40%
+        grid-template-rows: repeat(2, 1fr)     ||i.e Two rows, 4 coulmns beneath
+        grid-template-columns: repeat(auto-fill, 300px);  means that the browser will automatically fill the container with as many 300-pixel columns as possible
+          grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-columns: repeat(4, 2fr)
+        grid-template-rows: 200px, 400px
+        grid-template-columns: 200px minmax(400px, 800px)
         grid-gap: /gap:
         grid-auto-rows:
         grid-auto-columns:
         grid-template-areas:
         justify-content:
+        grid-column: span 2;
         align-items: end, start, centre, space-around/between, stretch;
 
 
      ON GRID ITEM
-        grid-column: 1/3;
+        grid-column: 1/3;    or         grid-column: span 2;
         grid-row: 2/4;
-        grid-area:
+        grid-area: 2 / 1 / 3 / 3 ... Shorthand for:
+                        grid-column-start: 1;
+                        grid-column-end: 3;
+                        grid-row-start: 2;
+                        grid-row-end: 3;
         align-self:
         justify-self:
+        order: 1;
 
         SUDO SELECTOR:
         .item:nth-of-type(2) {
@@ -414,27 +465,88 @@
             grid-row: 2/4;
         }
 
+    FLEXBOX WIth GRID: To centre items inside a grid item, we can use the display flex and align property.
 
-    CSS Cascading Style Sheets FLEXBOX*
+    CSS Cascading Style Sheets FLEXBOX* Main/Cross Axis
      display:flex;
+     display:inline-flex; To make the content only occupy as much width as it needs to fit.
      ON FLEX CONTAINER
-        flex-direction:
+        flex-direction: Row(M.a:L-R | C.a:T-B) / Column(M.a:T-B | C.a:L-R)
         flex-flow:
         justify-content:
         align-content:
+        height: 100vh;
         align-items:
+        flex-wrap: wrap;  Useful when u run of space on the horizontal
+                    align-content:center; If we want the contents at the centre of the main container/flexbox container.
+        flex: 1 (Equal width distibution)
+        flex: 2;
+        flex: 0.5;
 
     ON FLEX ITEM
-        order:
-        flex-grow:
-        flex-shrink:
-        flex-basis:
-        align-self: -->
+        order:  Order/arranges elements acc to their orders, the biggest order no is placed at the end of the flexbox. eg .box2 order:10...
+        flex-basis:100px;
+                    flex-basis:0;
+                    flex-basis:auto; Width is determined ac to content of the flexitem.
+        flex-grow: 1; (max-width)
+        flex-shrink:1; (min-width)Using the max-width to find the longest possible text line of the text and the min-width looks at the longest word to determine the minimum width.  
+                    width: 100px;
+                    max-width: Determines how much the item is allowed to grow to.
+                    min-width:flex-basis: (to set the width of the item)
+        FLEX GROW/SHRINK/BASIS: flex: 1, 1, 0
+                                    or flex:1;
+                                    EXAMPLE:
+                                    .box 1 { flex: 1;}
+                                    .box 1 { flex: 2;}
+                                    .box 1 { flex: 3;}
+        align-self: 
+        -->
 
         <!-- SPAN texts in a row/paragraph to the left and right side of the page.
         First, span both texts.
-        Give it a Display property to Flex. Then, justify-content to space between, then Align items to Flex-end. -->
+        Give it a Display property to Flex. Then, justify-content to space between, then Align items to Flex-end. 
+    
+        ROWS vs COLUMN: The key difference between columns and rows is that a column arranges data vertically from top to bottom, while a row arranges data horizontally from left to right.
 
+
+
+
+    BOOTSTRAP FRAMEWORK: (getbootstrap.com) BOOTSTRAP 4: (https://www.w3schools.com/bootstrap4/default.asp)
+    External CSS Layout System
+    Contains premade CSS files that can be included into project.
+            HOW TO USE BOOTSRAP: 
+            1. (getbootstrap.com) CSS
+            2. Can include via CDN(Content Delivery Network) link in our html head... For functionality, include the bootstrap link just bfr the end of the body section.
+             Click on Docs right at the top left corner of the screen to see styles For example...Components...Card
+
+
+    CDN Links:
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+        BOOTSTRAP LAYOUT: The 12 Column System
+                <div class="container">
+                    <div class="row">
+                        <div class="col-2">Hello</div>
+                        <div class="col-4">Hello</div>
+                        <div class="col-6">Hello</div>
+                    </div>
+                </div>
+
+                
+    MY PROJECT: ( CONTAINERS....IMAGES... CARDS.. CAROUSELS... BUTTON(close+)... DROPDOWNS)...ALERTS          
+    BOOTSRAP COMPONENTS: Buttons, Cards, Navs,  etc..
+
+    BOOTSTRAP  Breakpoints: (https://getbootstrap.com/docs/5.3/layout/breakpoints/)
+                Breakpoint	                Class 	    Dimensions
+                    Extra                   small	    None<576px
+                    Small	                sm	        ≥576px
+                    Medium	                md	        ≥768px
+                    Large	                lg	        ≥992px
+                    Extra large	            xl	        ≥1200px
+                    Extra extra large	    xxl	        ≥1400px
+
+                    -->        
 
         <!-- CSS COLORS -->
         <!-- There are two main color models
@@ -452,12 +564,19 @@
         rgb(255, 127, 0) Orange
 
         WAYS TO APPLY COLORS IN CSS
-        1. Hexadecimal/Hex Values
+        1. RGB: background-color: rgb(255, 0, 255, 0.3);
+        //rgb(r, g, b): This function represents a color using the Red-Green-Blue (RGB) color model.
+            Each parameter (r, g, b) can have a value from 0 to 255.
+            Example: rgb(255, 0, 0) represents pure red.
+        //rgba(r, g, b, a): This function is similar to rgb(), but it includes an alpha (a) parameter. The alpha parameter represents the opacity of the color and can range from 0 (completely transparent) to 1 (completely opaque).
+            // rgba(255, 255, 255, 0.3): This color function represents a white color (rgb(255, 255, 255)) with 30% opacity.
+            
+        2. Hexadecimal/Hex Values
         Hex color values start with a # character and take six characters from 0-9 and A-F. The first pair of characters represent red, the second pair represent green, and the third pair represent blue.
         With hex colors, 00 is 0% of that color, and FF is 100%. So #00FF00 translates to 0% red, 100% green, and 0% blue, and is the same as rgb(0, 255, 0).
         #00FF00;
-        2. hsl (hue, saturation, lightness) hsl(243, 50%, 60%)
-        3. Gradient
+        3. hsl (hue, saturation, lightness) hsl(243, 50%, 60%)
+        4. Gradient
         A gradient is when one color transitions into another. The CSS linear-gradient function lets you control the direction of the transition along a line, and which colors are used.
         :linear-gradient(gradientDirection, color1, color2,color3...)
         background: linear-gradient(90deg, rgb(255,0,0), rgb(0,255,0), rgb(0,0,255));
@@ -478,26 +597,39 @@
                             var(--window-color2) 6%,
                             var(--window-color2) 9%
                             ); Note: in this example, we used color variables.
+       
+        CSS DISPLAY: 
+        BLOCK: The default display property for div elements is BLOCK. So when two block elements are next to each other, they stack like actual blocks. For example, your marker elements are all stacked on top of each other.
+        IN-LINE: To position two div elements on the same line, set their display properties to inline-block.
+        IN-LINE BLOCK: Inline-block elements combine characteristics of both block and inline elements. They do not start on a new line like block elements, but they allow other elements to sit beside them on the same line, similar to inline elements.
+        NONE -->
+        
 
-        The default display property for div elements is BLOCK. So when two block elements are next to each other, they stack like actual blocks. For example, your marker elements are all stacked on top of each other.
-        To position two div elements on the same line, set their display properties to inline-block. -->
 
+        <!-- CSS PSEUDO SELECTORS 
+         CSS pseudo-selectors (or pseudo-classes) are special keywords added to selectors that specify a special state of the selected elements. They are used to style elements based on their state, position, or relation to other elements, without needing to add classes or IDs directly to the HTML.
+                * - The universal selector (*) selects all HTML elements on the page
+                a:hover{ }
+                input:focus{ }
+                button:active{ }
+                a:visited{ }
+                li:nth-child(2){}
+                p:nth-of-type(3){ }
+                p:first-child{ }
+                p:last-child{ }
+                p:not(.highlight){ }
+                h1:before { }
+                h1:after{ }
+                input:disabled{ }
+                input:checked{ }
+                p:first-of-type{ }
+                p::first-letter { }
+                p::first-line{ }
+        -->
+            
 
+        <!-- 
 
-        <!-- CSS PSEUDO SELECTORS -->
-        <!-- span[class~="sr-only"]{
-            border: 0;
-            clip: rect(1px, 1px, 1px, 1px);
-            clip-path: inset(50%);
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            white-space: nowrap;
-            white-space: nowrap;
-            position: absolute;
-            padding: 0;
-            margin: -1px;   
-        } 
         You can use CSS to make elements with this class completely hidden from the visual page, but still be announced by screen readers.
         The CSS clip property is used to define the visible portions of an element. The clip-path property determines the shape the clip property should take. 
         Now you need to size these elements down
@@ -530,6 +662,12 @@
         padding-right: 0.5rem;
         }
          
+        COMBINATORS: (https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
+        1. Descendant Combinator
+        2. Child Combinator
+        CHILD SELECTOR: article > p  or select all direct childre .container > * { } ...
+        DESCENDANT SELECTOR: article, p
+
 
           Use a DESCENDANT SELECTOR to target two,three, more or all (div) elements inside an(div) element. To select all, two or more divs in a div element at Once. E.g cat-mouth is a div holding two other divs.
          .cat-mouth div {
@@ -566,8 +704,10 @@
                   }
         
             MEDIA QUERY
-            The @media at-rule, also known as a media query, is used to conditionally apply CSS. Media queries are commonly used to apply CSS based on the viewport width using the max-width and min-width properties. E.g
-                    media (max-width: 768px) {
+            The @media at-rule, also known as a media query, is used to conditionally define breakpoint stylings. Media queries are commonly used to apply CSS based on the viewport width using the max-width and min-width properties. E.g
+            media (min-width: 600px) { i.e 600 screen and above
+                  
+            media (max-width: 600px) { i.e 600 screen and below
                     #piano {
                         width: 358px;
                     }
@@ -599,6 +739,350 @@
                                                 width:633px
                                                 }
                                             }
-                            -->
+                SCREEN SIZES / Breakpoints: Responsive Web Design: Creating web sites which automatically adjust themselves to look good on all devices, from small phones to large desktops.
+                {Mobile Devices: 319px - 480px}
+                {iPads and Tablets: 481px - 1200px}
+                {Laptops:           1201px - 1600px}
+                {Desktops:          1601px and more}
+
+                BOOTSTRAP  Breakpoints: (https://getbootstrap.com/docs/5.3/layout/breakpoints/)
+                Breakpoint	                Class 	    Dimensions
+                    Extra                   small	    None<576px
+                    Small	                sm	        ≥576px
+                    Medium	                md	        ≥768px
+                    Large	                lg	        ≥992px
+                    Extra large	            xl	        ≥1200px
+                    Extra extra large	    xxl	        ≥1400px
+
+
+                WEB HOSTING: Section 4, lesson 29. Making your website available anywhere on the internet. To do this, put the website, project/file and everything it consists of in a web server. This web server is actually connected to the internet. (Opposed to local development).
+                    On Git hub, create a repository. Click Add Files-Upload Files. Note: Do not drag and drop one/main folder, rather open the main folder, drag and drop all related folder/files within it. Add a Read me file. Navigate to setting. Navigate to Pages. Change the branch to main with the drop-down arrow. Click Save. Refresh page a couple of times. Now, you have your website URL… 
+                    NOTE: The dragged in files must contain an “index.html” file.
+                     
+               
+        
+            WEB DESIGN:
+            'You only have 3 seconds to make an impression'
+            'Design is really powerful'
+
+            PRINCIPLES OF WEB DESIGN 
+            (The FOUR PILLARS to Web Design)
+            1. Color Theory (https://color.adobe.com/create/color-wheel)
+            2. Typography
+            3. User Interface Design
+            4. User Experience Design
+        
+            
+            VIDEO TAG
+            (https://www.w3schools.com/tags/tag_video.asp)
+            
+            HTML:    <div class="movieCont visibility">
+                    <video  controls class="vid" id="trailer">
+                        <source src="movie.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="close" onclick="closeMovie()">X</button>
+                </div>
+                
+                CSS:   video.play();
+                    video.pause();
+                    video.currentTime = 0;
+                
+
+                Custom Data Attribute: (data-id="step1") Custom data attributes allow you to store extra information directly on HTML elements. These attributes are not part of the official HTML specification but are defined using the data- prefix, which makes them valid HTML5 attributes.
+                    The data- prefix indicates that this is a custom data attribute.
+                    In this case, data-id is the name of the attribute. The value of data-id in this example is "step1".
+                    Custom data attributes are used to embed custom data within HTML elements. This data can then be accessed and manipulated using JavaScript or CSS.
+
+                    Accessing Custom Data Attributes with JavaScript
+                        You can access the value of a custom data attribute using JavaScript, typically with the dataset property.
+                            // Select the element with data-id="step1"
+                            const step1Element = document.querySelector('[data-id="step1"]');
+
+                            // Access the custom data attribute value
+                            const stepId = step1Element.dataset.id;
+
+                            In this example: 
+                            document.querySelector('[data-id="step1"]') selects the HTML element with data-id="step1".
+                                    step1Element.dataset.id accesses the value of the data-id attribute, which is "step1".
+        
+                FILE PATH:
+                ../essay.png : Go Up a level
+                ./essay.png  or /essay.png : Stay within Current directory
+        
+                                    
+                FONT AWESOME 4 (https://www.w3schools.com/icons/fontawesome_icons_intro.asp)
+                Font Awesome: is a popular icon toolkit and library that provides a wide array of scalable vector icons that can be customized with CSS. It is widely used in web development to easily add icons to web pages, providing visual enhancements and improving the user interface.
+                Usage: Using CDN:     
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+                Customizing Icons with CSS:        .fa-camera {
+                                                        color: red;
+                                                        font-size: 50px;
+                                                    }
+                
+                How to stop font awesome from overriding my custom CSS?
+                1. Use More Specific Selectors:         .custom-container .custom-icon {
+                                                                color: red; /* More specific selector */
+                                                            }
+                2.  Use the !important Rule:         .custom-icon {
+                                                            color: blue !important; /* Custom color with higher priority */
+                                                            font-size: 40px !important; /* Custom size with higher priority */
+                                                        }     
+                3. Load Your CSS After Font Awesome:     
+                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                             <link rel="stylesheet" href="styles.css"> (Your custom stylesheet here)
+                             
+                             
+                Fixed Width Icons in fa: Just like letters and other characters, icons can have different widths, and if you need to vertically align icons like in a list or a menu, this can be a problem. The fa-fw class is used to set icons at a fixed width.
+                        <p>Fixed Width:</p>
+                        <div><i class="fas fa-arrows-alt-v fa-fw"></i> Icon 1</div>
+                        <div><i class="fas fa-band-aid fa-fw"></i> Icon 2</div>
+                        <div><i class="fab fa-bluetooth-b fa-fw"></i> Icon 3</div>             
+                             
+                            
+                        
+                   
+                        
+                        
+                Movies Website : (https://www.pexels.com/)
+
+                To EMBED PDF File into a website/portfolio: drag in pdf file into project folder, install VScode pdf extension, then use the iframe element. (https://www.youtube.com/watch?v=Ll7PA0dtpW0)
+                
+                CSS TRANSITON: Transition 1s ease;
+
+
+                CSS ANIMATION: (https://www.w3schools.com/css/css3_animations.asp)  (https://blog.hubspot.com/website/css-animation#types-of-css-animation)
+                TYPES of CSS Animation: 
+                Text Animation
+                Color Animation
+                Slide-In Animation
+                Rotate Animation
+                Wave Animation
+                Glow Animation
+                Bounce Animation
+                Fade-in Animation
+                Hover Animation
+                Infinite Loading Animation
+                Parallax Scrolling Animation
+
+
+                {CSS Animation Properties:
+                @keyframes
+                animation-name
+                animation-duration
+                animation-delay
+                animation-iteration-count
+                animation-direction
+                animation-timing-function
+                animation-fill-mode
+                animation-play-state}
+
+                The FUNDAMENTAL ELEMENT OF CSS ANIMATION: @keyframes @rule;
+                Keyframe CSS: CSS animations are made up of two parts: keyframes and animation properties.
+                                Keyframes are used to specify how an animated element should appear throughout the animation cycle. At least one keyframe must be defined in a CSS animation, but it's most common to see at least two. Typically, they describe the start and end of the animation. Additional keyframes can be defined to describe any intermediate steps between the start and end of the animation cycle.
+                        @keyframes animation-name {
+                            <percentage > {
+                                property: value;}
+                            <percentage > {
+                                property: value;}
+                    
+                    Note that the @keyframes rule must have the same value as the animation-name property. This allows the browser to match an animation to its keyframes declaration.
+                    Keyframe selectors can use percentages to specify when they take place along the animation cycle. If they are specifying 0% (the start of the animation cycle) or 100% (the end of the animation cycle), then they can use the keywords from or to instead.
+                
+                USING ANIMATION:
+                1. Bind the animation to an element.
+                                div {
+                                    animation-name: slide-right, slide-in, rotate;
+                                    animation-duration: 4s;                      (The animation-duration property defines how long an animation should take to complete.)
+                                    animation-delay: 2s;                         (The animation-delay property specifies a delay for the start of an animation.)
+                                    animation-iteration-count: 3;                (The animation-iteration-count property specifies the number of times an animation should run.)
+                                                            animation-iteration-count: infinite;   - Uses the value "infinite" to make the animation continue for ever.
+                                    animation-direction: normal;                (Specifies whether an animation should be played forwards, backwards or in alternate cycles.):
+                                                            normal - The animation is played as normal (forwards). This is default
+                                                            reverse - The animation is played in reverse direction (backwards)
+                                                            alternate - The animation is played forwards first, then backwards
+                                                            alternate-reverse - The animation is played backwards first, then forwards
+                                    animation-timing-function: ease;              (Specifies the speed curve of the animation):
+                                                            ease - Specifies an animation with a slow start, then fast, then end slowly (this is default)
+                                                            linear - Specifies an animation with the same speed from start to end
+                                                            ease-in - Specifies an animation with a slow start
+                                                            ease-out - Specifies an animation with a slow end
+                                                            ease-in-out - Specifies an animation with a slow start and end
+                                                            cubic-bezier(n,n,n,n) - Lets you define your own values in a cubic-bezier function.
+                                    animation-fill-mode: forwards;                  (Used to have the animation styles applied before or after the animation plays.):
+                                                            normal - the styles will only be applied to the animated element when it’s playing.
+                                                            forwards- then the animated element will retain its style values defined by the last keyframe.
+                                                            backwards- the element will take on the style values defined by the first keyframe before it begins playing.
+                                                            both - the animation’s style values will be applied before and after the animation plays.
+
+                                    }
+
+                2. Add keyframe rule:
+                                @keyframes slide-right {
+                                    from {margin-left: 0px; background-color:red;}
+                                    25% {margin-left: 50px; background-color:green;}
+                                    50% {margin-left: 100px; background-color:yellow;}
+                                    75% {margin-left: 150px; background-color:pink;}
+                                    to {margin-left: 200px; background-color:black;}
+                                }
+
+                ANIMATION SHORTHAND PROPERTY: This example uses six of the animation properties:
+                    div {
+                    animation-name: slide-in;
+                    animation-duration: 5s;
+                    animation-timing-function: linear;
+                    animation-delay: 2s;
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;
+                    }
+                    
+                SHORTHAND: div {
+                            animation: slide-in 5s linear 2s infinite alternate;
+                            }
+
+                SLIDE UP ANIMATION: 
+                                .slideup{
+                                    animation: slideUp 5s normal;
+                                    }
+
+                                @keyframes slideUp{
+                                    from {
+                                        transform: translateY(1%);
+                                        opacity: 0;
+                                    }
+                                    to {
+                                        transform: translateY(0);
+                                        opacity: 1;
+                                    }
+                                }
+
+                //FLASH ANIMATION: 
+                                .challenge .active {
+                                    animation: flash 1s infinite;
+                                }
+                @keyframes flash {
+                                    0% {
+                                        opacity: 0.5;
+                                    }
+                                    50% {
+                                        opacity: 1;
+                                    }
+                                    100% {
+                                        opacity: 0.5;
+                                    }
+                                    }
+
+                Explanation:
+                A. from State
+                transform: translateY(100%): This means the element is translated (moved) vertically by 100% of its own height. The element is positioned 100% of its height below its normal position. For example, if the element's height is 100px, it will be moved down by 100px.
+                        i.e. The element is positioned just below its normal location (moved down by 100% of its height). The element is fully transparent and not visible.
+                opacity: 0: The element is fully transparent at the start of the animation.
+
+                B. to State
+                transform: translateY(0): This means the element is translated back to its original position (no vertical translation). The element is in its normal vertical position.
+                        i.e. The element smoothly moves upward from the translated position to its normal position. The opacity gradually increases from 0 (transparent) to 1 (fully visible). The element reaches its normal position. The element is fully visible.
+                opacity: 1: The element is fully opaque (visible) at the end of the animation.
+               
+                SLIDE UP:  transform: translateY(100%);
+                SLIDE DOWN:  transform: translateY(-100%);
+                SLIDE LEFT:  transform: translateX(100%);;
+                SLIDE RIGHT:  transform: translateX(-100%);;
+
+
+
+
+
+
+            COLOR SCHEME:
+            #EADBC8 (https://www.shutterstock.com/blog/10-gorgeous-color-schemes-for-websites?utm_medium=cpc&gclsrc=aw.ds&gclid=CjwKCAjwydSzBhBOEiwAj0XN4IJaCx4_-fgc2Xbexpn7qqwPj-AIZkh3MVYQPzlpE9f93kWdTLpTthoCn4wQAvD_BwE&gad_source=1&ds_ag=FF%3DColors_AU%3DProspecting&ds_agid=58700008206132928&ds_cid=71700000103667348&ds_eid=700000001508231&kw=&utm_source=GOOGLE&utm_campaign=CO%3DAfrica_LG%3DEN_BU%3DIMG_AD%3DDSA_TS%3Dlggeneric_RG%3DEUAF_AB%3DACQ_CH%3DSEM_OG%3DCONV_PB%3DGoogle)
+
+            How to Remove margin/padding from bootstrap container-fluid(https://stackoverflow.com/questions/26204283/bootstrap-container-fluid-remove-margins-the-right-way-overflow)
+             .container-fluid{
+                        padding: 0;
+                    }
+
+                    body, html { 
+                        overflow-x: hidden;
+                    }
+
+
+
+////////////How can i maintain an animation to happen again each time a section is viewed
+
+                        To make an animation occur each time a section is viewed (i.e., scrolled into view), you can use the Intersection Observer API. This API allows you to observe when an element enters or exits the viewport, and you can trigger animations accordingly.
+                                window.addEventListener("DOMContentLoaded", () => {
+                                    const sections = document.querySelectorAll('.section');
+
+                                    const options = {
+                                        root: null, // relative to the viewport
+                                        rootMargin: '0px',
+                                        threshold: 0.1 // trigger when 10% of the section is visible
+                                    };
+
+                                    const callback = (entries, observer) => {
+                                        entries.forEach(entry => {
+                                            if (entry.isIntersecting) {
+                                                entry.target.classList.add('section-visible');
+                                                // Reset animation
+                                                entry.target.addEventListener('animationend', () => {
+                                                    entry.target.classList.remove('section-visible');
+                                                }, { once: true });
+                                            }
+                                        });
+                                    };
+
+                                    const observer = new IntersectionObserver(callback, options);
+
+                                    sections.forEach(section => {
+                                        observer.observe(section);
+                                    });
+                                });
+
+                        Explanation
+                        Intersection Observer API:
+                        Options:
+                        root: null: The viewport is the root.
+                        rootMargin: '0px': No margin around the root.
+                        threshold: 0.1: Trigger the callback when 10% of the section is visible.
+                        Callback Function:
+                        Checks if each observed entry (section) is intersecting (i.e., visible in the viewport).
+                        If intersecting, adds the section-visible class to start the animation.
+                        Adds an event listener for animationend to remove the section-visible class after the animation completes, ensuring the animation can be triggered again on re-entry.
+                        Resetting Animation:
+
+                        The event listener for animationend ensures that the section-visible class is removed once the animation is complete, allowing the animation to restart when the section is viewed again.
+                        Customization
+                        Animation Duration: Adjust the transition properties in the CSS to control the animation duration.
+                        Intersection Threshold: Adjust the threshold in the JavaScript to control when the animation starts based on how much of the section is visible.
+                        Animation Effects: Customize the CSS to change the type of animation (e.g., fade in, slide in, etc.).
+                        This approach ensures that each time a section is scrolled into view, the animation is triggered, and it resets when the section leaves the viewport, allowing the animation to occur again upon re-entry.
+
+
+                    Centre an item: body{
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        margin: 0;
+                                        min-height: 100vh;
+                                    }
+                    CENTRE A DIV:
+                                margin: 5rem auto;
+                                width: 85%;
+                                max-width: 450px;
+                                min-width: 350px;
+
+            Style a label when the checkbox is checked 
+            .input:checked + .label {
+                color: green;
+                font-weight: bold;
+            }
+                            +   This is the adjacent sibling combinator. It selects the element that is immediately next to the previous element (in this case, the element with the class label that follows the checked input).
+                .input:checked + .label: Applies styles to the .label element that is immediately after a checked .input element, changing the label's color to green and making the font bold.
+                        
+                
+        //Max Characters max-width: 38ch;
+    -->                                                                                      
+            
 </body>
 </html>
