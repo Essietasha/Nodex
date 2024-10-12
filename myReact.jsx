@@ -69,6 +69,60 @@ import { FaMapMarker } from 'react-icons/fa';
 //Note: DO NOT RUN 'npm create vite or npm install' except a new user who hasn't used react before or a third party openinig a zipped react file!
 //Thus, to run an existing react folder. Open folder in VSCode.  Same day && Go to terminal, Run npm run dev. New day && Run 'cd react-app' 'npm run dev'.
 
+//What are IDEs? An integrated development environment (IDE) is a software application that helps programmers develop software code efficiently.
+
+//INSTALL JSON SERVER: (on bash terminal, rem to cd into the project directory) install json server: Run 'npm install json-server' (or as dev dependency 'npm i -D json-server'). And inside the package.json file, within script, beneath preview, add ... "server": "json-server --watch src/jobs.json --port 8000" .
+//A libray that lets you create a mock API and you can send get post put patch delete request so you can create CRUD 'Create, Read, Update, Delete' functionality. All you have to do is create a json file and you can put any type of resource you want in it.
+//Set LIMIT of backend data being fetched : 'http://localhost:8000/jobs?_limit=3' ... //RUN backend(json) SERVER: On terminal, cd into project directory... 'npm run server'
+
+//CREATE PROXY: Mostly for project deployment..A proxy server is a server application that acts as an intermediary between a client requesting a resource and the server providing that . To create a proxy, do that within the vite.confif file ... In the server object beneath the port, add :
+// proxy: { '/api': { target: 'http://localhost:8000', changeOrigin: true, rewrite: (path) => path.replace(/^\/api/, ''),}}
+
+//Set a Form's DEFAULT field value: add the default field value within the html tag to the state default value.
+
+//MAKING REQUEST TO THE BACK-END; EDIT, DELETE, ADD, SUBMIT.. //The POST (Add/Send)//GET REQUESTS(retrieve data). //PUT REQUEST(EDIT) //DELETE REQUEST
+//To get, post, put, delete data, Configure the request(fetch function) and set  the method.
+
+//REACT TOASTIFY for Notification:2:46:12 (cd) npm i react-toastify
+//Set Up: In the Layout Component, import ToastContainer from react-toastidy. Also import the css file: (import 'react-toastify/dist/ReactToastify.css') Then use <ToastContainer anywhere within the container.
+//To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error
+
+//APPLICATION STRUCTURE:
+  // index Html: is the single page since our applicatio is a single page application
+  // The src folder is our react application
+  // main.jsx file is the entry point
+
+//DEPLOYEMENT:
+  //Test Code: Manual and automated test.
+  //Optimize Code: Lazy Loading - Only load a component when it's needed. 387
+  //Build App: Run 'npm run build'. Creates a build folder in our react app file. Gives a pdctn ready bundle of code(minified code). The content of this build folder is what will be deployed to a server.
+  //Deploy/Upload App to a server: a static site host(not a/its server side host) is needed for this; Firebase hosting for instance. (https://firebase.google.com/docs/hosting)
+  //Github Deployment: 
+  //Create a Repo in GitHub
+  //Ignore build folder and nodemudules in gitignore file
+  //Vscode terminal: bash - cd project-folder.. Follow all command prop from git init, add ., status, commit -m "Mssg", bramch, remote add, push...
+  //Vscode terminal: 'npm install gh-pages --save-dev'
+  //Update package.json with this line above- "homepage": "https://yourusername.github.io/your-repository-name"
+  //Update the scripts section by adding predeploy and deploy scripts: 
+    //For Vite:  "predeploy": "npm run build"  AND "deploy": "gh-pages -d dist"
+  //Update Vite Configuration: Add this to vite.config.js file
+    // import { defineConfig } from 'vite';
+    // export default defineConfig({
+    //   base: '/MyRepositoryOrFolderName/',  //Repo or folder name
+    // });
+  //In terminal, Deploy Your App: Enter - npm run deploy
+  //After the deployment is complete, app will be available at the hompepage URL or on GitHub, on this project page, at Settings, then Pages. Can also find the project deployment link there.
+
+  //Update Changes from vsc to GitHub
+    //git status
+    //git add .
+    //git commit -m "Modified"
+    //git push origin main
+
+  //Delete Deployment
+    //Vsc terminal: git push origin --delete gh-pages
+    //Comment out deploy scripts in package.json
+    //Change the Source setting to None to stop using GitHub Pages.
 
 //REACT ROUTING
 //Single-Page Application Routing ||client-side roting (Multiple pages in single-page app)
@@ -575,52 +629,7 @@ export default NewsletterSignup;
 
 //DEFER Function: Display some parts of the UI/render a component already while data is loading or being fetched. (defer function, Await, Suspense...) - 360.
 
-//DEPLOYEMENT:
-//Test Code: Manual and automated test.
-//Optimize Code: Lazy Loading - Only load a component when it's needed. 387
-//Build App: Run 'npm run build'. Creates a build folder in our react app file. Gives a pdctn ready bundle of code(minified code). The content of this build folder is what will be deployed to a server.
-//Deploy/Upload App to a server: a static site host(not a/its server side host) is needed for this; Firebase hosting for instance. (https://firebase.google.com/docs/hosting)
-//Github Deployment: 
-// Close dev server: 'ctrl+C'
-//Bash - cd path-to-react-project
-// Vscode terminal: 'npm install gh-pages --save-dev'
-// Create a Repo in GitHub
-// Vscode terminal: Follow all command prop from git init, add ., status, commit -m "Mssg", bramch, remote add, push...
-// Update package.json with this line above- "homepage": "https://yourusername.github.io/your-repository-name"
-// Update the scripts section by adding predeploy and deploy scripts: "predeploy": "npm run build" AND  "deploy": "gh-pages -d build"
-// In terminal, Deploy Your App: Enter - npm run deploy
-// After the deployment is complete, your app will be available at: a given URL
-// In GitHub, on this project page, go to Settings, then Pages. Can also find the project deployment link there.
 
-
-//HOW TO PASS STATE DATA FROM ONE COMPONENT TO ANOTHER: Props
-//What are IDEs? An integrated development environment (IDE) is a software application that helps programmers develop software code efficiently.
-
-//INSTALL JSON SERVER: (on bash terminal, rem to cd into the project directory) install json server: Run 'npm install json-server' (or as dev dependency 'npm i -D json-server'). And inside the package.json file, within script, beneath preview, add ... "server": "json-server --watch src/jobs.json --port 8000" .
-//A libray that lets you create a mock API and you can send get post put patch delete request so you can create CRUD 'Create, Read, Update, Delete' functionality. All you have to do is create a json file and you can put any type of resource you want in it.
-//Set LIMIT of backend data being fetched : 'http://localhost:8000/jobs?_limit=3' ... //RUN backend(json) SERVER: On terminal, cd into project directory... 'npm run server'
-
-//CREATE PROXY: Mostly for project deployment..A proxy server is a server application that acts as an intermediary between a client requesting a resource and the server providing that . To create a proxy, do that within the vite.confif file ... In the server object beneath the port, add :
-// proxy: { '/api': { target: 'http://localhost:8000', changeOrigin: true, rewrite: (path) => path.replace(/^\/api/, ''),}}
-
-//Set a Form's DEFAULT field value: add the default field value within the html tag to the state default value.
-
-//MAKING REQUEST TO THE BACK-END; EDIT, DELETE, ADD, SUBMIT.. //The POST (Add/Send)//GET REQUESTS(retrieve data). //PUT REQUEST(EDIT) //DELETE REQUEST
-//To get, post, put, delete data, Configure the request(fetch function) and set  the method.
-
-//REACT TOASTIFY for Notification:2:46:12 (cd) npm i react-toastify
-//Set Up: In the Layout Component, import ToastContainer from react-toastidy. Also import the css file: (import 'react-toastify/dist/ReactToastify.css') Then use <ToastContainer anywhere within the container.
-//To use this in any componnet, simply import { tosst } from 'react-toastify'; and call it using toast.success. error
-
-//DEPLOYMENT: Production version of the site
-//Close the development/local server.. Then, run 'npm run build' ..This will create a new folder called dist. Dist is the production build.
-//Can run this with vite. Now run 'npm run preview'..Now, the dist folder is what will be deployed. However, the jobs will not be shown in deployement as we are using a local json server. To correct this, create an API with express or....
-
-//APPLICATION STRUCTURE:
-  // index Html: is the single page since our applicatio is a single page application
-  // The src folder is our react application
-  // main.jsx file is the entry point
-   
 //Writing JSX
 //JSX stands for JavaScript XML. It is a syntax extension for javascript. 
 const p1 = <p>Large Font</p>;
