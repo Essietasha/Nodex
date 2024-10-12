@@ -579,6 +579,16 @@
   //Optimize Code: Lazy Loading - Only load a component when it's needed. 387
   //Build App: Run 'npm run build'. Creates a build folder in our react app file. Gives a pdctn ready bundle of code(minified code). The content of this build folder is what will be deployed to a server.
   //Deploy/Upload App to a server: a static site host(not a/its server side host) is needed for this; Firebase hosting for instance. (https://firebase.google.com/docs/hosting)
+  //Github Deployment: 
+  // Close dev server: 'ctrl+C'
+  // Vscode terminal: 'npm install gh-pages --save-dev'
+  // Create a Repo in GitHub
+  // Vscode terminal: Follow all command prop from git init, add ., status, commit -m "Mssg", bramch, remote add, push...
+  // Update package.json with this line above- "homepage": "https://yourusername.github.io/your-repository-name"
+  // Update the scripts section by adding predeploy and deploy scripts: "predeploy": "npm run build" AND  "deploy": "gh-pages -d build"
+  // In terminal, Deploy Your App: Enter - npm run deploy
+  // After the deployment is complete, your app will be available at: a given URL
+  // In GitHub, on this project page, go to Settings, then Pages. Can also find the project deployment link there.
 
 
 //HOW TO PASS STATE DATA FROM ONE COMPONENT TO ANOTHER: Props
