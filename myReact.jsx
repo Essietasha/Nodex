@@ -119,6 +119,9 @@ import { FaMapMarker } from 'react-icons/fa';
     //git commit -m "Modified"
     //git push origin main
 
+    //OR
+    //In vsc sidebar, go to Source-cotrol. Under changes, click the + button to satge all or individual changes. To commit, write a message above the commit button, then Click. A push icon/button will be displayed. Push your commit to GitHub.
+
   //Delete Deployment
     //Vsc terminal: git push origin --delete gh-pages
     //Comment out deploy scripts in package.json
