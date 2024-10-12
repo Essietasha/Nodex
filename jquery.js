@@ -45,6 +45,8 @@ var divElement = $('<div>', {
 $('#divContainer').append(divElement);
 
 
+=======
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 //if - Script placement within HTML Head
 $document.ready(function(){
     $('h1').css('color', 'blue');
@@ -150,7 +152,11 @@ $('button').on('click', function(){
     $('h1').fadeIn();             
 })
 
+<<<<<<< HEAD
 //Fade Toggle an element
+=======
+//Fade In an element
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 $('button').on('click', function(){
     $('h1').fadeToggle();             
 })
@@ -171,7 +177,11 @@ $('button').on('click', function(){
     $('h1').slideDown();
 })
 
+<<<<<<< HEAD
 //Slide Toggle i.e slide up and down
+=======
+//Slide Toggle
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 $('button').on('click', function(){
     $('h1').slideToggle();
 })
@@ -188,6 +198,7 @@ $('button').on('click', function(){
 $('button').on('click', function(){
     $('h1').slideUp().slideDown().animate({opacity: 0.5});
 })
+<<<<<<< HEAD
 
 //DISABLE AN ELEMENT
 $('#userInput').prop('disabled', true);

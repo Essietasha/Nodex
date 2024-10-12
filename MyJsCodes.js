@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //FUNDAMENTALS:
 //Variables
 //Basic Sytax
@@ -26,6 +27,11 @@ const proceed = window.confirm('Are you sure?');
 if(proceed = true){
     //
 }
+=======
+// alert ('Welcome to my Javascript journey');
+//Prompt
+// prompt ("What is your name");
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 
 //var : Data container/box equals(holding) to a value... e.g var myname = 'Essie';
 
@@ -531,7 +537,10 @@ console.log(dd);
 //Date String
 datestring.innerText = date.toDateString();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 
 // ARRAYS AND OBJECTS
 // Creating Arrays
@@ -3990,10 +3999,17 @@ console.log(vv);
 
 //LOCAL STORAGE: Fetching / exchanging data between two html elements and functions
 //On first element:
+<<<<<<< HEAD
 localStorage.setItem('username', userName);
 const userName = localStorage.getItem('username');
 localStorage.removeItem('username');
 //On second element:
+=======
+localStorage.setItem('user-name', userName);
+localStorage.setItem('pass-word', passwordLimit);
+//On second element:
+const userName = localStorage.getItem('user-name');
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 
 
 //Pad Start / Pad End
@@ -4023,10 +4039,15 @@ var buttonNumbers = document.querySelectorAll('.drum').length;
             this.style.color = 'white';             //Which button was clicked/triggered the event?
         });
     }
+<<<<<<< HEAD
 //Calling Functions within Functions
 
 
 //PassinG FUNCTIONS as Input to other functions. (I)
+=======
+
+//PassinG FUNCTIONS as Input to other functions.
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 
 
 
@@ -4089,6 +4110,7 @@ var Audio1 = new AudioSound('sounds/crash-mp3');
 Audio1.playSound();
 
 
+<<<<<<< HEAD
 //PassinG FUNCTIONS as Input/values to another functions.(II)
 function greetings(userGreeting){
 
@@ -4097,6 +4119,8 @@ function greetings(userGreeting){
     
 greetings(() => console.log('Helooooooooo'));
 
+=======
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 //HIGH ORDER FUNCTION vs CALL BACK Function:
 //HIGH ORDER FUNCTION: A function that is able to take functions as input.
 //CALL BACK Function:  A function that gets passed in as an input
@@ -4160,7 +4184,11 @@ textArea.disabled = true; // Disable the textarea using js
 
                 //OR
                 fetch('https://jsonplaceholder.typicode.com/posts')
+<<<<<<< HEAD
                     .then(res => res.json())
+=======
+                    .then(response => response.json())
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
                     .then(data => console.log(data))
                     .catch(error => console.error('Error:', error));
 
@@ -4177,10 +4205,15 @@ textArea.disabled = true; // Disable the textarea using js
 
 //Asynchronous Requests
 //Asynchronous requests allow other operations to continue while the request is being processed. The program does not wait for the request to complete and continues executing the next line of code. This non-blocking behavior is essential for maintaining a responsive user interface.
+<<<<<<< HEAD
         //The await keyword in JavaScript is used with asynchronous operations, like fetching data from a server, to pause the execution of a function until a promise is resolved (fulfilled or rejected).
         //await ensures that the function execution pauses until the promise from fetch() is either resolved (data is received) or rejected (an error occurs). This way, you get the final result (response) once the asynchronous operation is completed.
         //Without await, the code would continue running without waiting for the fetch operation to complete, which could lead to problems like trying to use data that hasn't been fetched yet.
     async function fetchData() {
+=======
+            //The await keyword is used to pause the execution of an async function until a Promise is resolved or rejected. It can only be used inside async functions.
+async function fetchData() {
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
     const apiUrl = 'https://api.quotable.io/random';
     
     try {
@@ -4221,6 +4254,7 @@ function copyPassword() {
   }
 
 
+<<<<<<< HEAD
   //Image Slider / Crousel (https://www.youtube.com/watch?v=4YQ4svkETS0);
 
 
@@ -4295,6 +4329,9 @@ function copyPassword() {
 
 
 //Active Class
+=======
+//Adding Active Classes
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 let parentDiv;
 let childDivs;
 parentDiv = document.getElementById('parentDiv');
@@ -4304,6 +4341,10 @@ function handleButtonClick(event){
     childDivs.forEach(childDiv => {
         childDiv.classList.remove('active');
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
     //The element/div that triggered the click event.
     event.target.classList.add('active');
 }
@@ -4311,3 +4352,8 @@ function handleButtonClick(event){
 childDivs.forEach(childDiv => {
     childDiv.addEventListener('click', handleButtonClick);
 });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
