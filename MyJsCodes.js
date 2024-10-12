@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //FUNDAMENTALS:
 //Variables
 //Basic Sytax
@@ -27,11 +26,9 @@ const proceed = window.confirm('Are you sure?');
 if(proceed = true){
     //
 }
-=======
 // alert ('Welcome to my Javascript journey');
 //Prompt
 // prompt ("What is your name");
->>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 
 //var : Data container/box equals(holding) to a value... e.g var myname = 'Essie';
 
@@ -3999,17 +3996,14 @@ console.log(vv);
 
 //LOCAL STORAGE: Fetching / exchanging data between two html elements and functions
 //On first element:
-<<<<<<< HEAD
 localStorage.setItem('username', userName);
 const userName = localStorage.getItem('username');
 localStorage.removeItem('username');
 //On second element:
-=======
 localStorage.setItem('user-name', userName);
 localStorage.setItem('pass-word', passwordLimit);
 //On second element:
-const userName = localStorage.getItem('user-name');
->>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
+const userame = localStorage.getItem('user-name');
 
 
 //Pad Start / Pad End
@@ -4254,7 +4248,6 @@ function copyPassword() {
   }
 
 
-<<<<<<< HEAD
   //Image Slider / Crousel (https://www.youtube.com/watch?v=4YQ4svkETS0);
 
 
@@ -4328,10 +4321,8 @@ function copyPassword() {
       <p>{formatter.format(price)}</p>
 
 
-//Active Class
-=======
+//Active Class to child/parent Div
 //Adding Active Classes
->>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 let parentDiv;
 let childDivs;
 parentDiv = document.getElementById('parentDiv');
@@ -4341,10 +4332,6 @@ function handleButtonClick(event){
     childDivs.forEach(childDiv => {
         childDiv.classList.remove('active');
     });
-<<<<<<< HEAD
-=======
-
->>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
     //The element/div that triggered the click event.
     event.target.classList.add('active');
 }
@@ -4352,8 +4339,3 @@ function handleButtonClick(event){
 childDivs.forEach(childDiv => {
     childDiv.addEventListener('click', handleButtonClick);
 });
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff

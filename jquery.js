@@ -1,4 +1,3 @@
-
 //jQuery (https://jquery.com/download) (https://api.jquery.com/)
 //jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. By abstracting many of the complexities of JavaScript, jQuery allows developers to write less code to achieve more functionality.
 //Script placement: Include script tag in your HTML file just below your scriptJs
@@ -45,8 +44,6 @@ var divElement = $('<div>', {
 $('#divContainer').append(divElement);
 
 
-=======
->>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 //if - Script placement within HTML Head
 $document.ready(function(){
     $('h1').css('color', 'blue');
@@ -152,11 +149,8 @@ $('button').on('click', function(){
     $('h1').fadeIn();             
 })
 
-<<<<<<< HEAD
 //Fade Toggle an element
-=======
 //Fade In an element
->>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 $('button').on('click', function(){
     $('h1').fadeToggle();             
 })
@@ -177,11 +171,8 @@ $('button').on('click', function(){
     $('h1').slideDown();
 })
 
-<<<<<<< HEAD
 //Slide Toggle i.e slide up and down
-=======
 //Slide Toggle
->>>>>>> c6477f19b2d77e040ae020eb9f4f5451e0c5e8ff
 $('button').on('click', function(){
     $('h1').slideToggle();
 })
@@ -198,7 +189,6 @@ $('button').on('click', function(){
 $('button').on('click', function(){
     $('h1').slideUp().slideDown().animate({opacity: 0.5});
 })
-<<<<<<< HEAD
 
 //DISABLE AN ELEMENT
 $('#userInput').prop('disabled', true);
