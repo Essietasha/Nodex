@@ -3016,6 +3016,14 @@ function findKthElm(arr, k) {   //The sort() sorts the elements of an array. The
 }
 findKthElm([20, 35, 600, 52, 200, 700, 250, 10, 80], 4);
 
+//51(B): Mutates the original array, changes it because sort method is not a functional array method like map, filter and reduce. To avoid mutation, use slice method to return a new array.
+const arrsrt = [3, 9, 1, 80, 2];
+const sortedArrAscending = arrsrt.sort((a, b) => a - b);
+const sortedArrDescending = arrsrt.sort((a, b) => a - b);
+const doNotMutateOriginalArray = arrsrt.slice().sort((a, b) => a - b);
+console.log(sortedArrAscending, sortedArrDescending);
+
+
 //52. Write a JavaScript program to find the number appearing most frequently in a given array of integers.
 //53. Write a JavaScript program to find the shortest possible string. This can be converted into a string and converted into a palindrome by adding characters to the end of it.
 //54. Write a JavaScript program to calculate the sum of n + n/2 + n/4 + n/8 + .... where n is a positive integer and all divisions are integers. 
@@ -4339,3 +4347,8 @@ function handleButtonClick(event){
 childDivs.forEach(childDiv => {
     childDiv.addEventListener('click', handleButtonClick);
 });
+
+//The Three functional array method: Map, Filter, reduce
+
+//Next.js
+//A react framework
