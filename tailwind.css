@@ -1,4 +1,35 @@
-/* Utitlity-first class CSS framework for creating modern designs quickly.
+/*TAILWIND CSS
+A Utitlity-first CSS framework. Light weight styles. Customizable. Responsive.
 Provides a set of predefinded classes. Unlike bootstrap, foundation and the like which use Component based approCH, in Tailwind can create our own component.
-Light weight styles. Customizable. Responsive.
 Install using CDN Link */
+/*INSTALLATION: Using Tailwind CLI - HTML
+    Drag in project folder into VSCode
+    Run "npm init -y" to create a package.json file for tailwind installation
+    Run "npm install -D tailwindcss"
+    Run "npx tailwindcss init"
+    In tailwind.config.js file, update: content: ['./*.html']
+    Create an input.css file: add directives from tailwind docs - base,components,utilities
+    In package.js file, update script as: 
+    "scripts": {
+        "build": "tailwindcss -i ./input.css -o ./css/main.css",
+        "watch": "tailwindcss -i ./input.css -o ./css/main.css --watch"
+    }
+    Run "npm build"
+    Create an index.html file, add: link rel="stylesheet" href="css/main.css"
+    Run "npm watch"
+    Configurations:
+        Screens: Add and set "screens" within themes object in config.js file
+        Colors: Add and set "colors" within extend object - themes object.
+            theme: {
+            screens: {
+                sm: '480px', 
+                md: '768px',
+                lg: '976px',
+                xl: '1440px'
+            },
+            extend: {
+                colors:{
+                brightRed: 'hsl(12, 88%, 59%)',
+                }
+            }
+ */
