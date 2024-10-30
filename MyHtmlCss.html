@@ -650,7 +650,7 @@ COMBINATORS: (https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks
 
 
 CSS VARIABLES
-    Variable declarations begin with two dashes (-) and are given a name and a value like this: --variable-name: value; With CSS variables you can change values without searching everywhere in the stylesheet.
+    Variable declarations begin with two dashes (--) and are given a name and a value like this: --variable-name: value; With CSS variables you can change values without searching everywhere in the stylesheet.
     E.g .divcont{
     --box1color:#fff;
         }            OR   --building-color1: #999;
@@ -670,7 +670,6 @@ CSS VARIABLES
                                 --building-color2: #66cc99;
                                 --building-color3: #cc6699;
                                 }
-                    Now that you've worked the bugs out and the buildings are the right colors, you can remove the fallback values in the all the places they were used. Go ahead and do that now.
                     Note that you can use color variables on linear gradient as well by using the background property and any where else in your code.
                     E.g background: linear-gradient(orange, var(--building-color1), var(--window-color1));
                                 
