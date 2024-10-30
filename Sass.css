@@ -1,0 +1,74 @@
+/* SASS- Syntatically Awesome Stylesheet - CSS PreProcessor. It extends CSS with features like variables, nested rules, and mixins, making it easier to write and manage complex styles.
+    NOTE: The browser doesnt read SASS files directly. It has to be compiled down to refular CSS using a SASS compiler.
+    Can install SASS with npm and compile it with that tru the command line
+    SASS Compiler extension on VSCode extensions.
+
+    SASS FILE:
+        .SCSS File- CSS formatted
+        .SASS File- Indentation format
+
+    FEATURES
+        Variables - Prefixed with $
+        Nesting- Nest child selectors in parent elenments
+        Modules- Can break css files into smaller files or components in a main scss or sass file
+        Compilation - Long as use underscore(_) bfr the name of the file, sass won't compile it. So the file can simply be used whr needed.
+        Mixins and Functions - 
+            Mixins in Sass are reusable blocks of styles that allow you to group CSS declarations together. You can create a mixin using the @mixin directive and include it in your styles with @include. Mixins can also accept parameters, making them versatile for different styling needs.*/
+            @mixin box-shadow($shadow) {
+            box-shadow: $shadow;
+            }
+
+            .button {
+            @include box-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+            }
+
+        /* Inheritance: Inheriting styles
+            Inheritance in Sass allows you to reuse styles by "inheriting" properties from one selector to another. Uses @extend (or "extend") to facilitate this.
+            Class selectors(.btn) and placeholders selectors(%btn-style)*/
+            %btn-style {
+            color: white;
+            background-color: blue;
+            }
+
+            .button {
+            @extend %btn-style;
+            }
+
+            .primary-button {
+            @extend %btn-style;
+            background-color: green;
+            }
+        
+        /* Conditionals - Using @if, @else if, and @else statements to style elements differently depending on variables or certain criteria*/
+            @mixin triangle($size, $color, $direction) {
+                height: 0;
+                width: 0;
+                border-color: white;
+
+                @if $direction == up {
+                    border-bottom-color: &color;
+                }@else if $direction == right {
+                    border-left-color: &color;
+                }@else if $direction == down {
+                    border-top-color: &color;
+                }@else if $direction == left {
+                    border-right-color: &color;
+                }@else {
+                    @error "Unknown direction #{$direction}.";
+                }
+            }
+
+            .shapeitem {
+            @include triangle(5px, black, right);
+            }
+
+
+
+
+
+
+
+
+
+
+
