@@ -5,6 +5,7 @@ Install using CDN Link */
 /*INSTALLATION: Using Tailwind CLI - HTML
     Drag in project folder into VSCode
     Run "npm init -y" to create a package.json file for tailwind installation
+    Go to Tailwind configuration documentation.
     Run "npm install -D tailwindcss"
     Run "npx tailwindcss init"
     In tailwind.config.js file, update: content: ['./*.html']
@@ -14,9 +15,9 @@ Install using CDN Link */
         "build": "tailwindcss -i ./input.css -o ./css/main.css",
         "watch": "tailwindcss -i ./input.css -o ./css/main.css --watch"
     }
-    Run "npm build"
+    Run "npm run build"
     Create an index.html file, add: link rel="stylesheet" href="css/main.css"
-    Run "npm watch"
+    Run "npm run watch"
     Configurations:
         Screens: Add and set "screens" within themes object in config.js file
         Colors: Add and set "colors" within extend object - themes object.
