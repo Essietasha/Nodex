@@ -1,8 +1,21 @@
 /* SASS- Syntatically Awesome Stylesheet - CSS PreProcessor. It extends CSS with features like variables, nested rules, and mixins, making it easier to write and manage complex styles.
     NOTE: The browser doesnt read SASS files directly. It has to be compiled down to refular CSS using a SASS compiler.
-    SASS FILE:
-    .SCSS File- CSS formatted
-    .SASS File- Indentation format
+    SASS FILE/Syntax:
+    .SCSS Syntax/File- CSS formatted - .scss
+    .SASS (Indented)Syntax/File- Indentation format - .sass
+
+    Sass-Indentation Syntax: Css without curly braces.
+    nav
+        background-color: $primary-color;
+
+            a
+                font-weight: bold;
+                text-decoration: none;
+                margin-left: 1rem;
+
+            a:hover
+                color: $tert-color;
+    
     
     INSTALLATION: Using npm package 
     Create a scss folder in the main root. 
@@ -53,7 +66,7 @@
             }
         }
 
-        //&-added class name E.g "flex-cont" within "flex" class name
+        //& - Parent selector - added class name E.g "flex-cont" within "flex" class name
         //&:pseudo-class
         .flex{
             display: flex;
