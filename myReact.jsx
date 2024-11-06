@@ -261,7 +261,7 @@ export default miAp;
     //In the above example, the :id part is a dynamic parameter, meaning it can change. So, if the URL is: /user/5, the id will be 5 .../user/123, the id will be 123
     //To get the id of a data - use Params Hooks from react router dom. Import useParams... Then destructure (based on the set in your route path) from useParams.  useParams returnsa an object which contains the dynamic path segment defined in the route definition.
     //useParams usually work with the id details of the data or list items fetched. For example, in places where we are not geting the id directly nor through props. 
-    import { useParams } from 'react';
+    import { Suspense, useParams } from 'react';
     const params = useParams();
     <p>{params.id}</p>
     //Destructure
@@ -631,6 +631,11 @@ export default NewsletterSignup;
   export default App;
 
 //DEFER Function: Display some parts of the UI/render a component already while data is loading or being fetched. (defer function, Await, Suspense...) - 360.
+
+//Suspense and fallback
+  <Suspense fallback={<p>Fetching meals...</p>}>
+    <MealItem />
+  </Suspense>
 
 
 //Writing JSX
