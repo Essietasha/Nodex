@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <div >
+        <h3 class="stockDetails">Stock Details</h3>
+        <h5>Symbol: <span class="sd">{{ stockResult["symbol"] }} </span></h5>
+        <h5>Name: <span class="sd">{{ stockResult["name"] }} </span></h5>
+        <h5>Price: <span class="sd">{{ stockResult["price"] | usd}} </span></h5>
+    </div>
+{% endblock %}

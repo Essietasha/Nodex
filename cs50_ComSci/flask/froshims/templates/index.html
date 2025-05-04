@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block appbody %}
+<!-- Froshims One  -->
+    <h1>Register an intramural sport </h1>
+    <form action="/register" method="post">
+        <input name="namevalue" type="text" placeholder="Enter Name" autocomplete="off" autofocus/>
+        <select name="sport">
+            <option disabled selected value="">Sport</option>
+            <option>Basketball</option>
+            <option>Soccer</option>
+            <option>Frisbee</option>
+        </select>
+        <button type="submit">Register</button>
+    </form>
+
+<!-- Froshims Two -->
+    <h1>Register an intramural sport </h1>
+    <form action="/register" method="post">
+        <input name="namevalue" type="text" placeholder="Enter Name" autocomplete="off" autofocus/>
+        <select name="sport">
+            <option disabled selected value="">Sport</option>
+            {% for sport in sports %}
+                <option value="{{ sport }}">{{ sport }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Register</button>
+    </form>
+
+<!-- Froshims Three, Four(radio) AND Five(radio) | Checkbox/Radio button -->
+    <h1>Register</h1>
+    <form action="/register" method="post">
+        <input name="namevalue" type="text" placeholder="Enter Name" autocomplete="off" autofocus/>
+            {% for sport in sports %}
+                <input name="sport" type="checkbox" value="{{ sport }}"> {{ sport }}
+            {% endfor %}
+        <button type="submit">Register</button>
+    </form>
+
+
+<!-- SESSION | LOGIN -->
+  <!-- Index.html: -->
+        {% if name %}
+            You are logged in as {{ name }}. <a href="/logout">Log out</a>.
+        {% else %}
+            You are not logged in. <a href="/login">Log in</a>.
+        {% endif %} 
+  <!-- Login.html: -->
+    <form action="/login" method="post">
+        <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
+        <button type="submit">Log In</button>
+    </form>
+
+
+<!-- BOOK | STORE | Amazon books-->
+ <!-- books.html:  -->
+    <h1>Books</h1>
+    {% for book in books %}
+        <h2>{{ book["title"] }}</h2>
+        <form action="/cart" method="post">
+            <input name="id" type="hidden" value="{{ book['id'] }}">
+            <button type="submit">Add to Cart</button>
+        </form>
+    {% endfor %}
+ <!-- cart.html: -->
+    <h1>Cart</h1>
+    <ol>
+        {% for book in books %}
+            <li>{{ book["title"] }}</li>
+        {% endfor %}
+    </ol>
+
+
+<!-- SHOWS - One AND B -->
+ <!-- Index.html: -->
+    <form action="/search" method="get">
+        <input autocomplete="off" autofocus name="q" placeholder="Query" type="search">
+        <button type="submit">Search</button>
+    </form>
+ <!-- Search.html: -->
+    <ul>
+        {% for show in shows %}
+            <li>{{ show["title"] }} - {{ show.year }} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+    <!-- SHOWS - Two - AJAX -->
+     <!-- Index.html: -->
+        <body>
+            <input autocomplete="off" autofocus placeholder="Query" type="search">
+            <ul></ul>
+            <script>
+                let input = document.querySelector('input');
+                input.addEventListener('input', async function() {
+                    let response = await fetch('/search?q=' + input.value);
+                    let shows = await response.text();
+                    document.querySelector('ul').innerHTML = shows;
+                });
+            </script>
+        </body>
+     <!-- search.html: -->
+        {% for show in shows %}
+        <li>{{ show["title"] }}</li>
+        {% endfor %}
+    
+    <!-- SHOWS - Three - JSON with Ajax -->
+     <!-- Index.html: -->
+        <body>
+            <input autocomplete="off" autofocus placeholder="Query" type="text">
+            <ul></ul>
+            <script>
+                let inputt = document.querySelector('input');
+                inputt.addEventListener('input', async function() {
+                    let response = await fetch('/search?q=' + inputt.value);
+                    let shows = await response.json();
+                    let content = '';
+                    for (let id in shows) {
+                        let title = shows[id].title.replace('<', '&lt;').replace('&', '&amp;');
+                        content += '<li>' + title + '</li>';
+                    }
+                    document.querySelector('ul').innerHTML = content;
+                });
+            </script>
+        </body>
